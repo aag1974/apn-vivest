@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Pesquisa de Satisfação Vivest - 2025</title>
+<title>Pesquisa Vivest 2025</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
@@ -256,6 +256,7 @@ body {
   white-space:nowrap;
   pointer-events:none;
   user-select:none;
+  z-index:0;
 }
 .chapter .hero-num {
   /* Option B: bottom strip — intentional graphic element */
@@ -296,6 +297,7 @@ body {
 .footer {
   margin-top:auto; flex-shrink:0; border-top:1px solid rgba(75,46,144,.10); padding-top:8px;
   display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+  z-index:1;
 }
 .footer .logos img.opiniao { height:48px; }
 .footer .logos img.vivest { height:26px; }
@@ -943,6 +945,44 @@ table td:first-child::after, table th:first-child::after {
 </style>
 </head>
 <body>
+<!-- ── Password Gate ─────────────────────────────────── -->
+<div id="pw-gate" style="position:fixed;inset:0;z-index:99999;background:#111316;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;">
+  <div style="background:#fff;border-radius:20px;padding:48px 40px;width:100%;max-width:400px;margin:20px;box-shadow:0 24px 80px rgba(0,0,0,.45);text-align:center;">
+    <img src="https://grupoopiniao.inf.br/wp-content/uploads/2025/05/OPINIAO_marca_F01-300x196.png" style="height:44px;margin-bottom:28px;object-fit:contain;" alt="Opinião"/>
+    <h2 style="font-size:18px;font-weight:800;color:#111316;margin:0 0 6px;">Acesso restrito</h2>
+    <p style="font-size:13px;color:#888;margin:0 0 28px;line-height:1.5;">Este documento é confidencial.<br/>Insira a senha para continuar.</p>
+    <input id="pw-input" type="password" placeholder="Senha" style="width:100%;padding:13px 16px;border:1.5px solid #e8e8ec;border-radius:10px;font-size:16px;font-family:inherit;outline:none;margin-bottom:12px;box-sizing:border-box;transition:border .2s;" onkeydown="if(event.key==='Enter')checkPw()" onfocus="this.style.borderColor='#E84855'" onblur="this.style.borderColor='#e8e8ec'"/>
+    <p id="pw-error" style="font-size:12px;color:#E84855;min-height:18px;margin:0 0 12px;"></p>
+    <button onclick="checkPw()" style="width:100%;padding:13px;background:#E84855;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='#c73344'" onmouseout="this.style.background='#E84855'">Entrar</button>
+    <p style="font-size:11px;color:#ccc;margin:20px 0 0;">Reprodução Proibida</p>
+  </div>
+</div>
+
+<script>
+  (function(){
+    if(localStorage.getItem('vivest_auth')==='1'){
+      document.getElementById('pw-gate').style.display='none';
+    }
+  })();
+
+  async function checkPw(){
+    var val = document.getElementById('pw-input').value;
+    var err = document.getElementById('pw-error');
+    if(!val){ err.textContent='Digite a senha.'; return; }
+    var buf  = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(val));
+    var hash = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    if(hash==='fe05fabda75f03d01b39b3995c69c7c0d952893e21746cfbaaf7854479b210e9'){
+      localStorage.setItem('vivest_auth','1');
+      document.getElementById('pw-gate').style.display='none';
+    } else {
+      err.textContent='Senha incorreta. Tente novamente.';
+      document.getElementById('pw-input').value='';
+      document.getElementById('pw-input').focus();
+    }
+  }
+</script>
+<!-- ── /Password Gate ──────────────────────────────────── -->
+
 <div class="stage">
 <div class="topbar">
 <div class="brand">
