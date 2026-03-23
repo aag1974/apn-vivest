@@ -258,17 +258,40 @@ body {
   user-select:none;
 }
 .chapter .hero-num {
-  font-size: clamp(160px,18vw,260px);
-  color:rgba(255,255,255,.09);
-  bottom: auto;
-  top: clamp(130px,24vh,220px);
+  /* Option B: bottom strip — intentional graphic element */
+  position: absolute;
+  bottom: -0.15em;
+  right: clamp(16px,3vw,48px);
+  left: auto;
+  top: auto;
+  transform: none;
+  font-size: clamp(160px,19vw,280px);
+  color: rgba(255,255,255,.14);
+  line-height: 1;
+  z-index: 0;
+}
+/* Text content sits above via z-index */
+.chapter .kicker,
+.chapter .title,
+.chapter .rule,
+.chapter .subtitle {
+  position: relative;
+  z-index: 1;
 }
 .cover .hero-num {
-  font-size: clamp(80px,8vw,110px);
-  color:rgba(255,255,255,.08);
+  font-size: clamp(100px,11vw,160px);
+  color: rgba(255,255,255,.10);
   right: clamp(16px,3vw,48px);
-  bottom: auto;
-  top: clamp(120px,22vh,200px);
+  bottom: -0.1em;
+  top: auto;
+  z-index: 0;
+}
+.cover .kicker,
+.cover h1.title,
+.cover .rule,
+.cover .subtitle {
+  position: relative;
+  z-index: 1;
 }
 .footer {
   margin-top:auto; flex-shrink:0; border-top:1px solid rgba(75,46,144,.10); padding-top:8px;
@@ -903,7 +926,21 @@ table td:first-child::after, table th:first-child::after {
   h2.title { font-size: clamp(20px, 3.5vw, 30px); }
   .bar-row { font-size: 13px; }
   table    { font-size: 12px; }
-}</style>
+}
+/* ── Nav links in topbar ── */
+.nav a {
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background .15s;
+}
+.nav a:hover { background: rgba(232,72,85,.08); }
+</style>
 </head>
 <body>
 <div class="stage">
@@ -911,7 +948,7 @@ table td:first-child::after, table th:first-child::after {
 <div class="brand">
 <img alt="Vivest" src="https://www.vivest.com.br/site/assets/img/icons/logo_novamarca.svg"/>
 </div>
-<div class="nav"><div>Apresentação Executiva</div><div>Link 1</div><div>Link 2</div></div>
+<nav class="nav"><a href="#" id="apr-executiva-link" target="_blank" rel="noopener">APN Executiva</a></nav>
 </div><!-- /topbar -->
 <div class="deck">
 
@@ -940,11 +977,11 @@ table td:first-child::after, table th:first-child::after {
 </div>
 </section>
 <section class="slide chapter" id="cap01">
-<div class="hero-num">01</div>
 <div class="kicker">Capítulo 01</div>
 <h2 class="title">Objetivo<br/>e Métodos</h2>
 <div class="rule"></div>
 <p class="subtitle">Escopo da pesquisa, desenho metodológico, plano amostral e critérios técnicos que orientam a leitura dos indicadores ao longo do relatório.</p>
+<div class="hero-num">01</div>
 </section>
 <section class="slide">
 <div class="kicker">01 · Objetivo e Métodos</div>
@@ -1070,11 +1107,11 @@ table td:first-child::after, table th:first-child::after {
 </div>
 </section>
 <section class="slide chapter" id="cap02">
-<div class="hero-num">02</div>
 <div class="kicker">Capítulo 02</div>
 <h2 class="title">Satisfação, NPS<br/>e Imagem</h2>
 <div class="rule"></div>
 <p class="subtitle">Satisfação geral inicial e final, Net Promoter Score e atributos de imagem institucional — leituras executiva, por patrocinadora e em série histórica.</p>
+<div class="hero-num">02</div>
 </section>
 <section class="slide" style="--ind:#e63d67" id="img-visao">
 <div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span>
@@ -1163,7 +1200,7 @@ table td:first-child::after, table th:first-child::after {
 <div class="callout" style="margin-top:0">A frente superior concentra FORD (86,4%), EMAE (76,7%) e FAMILINVEST (75,0%). ENEL — a maior base individual (n=412) — fica levemente abaixo do consolidado (66,6% vs. 67,7%). CPFL (63,9%), ISA ENERGIA (58,4%) compõem a agenda de atenção por patrocinadora.</div>
 </div>
 </section>
-<section class="slide" style="--ind:#e63d67" id="img-fortes">
+<section class="slide" style="--ind:#e63d67" id="sat-inicial-serie">
 <div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span>
 <div class="ind-pills">
 <span class="ind-pill">Visão executiva</span>
@@ -2056,13 +2093,7 @@ nRenderMacro();
 </div>
 <div class="card history-table-card">
 <h4 class="pane-title">Δ 2019 → 2025</h4>
-<div class="table-wrap"><table class="table table--compact table--mini">
-<tr><th>Atributo</th><th>2019</th><th>2025</th><th>Δ total</th></tr>
-<tr><td>Solidez</td><td>92,8%</td><td>77,2%</td><td style="color:#e63d67;font-weight:700;">−15,6 p.p.</td></tr>
-<tr><td>Confiança</td><td>90,9%</td><td>77,0%</td><td style="color:#e63d67;font-weight:700;">−13,9 p.p.</td></tr>
-<tr><td>Transparência</td><td>84,3%</td><td>71,3%</td><td style="color:#e63d67;font-weight:700;">−13,0 p.p.</td></tr>
-<tr><td>Preocupação</td><td>78,6%</td><td>66,8%</td><td style="color:#e63d67;font-weight:700;">−11,8 p.p.</td></tr>
-</table></div>
+<div class="table-wrap"><table class="table table--compact table--mini"><tr><th>Atributo</th><th style="text-align:right">T3B 2025</th><th style="text-align:right">Δ vs. 2024</th></tr><tr><td style="color:#2f6fb0;font-weight:700">Solidez</td><td style="font-weight:700;text-align:right">77,2%</td><td style="color:#e63d67;font-weight:700;text-align:right">−0,6 p.p.</td></tr><tr><td style="color:#0ea874;font-weight:700">Confiança</td><td style="font-weight:700;text-align:right">77,0%</td><td style="color:#10b981;font-weight:700;text-align:right">+0,7 p.p.</td></tr><tr><td style="color:#6750b5;font-weight:700">Transparência</td><td style="font-weight:700;text-align:right">71,3%</td><td style="color:#10b981;font-weight:700;text-align:right">+1,5 p.p.</td></tr><tr><td style="color:#e63d67;font-weight:700">Preocupação</td><td style="font-weight:700;text-align:right">66,8%</td><td style="color:#10b981;font-weight:700;text-align:right">+3,8 p.p.</td></tr></table></div>
 </div>
 </div>
 </div>
@@ -2348,11 +2379,11 @@ renderMain();
 <!-- FIM ANÁLISE EXECUTIVA CAP. 02 -->
 
 <section class="slide chapter" id="cap03">
-<div class="hero-num">03</div>
 <div class="kicker">Capítulo 03</div>
 <h2 class="title">Plano de<br/>Previdência</h2>
 <div class="rule"></div>
 <p class="subtitle">Satisfação com o plano previdenciário e com a rentabilidade, separados por Ativos e Assistidos.</p>
+<div class="hero-num">03</div>
 </section>
 <!-- ============================================================ -->
 <!-- CAP. 03 · PLANO DE PREVIDÊNCIA -->
@@ -3129,11 +3160,11 @@ renderMain();
 
 <!-- SLIDE 1: Uso do empréstimo -->
 <section class="slide chapter" id="cap04">
-<div class="hero-num">04</div>
 <div class="kicker">Capítulo 04</div>
 <h2 class="title">Empréstimos</h2>
 <div class="rule"></div>
 <p class="subtitle">Avaliação do produto de crédito consignado: uso, satisfação e percepção dos participantes elegíveis.</p>
+<div class="hero-num">04</div>
 </section>
 <section class="slide" style="--ind:#e63d67" id="empr-uso">
 <div class="ind-nav"><span class="ind-label">Cap. 04 · Empréstimos</span></div>
@@ -3383,7 +3414,7 @@ renderMain();
 </div>
 <div class="card">
 <h3>Leitura dos dados</h3>
-<div class="callout" style="margin-top:0">A taxa cobrada é o indicador mais crítico do capítulo (61,5%), com queda de −10,1 p.p. frente a 2024. A polarização entre perfis é expressiva: <strong style="color:#e63d67">Ativos</strong> registram apenas 45,3% — quase metade insatisfeita, com 46,1% nas notas 0 a 6. <strong style="color:#6750b5">Assistidos</strong>, que tipicamente têm taxas mais favoráveis, avaliam bem o produto (79,0%). O contexto de taxa Selic elevada em 2025 provavelmente explica a queda generalizada.</div>
+<div class="callout" style="margin-top:0">A taxa cobrada é o indicador mais crítico do capítulo (61,5%), com queda de −10,1 p.p. frente a 2024. A polarização entre perfis é expressiva: <strong style="color:#e63d67">Ativos</strong> registram apenas 45,3% — com 46,1% nas notas 0 a 6. <strong style="color:#6750b5">Assistidos</strong>, que tipicamente têm taxas mais favoráveis, avaliam bem o produto (79,0%). O contexto de taxa Selic elevada em 2025 provavelmente explica a queda generalizada.</div>
 </div>
 </section>
 
@@ -3569,11 +3600,11 @@ renderMain();
 
 <!-- Visão executiva -->
 <section class="slide chapter" id="cap05">
-<div class="hero-num">05</div>
 <div class="kicker">Capítulo 05</div>
 <h2 class="title">Plano de<br/>Assistência Médica</h2>
 <div class="rule"></div>
 <p class="subtitle">Satisfação com o plano de saúde, NPS e atributos específicos do produto — leitura restrita ao público elegível.</p>
+<div class="hero-num">05</div>
 </section>
 <!-- ─────────────────────────────────────────────────────
      CAP 05 — COMPLETO (substitui slides 47-50 antigos)
@@ -4252,9 +4283,9 @@ renderMain();
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Satisfação com o valor da mensalidade do plano de saúde em 2025. Universo: Assistidos e Saúde (perfis que pagam mensalidade).</p>
 <div class="kpis">
-<div class="kpi"><div class="label">T3B 2025</div><div class="value" style="color:#e63d67">35,4%</div><div class="meta">−4,1 p.p. vs. 2024</div></div>
+<div class="kpi"><div class="label">T3B 2025</div><div class="value" style="color:#e63d67">35,4%</div><div class="meta">−1,7 p.p. vs. 2024</div></div>
 <div class="kpi"><div class="label">Média</div><div class="value">5,9</div><div class="meta">Escala 0–10</div></div>
-<div class="kpi"><div class="label">Variação</div><div class="value" style="color:#e63d67">−4,1 p.p.</div><div class="meta">Piso do relatório</div></div>
+<div class="kpi"><div class="label">Variação</div><div class="value" style="color:#e63d67">−1,7 p.p.</div><div class="meta">Piso do relatório</div></div>
 <div class="kpi"><div class="label">Base</div><div class="value">367</div><div class="meta">Respostas válidas</div></div>
 </div>
 <div class="grid2" style="grid-template-columns:1fr 1fr;align-items:stretch">
@@ -4886,7 +4917,7 @@ dcRenderMacro();
 <p style="font-size:13px;line-height:1.6;margin:8px 0">Os dois atributos de maior insatisfação estrutural. <strong>Reembolso</strong> (41,4%) cai −8,1 p.p. — maior queda do capítulo. <strong>Mensalidade</strong> (35,4%) é o piso do relatório. Entre <strong style="color:#e63d67">Ativos</strong>, o reembolso chega a 31,0%.</p>
 <div style="margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:6px">
 <div style="text-align:center;padding:8px 4px;background:rgba(230,61,103,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">Reembolso</div><div style="font-size:18px;font-weight:800;color:#e63d67">41,4%</div><div style="font-size:10px;color:#e63d67">−8,1 p.p.</div></div>
-<div style="text-align:center;padding:8px 4px;background:rgba(230,61,103,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">Mensalidade</div><div style="font-size:18px;font-weight:800;color:#e63d67">35,4%</div><div style="font-size:10px;color:#e63d67">−4,1 p.p.</div></div>
+<div style="text-align:center;padding:8px 4px;background:rgba(230,61,103,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">Mensalidade</div><div style="font-size:18px;font-weight:800;color:#e63d67">35,4%</div><div style="font-size:10px;color:#e63d67">−1,7 p.p.</div></div>
 </div>
 </div>
 <div class="card">
@@ -4926,11 +4957,11 @@ dcRenderMacro();
 </section>
 
 <section class="slide chapter" id="cap06">
-<div class="hero-num">06</div>
 <div class="kicker">Capítulo 06</div>
 <h2 class="title">Canais de Atendimento<br/>e Autosserviço</h2>
 <div class="rule"></div>
 <p class="subtitle">Avaliação dos canais de relacionamento: presencial, telefone, portal e app. Uso e satisfação com recursos de autosserviço.</p>
+<div class="hero-num">06</div>
 </section>
 <section class="slide" style="--ind:#e63d67" id="atend-geral">
 <div class="ind-nav"><span class="ind-label">Cap. 06 · Canais de Atendimento e Autosserviço</span><div class="ind-pills">
@@ -5094,9 +5125,9 @@ dcRenderMacro();
 <div class="card">
 <h4 class="pane-title">Destaques</h4>
 <div class="note-list">
-<div class="note-item"><div class="label" style="font-weight:700;color:#e63d67">Ativos</div><div class="text">Queda de −7,3 p.p. — maior deterioração por perfil (67,2% → 59,9%).</div></div>
+<div class="note-item"><div class="label" style="font-weight:700;color:#e63d67">Ativos</div><div class="text">Queda de −11,6 p.p. — maior deterioração por perfil (71,5% → 59,9%).</div></div>
 <div class="note-item"><div class="label" style="font-weight:700;color:#e63d67">Tempo de resolução</div><div class="text">64,9% — maior queda entre atributos (−5,0 p.p.). Gargalo central.</div></div>
-<div class="note-item"><div class="label" style="font-weight:700;color:#6750b5">Assistidos</div><div class="text">75,6% — melhor perfil, mas recua −5,7 p.p. vs. 2024 (81,3%).</div></div>
+<div class="note-item"><div class="label" style="font-weight:700;color:#6750b5">Assistidos</div><div class="text">75,6% — melhor perfil, recua −2,1 p.p. vs. 2024 (77,7%).</div></div>
 </div>
 </div>
 <div class="card history-table-card">
@@ -5104,8 +5135,8 @@ dcRenderMacro();
 <div class="table-wrap"><table class="table table--compact table--mini">
 <tr><th>Perfil</th><th>T3B</th><th>Δ vs. 2024</th></tr>
 <tr><td style="font-weight:700;color:#2f6fb0">Total</td><td>69,2%</td><td style="color:#e63d67;font-weight:700;">−6,1 p.p.</td></tr>
-<tr><td style="font-weight:700;color:#e63d67">Ativos</td><td>59,9%</td><td style="color:#e63d67;font-weight:700;">−7,3 p.p.</td></tr>
-<tr><td style="font-weight:700;color:#6750b5">Assistidos</td><td>75,6%</td><td style="color:#e63d67;font-weight:700;">−5,7 p.p.</td></tr>
+<tr><td style="font-weight:700;color:#e63d67">Ativos</td><td>59,9%</td><td style="color:#e63d67;font-weight:700;">−11,6 p.p.</td></tr>
+<tr><td style="font-weight:700;color:#6750b5">Assistidos</td><td>75,6%</td><td style="color:#10b981;font-weight:700;">−2,1 p.p.</td></tr>
 <tr><td style="font-weight:700;color:#0ea874">Saúde</td><td>72,6%</td><td style="color:#e63d67;font-weight:700;">−1,6 p.p.</td></tr>
 </table></div>
 </div>
@@ -5113,7 +5144,7 @@ dcRenderMacro();
 </div>
 <div class="card">
 <h3>Leitura dos dados</h3>
-<div class="callout" style="margin-top:0">Todos os atributos de atendimento recuam em 2025. A queda mais expressiva é no <strong>Tempo de resolução</strong> (−5,0 p.p.) e na <strong>Satisfação geral</strong> (−6,1 p.p.). <strong style="color:#e63d67">Ativos</strong> registram a maior queda absoluta (−7,3 p.p.), chegando a 59,9%. <strong style="color:#6750b5">Assistidos</strong> (−5,7 p.p.) mantêm o melhor resultado (75,6%).</div>
+<div class="callout" style="margin-top:0">Todos os atributos de atendimento recuam em 2025. A queda mais expressiva é no <strong>Tempo de resolução</strong> (−5,0 p.p.) e na <strong>Satisfação geral</strong> (−6,1 p.p.). <strong style="color:#e63d67">Ativos</strong> registram a maior queda por perfil (−11,6 p.p.), chegando a 59,9%. <strong style="color:#6750b5">Assistidos</strong> (−2,1 p.p.) mantêm o melhor resultado (75,6%).</div>
 </div>
 </section>
 <section class="slide" style="--ind:#e63d67" id="atend-atributos">
@@ -5386,7 +5417,7 @@ dcRenderMacro();
 <h4 class="pane-title">Destaques</h4>
 <div class="note-list">
 <div class="note-item"><div class="label" style="font-weight:700;color:#e63d67">Queda uniforme</div><div class="text">Todos os atributos caem ~9-10 p.p. — deterioração sistêmica da plataforma digital.</div></div>
-<div class="note-item"><div class="label" style="font-weight:700;color:#6750b5">Assistidos</div><div class="text">Maior queda absoluta (−10,7 p.p.) mas mantém liderança (71,5%).</div></div>
+<div class="note-item"><div class="label" style="font-weight:700;color:#6750b5">Assistidos</div><div class="text">Menor queda entre perfis (−2,0 p.p.) — mantém liderança (71,5%).</div></div>
 <div class="note-item"><div class="label" style="font-weight:700;color:#e63d67">Saúde e Ativos</div><div class="text">Ambos abaixo de 60% — 57,4% e 56,1% respectivamente.</div></div>
 </div>
 </div>
@@ -5396,7 +5427,7 @@ dcRenderMacro();
 <tr><th>Perfil</th><th>T3B</th><th>Δ vs. 2024</th></tr>
 <tr><td style="font-weight:700;color:#2f6fb0">Total</td><td>63,0%</td><td style="color:#e63d67;font-weight:700;">−8,2 p.p.</td></tr>
 <tr><td style="font-weight:700;color:#e63d67">Ativos</td><td>56,1%</td><td style="color:#e63d67;font-weight:700;">−6,4 p.p.</td></tr>
-<tr><td style="font-weight:700;color:#6750b5">Assistidos</td><td>71,5%</td><td style="color:#e63d67;font-weight:700;">−10,7 p.p.</td></tr>
+<tr><td style="font-weight:700;color:#6750b5">Assistidos</td><td>71,5%</td><td style="color:#10b981;font-weight:700;">−2,0 p.p.</td></tr>
 <tr><td style="font-weight:700;color:#0ea874">Saúde</td><td>57,4%</td><td style="color:#e63d67;font-weight:700;">−6,4 p.p.</td></tr>
 </table></div>
 </div>
@@ -5404,7 +5435,7 @@ dcRenderMacro();
 </div>
 <div class="card">
 <h3>Leitura dos dados</h3>
-<div class="callout" style="margin-top:0">O autosserviço registra a queda mais expressiva do capítulo: −8,2 p.p. na satisfação geral. A <strong>facilidade de utilização</strong> (61,0%) e a <strong>eficiência</strong> (62,1%) sinalizam deterioração da interface digital. <strong style="color:#6750b5">Assistidos</strong> (−10,7 p.p.) têm a maior queda absoluta mas mantêm a liderança (71,5%). <strong style="color:#0ea874">Saúde</strong> e <strong style="color:#e63d67">Ativos</strong> ficam abaixo de 60%.</div>
+<div class="callout" style="margin-top:0">O autosserviço registra a queda mais expressiva do capítulo: −8,2 p.p. na satisfação geral. A <strong>facilidade de utilização</strong> (61,0%) e a <strong>eficiência</strong> (62,1%) sinalizam deterioração da interface digital. <strong style="color:#6750b5">Assistidos</strong> (−2,0 p.p.) mantêm a liderança (71,5%), com a menor queda entre perfis. <strong style="color:#0ea874">Saúde</strong> e <strong style="color:#e63d67">Ativos</strong> ficam abaixo de 60%.</div>
 </div>
 </section>
 <section class="slide" style="--ind:#e63d67" id="auto-atributos">
@@ -5540,11 +5571,11 @@ dcRenderMacro();
 </section>
 
 <section class="slide chapter" id="cap07">
-<div class="hero-num">07</div>
 <div class="kicker">Capítulo 07</div>
 <h2 class="title">Comunicação<br/>Institucional</h2>
 <div class="rule"></div>
 <p class="subtitle">Percepção sobre clareza, frequência e qualidade da comunicação da Vivest com seus participantes.</p>
+<div class="hero-num">07</div>
 </section>
 <section class="slide" style="--ind:#e63d67" id="comunic">
 <div class="ind-nav"><span class="ind-label">Cap. 07 · Comunicação Institucional</span><div class="ind-pills">
@@ -5794,11 +5825,11 @@ dcRenderMacro();
 
 
 <section class="slide chapter" id="cap08">
-<div class="hero-num">08</div>
 <div class="kicker">Capítulo 08</div>
 <h2 class="title">Conclusões e<br/>Recomendações</h2>
 <div class="rule"></div>
 <p class="subtitle">Síntese dos principais achados, agenda de atenção e recomendações estratégicas com base nos resultados de 2025.</p>
+<div class="hero-num">08</div>
 </section>
 <section class="slide" style="--ind:#e63d67" id="concl-sintese">
 <div class="ind-nav"><span class="ind-label">Cap. 08 · Conclusões e Recomendações</span><div class="ind-pills">
@@ -6129,5 +6160,75 @@ dcRenderMacro();
 })();
 </script>
 
+
+<script>
+// ── Mobile: hamburger menu ──
+(function(){
+  var isMobile = function(){ return window.innerWidth <= 768; };
+  var topbar = document.querySelector('.topbar');
+  var nav    = document.querySelector('.nav');
+  if(!topbar || !nav) return;
+
+  var burger = document.createElement('button');
+  burger.id = 'burger';
+  burger.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+  burger.style.cssText = 'display:none;background:none;border:none;color:var(--red,#E84855);cursor:pointer;padding:6px;margin-left:auto;align-items:center;';
+  topbar.appendChild(burger);
+
+  var drawer = document.createElement('div');
+  drawer.id = 'nav-drawer';
+  drawer.style.cssText = 'display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;';
+  var panel = document.createElement('div');
+  panel.style.cssText = 'position:absolute;top:0;right:0;bottom:0;width:80vw;max-width:280px;background:#fff;overflow-y:auto;padding:24px 20px;display:flex;flex-direction:column;gap:0;';
+
+  // Close button
+  var closeBtn = document.createElement('button');
+  closeBtn.innerHTML = '✕';
+  closeBtn.style.cssText = 'background:none;border:none;font-size:18px;color:#111;cursor:pointer;text-align:right;margin-bottom:16px;align-self:flex-end;';
+  closeBtn.addEventListener('click', closeDrawer);
+  panel.appendChild(closeBtn);
+
+  Array.from(nav.querySelectorAll('a')).forEach(function(a){
+    var item = document.createElement('div');
+    item.style.cssText = 'border-bottom:1px solid #eee;';
+    var link = document.createElement('a');
+    link.href = a.getAttribute('href') || '#';
+    link.target = a.getAttribute('target') || '';
+    link.rel = a.getAttribute('rel') || '';
+    link.textContent = a.textContent;
+    link.style.cssText = 'display:block;padding:14px 0;font-size:13px;font-weight:700;color:#111316;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;';
+    if(a.getAttribute('onclick')) link.setAttribute('onclick', a.getAttribute('onclick'));
+    link.addEventListener('click', function(){ closeDrawer(); });
+    item.appendChild(link);
+    panel.appendChild(item);
+  });
+
+  var foot = document.createElement('div');
+  foot.style.cssText = 'margin-top:auto;padding-top:20px;font-size:11px;color:#ccc;';
+  foot.textContent = 'Reprodução Proibida';
+  panel.appendChild(foot);
+
+  drawer.appendChild(panel);
+  document.body.appendChild(drawer);
+
+  function openDrawer()  { drawer.style.display = 'block'; }
+  function closeDrawer() { drawer.style.display = 'none'; }
+  drawer.addEventListener('click', function(e){ if(e.target === drawer) closeDrawer(); });
+  burger.addEventListener('click', openDrawer);
+
+  function applyMobileNav(){
+    if(isMobile()){
+      burger.style.display = 'flex';
+      nav.style.display = 'none';
+    } else {
+      burger.style.display = 'none';
+      nav.style.display = '';
+      closeDrawer();
+    }
+  }
+  applyMobileNav();
+  window.addEventListener('resize', applyMobileNav);
+})();
+</script>
 </body>
 </html>
