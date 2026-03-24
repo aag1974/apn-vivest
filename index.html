@@ -994,7 +994,7 @@ table td:first-child::after, table th:first-child::after {
 
 <div class="content">
 <div class="slides">
-<section class="slide cover active">
+<section class="slide cover active id="capa">
 <div class="hero-num">Vivest</div>
 <div class="kicker">Pesquisa de opinião · Participantes Vivest</div>
 <h1 class="title">Pesquisa de Satisfação<br/>e Imagem Vivest 2025</h1>
@@ -1023,7 +1023,7 @@ table td:first-child::after, table th:first-child::after {
 <p class="subtitle">Escopo da pesquisa, desenho metodológico, plano amostral e critérios técnicos que orientam a leitura dos indicadores ao longo do relatório.</p>
 <div class="hero-num">01</div>
 </section>
-<section class="slide">
+<section class="slide id="cap01-objetivo">
 <div class="kicker">01 · Objetivo e Métodos</div>
 <h2 class="title">Objetivo do estudo</h2>
 <div class="rule"></div>
@@ -1039,7 +1039,7 @@ table td:first-child::after, table th:first-child::after {
 <div class="callout" style="margin-top:0">Os resultados são organizados por tema. Quando a base e o histórico permitem, cada indicador é apresentado em visões complementares: consolidado executivo, abertura por patrocinadora e série histórica. Indicadores novos ou com série incompleta são apresentados com o recorte disponível.</div>
 </div>
 </section>
-<section class="slide">
+<section class="slide id="cap01-metodologia">
 <div class="kicker">01 · Objetivo e Métodos</div>
 <h2 class="title">Metodologia quantitativa</h2>
 <div class="rule"></div>
@@ -1065,7 +1065,7 @@ table td:first-child::after, table th:first-child::after {
 </div>
 </div>
 </section>
-<section class="slide">
+<section class="slide id="cap01-amostral">
 <div class="kicker">01 · Objetivo e Métodos</div>
 <h2 class="title">Plano amostral</h2>
 <div class="rule"></div>
@@ -1123,7 +1123,7 @@ table td:first-child::after, table th:first-child::after {
 <div class="callout" style="margin-top:0">O perfil <strong>Saúde</strong> é composto exclusivamente pelos participantes cujo único vínculo com a Vivest é o plano de assistência médica. Ativos e assistidos que também possuem cobertura de saúde <em>não</em> integram este estrato — suas avaliações entram apenas nos perfis Ativo e Assistido. Esse critério preserva a comparabilidade com as séries históricas e evita dupla contagem nos indicadores de saúde. O perfil <strong>Assistido</strong> agrupa aposentados e pensionistas.</div>
 </div>
 </section>
-<section class="slide">
+<section class="slide id="cap01-tecnicos">
 <div class="kicker">01 · Objetivo e Métodos</div>
 <h2 class="title">Esclarecimentos técnicos</h2>
 <div class="rule"></div>
@@ -1154,18 +1154,12 @@ table td:first-child::after, table th:first-child::after {
 <div class="hero-num">02</div>
 </section>
 <section class="slide" style="--ind:#e63d67" id="img-visao">
-<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span>
-<div class="ind-pills">
+<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills">
 <span class="ind-pill active">Visão executiva</span>
-<span class="ind-pill">Patrocinadoras</span>
-<span class="ind-pill">Série histórica</span>
-</div>
-</div>
-<h2 class="title">Satisfação Geral · Inicial</h2>
-<div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
-<p class="subtitle">Pergunta feita no início do questionário, antes de qualquer módulo temático. Serve como termômetro da percepção geral antes da jornada de avaliação.</p>
-<div class="kpis">
-<div class="kpi"><div class="label">T3B 2025</div><div class="value">67,7%</div><div class="meta">Total válido</div></div>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('img-serie')" style="cursor:pointer">Patrocinadoras</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('sat-inicial-serie')" style="cursor:pointer">Série histórica</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('motivos-sat-final')" style="cursor:pointer">Justificativas</span>
+</div></div>
 <div class="kpi"><div class="label">Média</div><div class="value">7,6</div><div class="meta">Escala 0–10</div></div>
 <div class="kpi"><div class="label">Variação</div><div class="value">+0,3 p.p.</div><div class="meta">vs. 2024</div></div>
 <div class="kpi"><div class="label">Base</div><div class="value">1.063</div><div class="meta">Respostas válidas</div></div>
@@ -1205,22 +1199,12 @@ table td:first-child::after, table th:first-child::after {
 </div>
 </section>
 <section class="slide" style="--ind:#e63d67" id="img-serie">
-<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span>
-<div class="ind-pills">
-<span class="ind-pill">Visão executiva</span>
+<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills">
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('img-visao')" style="cursor:pointer">Visão executiva</span>
 <span class="ind-pill active">Patrocinadoras</span>
-<span class="ind-pill">Série histórica</span>
-</div>
-</div>
-<h2 class="title">Satisfação Geral · Inicial</h2>
-<div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
-<p class="subtitle">Distribuição do T3B entre as patrocinadoras em 2025.</p>
-<div class="object-grid sponsors-grid">
-<div class="object-card sponsors-rank-card">
-<h4 class="pane-title">Comparativo por patrocinadora — 2025</h4>
-<div class="rank-panel">
-<div class="rank-head"><span>Patrocinadora</span><span></span><span>T3B</span><span>Base pond.</span></div>
-<div class="rank-row"><div class="rank-name"><strong style="color:#2f6fb0">Total</strong></div><div class="track"><div class="fill total" style="width:67.7%"></div></div><div><strong>67,7%</strong></div><div>977</div></div>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('sat-inicial-serie')" style="cursor:pointer">Série histórica</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('motivos-sat-final')" style="cursor:pointer">Justificativas</span>
+</div></div><div><strong>67,7%</strong></div><div>977</div></div>
 <div class="rank-row"><div class="rank-name">FORD</div><div class="track"><div class="fill" style="width:86.4%"></div></div><div><strong>86,4%</strong></div><div>84</div></div><div class="rank-row"><div class="rank-name">EMAE</div><div class="track"><div class="fill" style="width:76.7%"></div></div><div><strong>76,7%</strong></div><div>36</div></div><div class="rank-row"><div class="rank-name">FAMILINVEST</div><div class="track"><div class="fill" style="width:75.0%"></div></div><div><strong>75,0%</strong></div><div>54</div></div><div class="rank-row"><div class="rank-name">CESP</div><div class="track"><div class="fill" style="width:68.9%"></div></div><div><strong>68,9%</strong></div><div>64</div></div><div class="rank-row"><div class="rank-name">ENEL</div><div class="track"><div class="fill" style="width:66.6%"></div></div><div><strong>66,6%</strong></div><div>412</div></div><div class="rank-row"><div class="rank-name">CPFL</div><div class="track"><div class="fill" style="width:63.9%"></div></div><div><strong>63,9%</strong></div><div>209</div></div><div class="rank-row"><div class="rank-name">ISA ENERGIA</div><div class="track"><div class="fill" style="width:58.4%"></div></div><div><strong>58,4%</strong></div><div>81</div></div>
 <p style="font-size:11px;color:var(--muted);margin-top:10px">* Patrocinadoras com menos de 30 respondentes não são exibidas.</p>
 </div>
@@ -1241,34 +1225,12 @@ table td:first-child::after, table th:first-child::after {
 </div>
 </section>
 <section class="slide" style="--ind:#e63d67" id="sat-inicial-serie">
-<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span>
-<div class="ind-pills">
-<span class="ind-pill">Visão executiva</span>
-<span class="ind-pill">Patrocinadoras</span>
+<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills">
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('img-visao')" style="cursor:pointer">Visão executiva</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('img-serie')" style="cursor:pointer">Patrocinadoras</span>
 <span class="ind-pill active">Série histórica</span>
-</div>
-</div>
-<h2 class="title">Satisfação Geral · Inicial</h2>
-<div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
-<p class="subtitle">Evolução do T3B no total e por perfil a partir de 2019. A atualização de 2025 consolida 2024 como referência comparativa do fechamento: Assistidos assume a liderança e Saúde permanece em patamar alto, mas abaixo do nível observado em 2024.</p>
-<div class="history-grid">
-<div class="card">
-<h3>Evolução do T3B</h3>
-<div class="history-legend">
-<span style="color:#2f6fb0;"><span class="lg-line"></span style="font-weight:700;color:#2f6fb0">Total</span>
-<span style="color:#e63d67;"><span class="lg-line"></span style="font-weight:700;color:#e63d67">Ativos</span>
-<span style="color:#6750b5;"><span class="lg-line"></span style="font-weight:700;color:#6750b5">Assistidos</span>
-<span style="color:#0ea874;"><span class="lg-line"></span style="font-weight:700;color:#0ea874">Saúde</span>
-</div>
-<div class="history-chart-wrap">
-<svg aria-hidden="true" viewBox="0 0 800 332" width="100%" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;max-width:100%;aspect-ratio:800/332"><line stroke="rgba(75,46,144,.16)" stroke-width="1.2" x1="50" x2="750" y1="294.0" y2="294.0"></line><text fill="#857ca3" font-size="14" x="6" y="298.0">50%</text><line stroke="rgba(75,46,144,.16)" stroke-width="1.2" x1="50" x2="750" y1="227.5" y2="227.5"></line><text fill="#857ca3" font-size="14" x="6" y="231.5">60%</text><line stroke="rgba(75,46,144,.16)" stroke-width="1.2" x1="50" x2="750" y1="161.0" y2="161.0"></line><text fill="#857ca3" font-size="14" x="6" y="165.0">70%</text><line stroke="rgba(75,46,144,.16)" stroke-width="1.2" x1="50" x2="750" y1="94.5" y2="94.5"></line><text fill="#857ca3" font-size="14" x="6" y="98.5">80%</text><line stroke="rgba(75,46,144,.16)" stroke-width="1.2" x1="50" x2="750" y1="28.0" y2="28.0"></line><text fill="#857ca3" font-size="14" x="6" y="32.0">90%</text><text fill="#857ca3" font-size="14" font-weight="700" text-anchor="middle" x="80" y="322">2019</text><text fill="#857ca3" font-size="14" font-weight="700" text-anchor="middle" x="248" y="322">2020</text><text fill="#857ca3" font-size="14" font-weight="700" text-anchor="middle" x="416" y="322">2021</text><text fill="#857ca3" font-size="14" font-weight="700" text-anchor="middle" x="584" y="322">2024</text><text fill="#857ca3" font-size="14" font-weight="800" text-anchor="middle" x="750" y="322">2025</text><polyline fill="none" points="80,109.8 248,175.6 416,200.9 584,178.3 750,176.3" stroke="rgba(255,255,255,.92)" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"></polyline><polyline fill="none" points="80,109.8 248,175.6 416,200.9 584,178.3 750,176.3" stroke="#2f6fb0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.2"></polyline><polyline fill="none" points="80,188.9 248,174.3 416,274.1 584,203.6 750,206.9" stroke="rgba(255,255,255,.92)" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"></polyline><polyline fill="none" points="80,188.9 248,174.3 416,274.1 584,203.6 750,206.9" stroke="#e63d67" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.2"></polyline><polyline fill="none" points="80,71.9 248,177.6 416,177.6 584,186.9 750,144.4" stroke="rgba(255,255,255,.92)" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"></polyline><polyline fill="none" points="80,71.9 248,177.6 416,177.6 584,186.9 750,144.4" stroke="#6750b5" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.2"></polyline><polyline fill="none" points="584,143.7 750,187.6" stroke="rgba(255,255,255,.92)" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"></polyline><polyline fill="none" points="584,143.7 750,187.6" stroke="#0ea874" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.2"></polyline><circle cx="80" cy="109.8" fill="#2f6fb0" r="4.2"></circle><circle cx="248" cy="175.6" fill="#2f6fb0" r="4.2"></circle><circle cx="416" cy="200.9" fill="#2f6fb0" r="4.2"></circle><circle cx="584" cy="178.3" fill="#2f6fb0" r="5"></circle><circle cx="750" cy="176.3" fill="#2f6fb0" r="5"></circle><circle cx="80" cy="188.9" fill="#e63d67" r="4.2"></circle><circle cx="248" cy="174.3" fill="#e63d67" r="4.2"></circle><circle cx="416" cy="274.1" fill="#e63d67" r="4.2"></circle><circle cx="584" cy="203.6" fill="#e63d67" r="5"></circle><circle cx="750" cy="206.9" fill="#e63d67" r="5"></circle><circle cx="80" cy="71.9" fill="#6750b5" r="4.2"></circle><circle cx="248" cy="177.6" fill="#6750b5" r="4.2"></circle><circle cx="416" cy="177.6" fill="#6750b5" r="4.2"></circle><circle cx="584" cy="186.9" fill="#6750b5" r="5"></circle><circle cx="750" cy="144.4" fill="#6750b5" r="5"></circle><circle cx="584" cy="143.7" fill="#0ea874" r="5"></circle><circle cx="750" cy="187.6" fill="#0ea874" r="5"></circle><text fill="#6750b5" font-size="13" font-weight="700" text-anchor="middle" x="80" y="75.9" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">83,4%</text><text fill="#2f6fb0" font-size="13" font-weight="700" text-anchor="middle" x="80" y="113.8" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">77,7%</text><text fill="#e63d67" font-size="13" font-weight="700" text-anchor="middle" x="80" y="192.9" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">65,8%</text><text fill="#e63d67" font-size="13" font-weight="700" text-anchor="middle" x="248" y="165.8" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">68,0%</text><text fill="#2f6fb0" font-size="13" font-weight="700" text-anchor="middle" x="248" y="179.8" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">67,8%</text><text fill="#6750b5" font-size="13" font-weight="700" text-anchor="middle" x="248" y="193.8" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">67,5%</text><text fill="#6750b5" font-size="13" font-weight="700" text-anchor="middle" x="416" y="181.6" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">67,5%</text><text fill="#2f6fb0" font-size="13" font-weight="700" text-anchor="middle" x="416" y="204.9" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">64,0%</text><text fill="#e63d67" font-size="13" font-weight="700" text-anchor="middle" x="416" y="278.1" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">53,0%</text><text fill="#0ea874" font-size="13" font-weight="700" text-anchor="middle" x="584" y="152.7" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">72,6%</text><text fill="#2f6fb0" font-size="13" font-weight="700" text-anchor="middle" x="584" y="178.6" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">67,4%</text><text fill="#6750b5" font-size="13" font-weight="700" text-anchor="middle" x="584" y="194.6" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">66,1%</text><text fill="#e63d67" font-size="13" font-weight="700" text-anchor="middle" x="584" y="207.6" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">63,6%</text><text fill="#6750b5" font-size="13" font-weight="700" text-anchor="middle" x="750" y="148.4" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">72,5%</text><text fill="#2f6fb0" font-size="13" font-weight="700" text-anchor="middle" x="750" y="177.9" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">67,7%</text><text fill="#0ea874" font-size="13" font-weight="700" text-anchor="middle" x="750" y="193.9" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">66,0%</text><text fill="#e63d67" font-size="13" font-weight="700" text-anchor="middle" x="750" y="210.9" stroke="rgba(255,255,255,.98)" stroke-width="3" paint-order="stroke fill">63,1%</text></svg>
-</div>
-</div>
-<div class="history-side-stack">
-<div class="card">
-<h4 class="pane-title">Destaques</h4>
-<div class="note-list">
-<div class="note-item"><div class="label" style="font-weight:700;color:#2f6fb0">Total</div><div class="text">Depois da queda até 2021, o consolidado sobe para 68% em 2025 e fica ligeiramente acima de 2024.</div></div>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('motivos-sat-final')" style="cursor:pointer">Justificativas</span>
+</div></div>
 <div class="note-item"><div class="label" style="font-weight:700;color:#e63d67">Ativos</div><div class="text">Segue como o perfil mais sensível, mas a comparação de fechamento agora deve ser lida contra 2024.</div></div>
 <div class="note-item"><div class="label" style="font-weight:700;color:#6750b5">Assistidos</div><div class="text">Assume a liderança da série em 2025, fechando em 73% e superando o total com folga.</div></div>
 <div class="note-item"><div class="label" style="font-weight:700;color:#0ea874">Saúde</div><div class="text">Mantém patamar alto, mas recua frente a 2024 e encerra 2025 em 66%.</div></div>
@@ -1291,9 +1253,13 @@ table td:first-child::after, table th:first-child::after {
 <div class="callout" style="margin-top:0">A série mostra estabilização após 2021: o Total fecha 2025 em 67,7% (+0,3 p.p. vs. 2024). <strong>Assistidos</strong> assume a liderança com 72,5% (+6,4 p.p.), maior avanço da série. <strong>Ativos</strong> recua levemente para 63,1% (−0,5 p.p.). <strong>Saúde</strong> encerra em 66,0%, queda de 6,6 p.p. frente a 2024 — o maior recuo do período.</div>
 </div>
 </section>
-<section class="slide" style="--ind:#e63d67">
-<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills"><span class="ind-pill active">Visão executiva</span><span class="ind-pill">Patrocinadoras</span><span class="ind-pill">Série histórica</span>
-<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('motivos-sat-final')" style="cursor:pointer">Justificativas</span></div></div>
+<section class="slide" style="--ind:#e63d67" id="sat-final">
+<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills">
+<span class="ind-pill active">Visão executiva</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('sat-final-patroc')" style="cursor:pointer">Patrocinadoras</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('sat-final-serie')" style="cursor:pointer">Série histórica</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('motivos-sat-final')" style="cursor:pointer">Justificativas</span>
+</div></div>
 <h2 class="title">Satisfação Geral · Final</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Pergunta feita ao final do questionário, após todos os módulos temáticos. Permite comparar a percepção antes e depois da jornada de avaliação.</p>
@@ -1341,9 +1307,13 @@ table td:first-child::after, table th:first-child::after {
 <div class="callout" style="margin-top:0">A satisfação final fecha 2025 em 71,3% — 3,6 p.p. acima da satisfação inicial. <strong>Assistidos</strong> lidera com 76,8% (+3,3 p.p. vs. inicial), indicando que a jornada de avaliação reforça a percepção positiva deste perfil. <strong>Ativos</strong> avança para 64,9% (+1,8 p.p. vs. inicial), mas mantém-se como o perfil com menor T3B.</div>
 </div>
 </section>
-<section class="slide" style="--ind:#e63d67">
-<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills"><span class="ind-pill">Visão executiva</span><span class="ind-pill active">Patrocinadoras</span><span class="ind-pill">Série histórica</span>
-<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('motivos-sat-final')" style="cursor:pointer">Justificativas</span></div></div>
+<section class="slide" style="--ind:#e63d67" id="sat-final-patroc">
+<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills">
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('sat-final')" style="cursor:pointer">Visão executiva</span>
+<span class="ind-pill active">Patrocinadoras</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('sat-final-serie')" style="cursor:pointer">Série histórica</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('motivos-sat-final')" style="cursor:pointer">Justificativas</span>
+</div></div>
 <h2 class="title">Satisfação Geral · Final</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Distribuição do T3B entre as patrocinadoras na satisfação final. Patrocinadoras com menos de 30 respondentes têm base insuficiente para leitura isolada.</p>
@@ -1379,9 +1349,13 @@ table td:first-child::after, table th:first-child::after {
 <div class="callout" style="margin-top:0">Na satisfação final, FORD (88,5%) mantém a liderança absoluta. FAMILINVEST e CESP sobem no ranking em relação à satisfação inicial. ENEL — a maior base individual — avança de 66,6% para 69,4%, ficando mais próxima do consolidado. ISA ENERGIA e ROCHE permanecem como os maiores pontos de atenção.</div>
 </div>
 </section>
-<section class="slide" style="--ind:#e63d67">
-<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills"><span class="ind-pill">Visão executiva</span><span class="ind-pill">Patrocinadoras</span><span class="ind-pill active">Série histórica</span>
-<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('motivos-sat-final')" style="cursor:pointer">Justificativas</span></div></div>
+<section class="slide" style="--ind:#e63d67" id="sat-final-serie">
+<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills">
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('sat-final')" style="cursor:pointer">Visão executiva</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('sat-final-patroc')" style="cursor:pointer">Patrocinadoras</span>
+<span class="ind-pill active">Série histórica</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('motivos-sat-final')" style="cursor:pointer">Justificativas</span>
+</div></div>
 <h2 class="title">Satisfação Geral · Final</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Evolução do T3B da satisfação final a partir de 2019. Em 2025, todos os perfis avançam frente a 2024.</p>
@@ -1426,7 +1400,12 @@ table td:first-child::after, table th:first-child::after {
 </div>
 </section>
 <section class="slide" id="motivos-sat-final" style="--ind:#e63d67">
-<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills"><span class="ind-pill">Visão executiva</span><span class="ind-pill">Patrocinadoras</span><span class="ind-pill">Série histórica</span><span class="ind-pill active">Justificativas</span></div></div>
+<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills">
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('sat-final')" style="cursor:pointer">Visão executiva</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('sat-final-patroc')" style="cursor:pointer">Patrocinadoras</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('sat-final-serie')" style="cursor:pointer">Série histórica</span>
+<span class="ind-pill active">Justificativas</span>
+</div></div>
 <h2 class="title">Justificativas da Insatisfação</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Satisfação Final · Pergunta aplicada a respondentes com nota ≤ 6 (n ponderado ≈ 197). Clique em uma macrocategoria para ver os detalhes.</p>
@@ -1591,7 +1570,7 @@ renderMacro();
 })();
 </script>
 </section>
-<section class="slide" style="--ind:#e63d67">
+<section class="slide" style="--ind:#e63d67" id="sat-comparativo">
 <div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span></div>
 <h2 class="title">Satisfação: Inicial × Final</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
@@ -1631,9 +1610,13 @@ renderMacro();
 <div class="callout" style="margin-top:0">A satisfação final supera a inicial em toda a série histórica — gap médio de +3,1 p.p. Em 2025, o padrão se mantém (+3,6 p.p.). <strong>Saúde</strong> registra o maior salto (+6,8 p.p.), indicando que a jornada de avaliação reverte expectativas inicialmente cautelosas. <strong>2021</strong> foi o único ano em que o gap se estreitou (+1,0 p.p.), reflexo de insatisfação generalizada naquele período.</div>
 </div>
 </section>
-<section class="slide" style="--ind:#e63d67">
-<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills"><span class="ind-pill active">Visão executiva</span><span class="ind-pill">Patrocinadoras</span><span class="ind-pill">Série histórica</span>
-<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('motivos-nps')" style="cursor:pointer">Justificativas</span></div></div>
+<section class="slide" style="--ind:#e63d67" id="nps-geral">
+<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills">
+<span class="ind-pill active">Visão executiva</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('nps-patroc')" style="cursor:pointer">Patrocinadoras</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('nps-serie')" style="cursor:pointer">Série histórica</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('motivos-nps')" style="cursor:pointer">Justificativas</span>
+</div></div>
 <h2 class="title">NPS da Vivest</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Net Promoter Score 2025: proporção de promotores menos detratores. Escala de −100 a +100.</p>
@@ -1740,9 +1723,13 @@ renderMacro();
 <div class="callout" style="margin-top:0">O NPS da Vivest fecha 2025 em <strong>33</strong> — zona de aperfeiçoamento, próximo a 2024 (34). <strong>Assistidos</strong> puxam a média com NPS 46, enquanto <strong>Ativos</strong> são o perfil crítico (NPS 18), com 28% de detratores — maior proporção entre os perfis. <strong>Saúde</strong> mantém-se equilibrado (NPS 37), com alta concentração de promotores (59,8%).</div>
 </div>
 </section>
-<section class="slide" style="--ind:#e63d67">
-<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills"><span class="ind-pill">Visão executiva</span><span class="ind-pill active">Patrocinadoras</span><span class="ind-pill">Série histórica</span>
-<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('motivos-nps')" style="cursor:pointer">Justificativas</span></div></div>
+<section class="slide" style="--ind:#e63d67" id="nps-patroc">
+<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills">
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('nps-geral')" style="cursor:pointer">Visão executiva</span>
+<span class="ind-pill active">Patrocinadoras</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('nps-serie')" style="cursor:pointer">Série histórica</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('motivos-nps')" style="cursor:pointer">Justificativas</span>
+</div></div>
 <h2 class="title">NPS da Vivest</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Distribuição do NPS entre as patrocinadoras em 2025. Patrocinadoras com base inferior a 30 ficam fora do ranking.</p>
@@ -1855,9 +1842,13 @@ renderMacro();
 <div class="callout" style="margin-top:0">FORD (67) e EMAE (53) são as únicas patrocinadoras na zona promotora. ENEL, a maior base individual, fecha em NPS 30 — abaixo do consolidado (33) — e exerce peso significativo no resultado geral. CPFL e ISA ENERGIA compõem a agenda de atenção prioritária, com alta proporção de detratores acima de 24%.</div>
 </div>
 </section>
-<section class="slide" style="--ind:#e63d67">
-<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills"><span class="ind-pill">Visão executiva</span><span class="ind-pill">Patrocinadoras</span><span class="ind-pill active">Série histórica</span>
-<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('motivos-nps')" style="cursor:pointer">Justificativas</span></div></div>
+<section class="slide" style="--ind:#e63d67" id="nps-serie">
+<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills">
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('nps-geral')" style="cursor:pointer">Visão executiva</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('nps-patroc')" style="cursor:pointer">Patrocinadoras</span>
+<span class="ind-pill active">Série histórica</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('motivos-nps')" style="cursor:pointer">Justificativas</span>
+</div></div>
 <h2 class="title">NPS da Vivest</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Evolução do NPS de 2020 a 2025. A série começa em 2020 — primeiro ano com dado disponível.</p>
@@ -1902,7 +1893,12 @@ renderMacro();
 </div>
 </section>
 <section class="slide" id="motivos-nps" style="--ind:#e63d67">
-<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills"><span class="ind-pill">Visão executiva</span><span class="ind-pill">Patrocinadoras</span><span class="ind-pill">Série histórica</span><span class="ind-pill active">Justificativas</span></div></div>
+<div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills">
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('nps-geral')" style="cursor:pointer">Visão executiva</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('nps-patroc')" style="cursor:pointer">Patrocinadoras</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('nps-serie')" style="cursor:pointer">Série histórica</span>
+<span class="ind-pill active">Justificativas</span>
+</div></div>
 <h2 class="title">Justificativas dos Detratores</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">NPS da Vivest · Pergunta aberta aplicada a todos os respondentes (n ponderado ≈ 195). Respostas genéricas excluídas. Clique em uma macrocategoria para ver os detalhes.</p>
@@ -2053,10 +2049,10 @@ nRenderMacro();
 })();
 </script>
 </section>
-<section class="slide" style="--ind:#e63d67">
+<section class="slide" style="--ind:#e63d67" id="img-attrs">
 <div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills">
 <span class="ind-pill active">Visão Executiva</span>
-<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('img-serie')" style="cursor:pointer">Série Histórica</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('img-attrs-serie')" style="cursor:pointer">Série Histórica</span>
 <span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('img-fortes')" style="cursor:pointer">Pontos Fortes e Fracos</span>
 </div></div>
 <h2 class="title">Atributos de Imagem</h2>
@@ -2100,9 +2096,9 @@ nRenderMacro();
 <div class="callout" style="margin-top:0">O perfil de imagem da Vivest em 2025 apoia-se em dois pilares consolidados — <strong>Solidez</strong> (77,2%) e <strong>Confiança</strong> (77,0%) — praticamente empatados. A <strong>Transparência</strong> avança para 71,3% e a <strong>Preocupação com os associados</strong> fecha em 66,8%, com o maior crescimento histórico (+7,4 p.p. desde 2021). O radar revela que <strong>Ativos</strong> apresentam o menor perfil de imagem em todos os eixos, sinalizando que a percepção institucional acompanha a insatisfação com produtos e serviços neste perfil.</div>
 </div>
 </section>
-<section class="slide" style="--ind:#e63d67">
+<section class="slide" style="--ind:#e63d67" id="img-attrs-serie">
 <div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills">
-<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('img-visao')" style="cursor:pointer">Visão Executiva</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('img-attrs')" style="cursor:pointer">Visão Executiva</span>
 <span class="ind-pill active">Série Histórica</span>
 <span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('img-fortes')" style="cursor:pointer">Pontos Fortes e Fracos</span>
 </div></div>
@@ -2144,8 +2140,8 @@ nRenderMacro();
 </section>
 <section class="slide" id="img-fortes" style="--ind:#e63d67">
 <div class="ind-nav"><span class="ind-label">Cap. 02 · Satisfação, NPS e Imagem</span><div class="ind-pills">
-<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('img-visao')" style="cursor:pointer">Visão Executiva</span>
-<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('img-serie')" style="cursor:pointer">Série Histórica</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('img-attrs')" style="cursor:pointer">Visão Executiva</span>
+<span class="ind-pill" onclick="window._goToSlideById&&window._goToSlideById('img-attrs-serie')" style="cursor:pointer">Série Histórica</span>
 <span class="ind-pill active">Pontos Fortes e Fracos</span>
 </div></div>
 <h2 class="title">Pontos Fortes e Fracos</h2>
