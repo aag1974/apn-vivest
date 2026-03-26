@@ -44,11 +44,8 @@ body {
 .deck {
   position:fixed; top:60px; left:0; right:0; bottom:52px;
   background:linear-gradient(180deg,#fcfbfe 0%, #f8f6fc 100%);
-  overflow-y:hidden;
+  overflow-y:auto;
   overflow-x:hidden;
-}
-@media (max-width:1023px) {
-  .deck { overflow-y:auto; }
 }
 .content { width:100%; }
 .slides  { width:100%; }
@@ -330,6 +327,8 @@ body {
 .chapter-active .bottombar {
   background: linear-gradient(148deg, #330f60 0%, #4b2e90 60%, #5c38a8 100%);
   border-top-color: rgba(255,255,255,.15);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 .cover-active .bottombar .logo-opiniao img,
 .chapter-active .bottombar .logo-opiniao img {
@@ -784,6 +783,23 @@ table td:first-child::after, table th:first-child::after {
   .bottombar { height: 48px; padding: 0 14px; }
   .logo-opiniao img { height: 28px; }
   .counter { font-size: 11px; min-width: 52px; }
+
+  /* Bottombar chapter/cover — reforço explícito mobile */
+  .cover-active .bottombar,
+  .chapter-active .bottombar {
+    background: linear-gradient(148deg, #330f60 0%, #4b2e90 60%, #5c38a8 100%) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .cover-active .bottombar .btn,
+  .chapter-active .bottombar .btn { color: rgba(255,255,255,.9) !important; }
+  .cover-active .bottombar .counter,
+  .chapter-active .bottombar .counter { color: rgba(255,255,255,.7) !important; }
+  .cover-active .bottombar .logo-opiniao img,
+  .chapter-active .bottombar .logo-opiniao img {
+    filter: brightness(0) invert(1) !important;
+    opacity: .85 !important;
+  }
 
   /* Slide */
   .slide {
@@ -6391,6 +6407,8 @@ dcRenderMacro();
 <span class="ind-pill active">Três Jornadas</span>
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-scorecard')" style="cursor:pointer">Top/Bottom por perfil</span>
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-agenda-perfil')" style="cursor:pointer">Recomendações por perfil</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-drivers')" style="cursor:pointer">Drivers de Satisfação</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-saude-patroc')" style="cursor:pointer">Saúde e Patrocinadoras</span>
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-recomendacoes')" style="cursor:pointer">Recomendações transversais</span>
 </div></div>
 <h2 class="title">As Três Jornadas de Relacionamento</h2>
@@ -6421,6 +6439,8 @@ dcRenderMacro();
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-sintese')" style="cursor:pointer">Três Jornadas</span>
 <span class="ind-pill active">Top/Bottom por perfil</span>
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-agenda-perfil')" style="cursor:pointer">Recomendações por perfil</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-drivers')" style="cursor:pointer">Drivers de Satisfação</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-saude-patroc')" style="cursor:pointer">Saúde e Patrocinadoras</span>
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-recomendacoes')" style="cursor:pointer">Recomendações transversais</span>
 </div></div>
 <h2 class="title">Top 5 e Bottom 5 por Perfil · 2025</h2>
@@ -6503,6 +6523,8 @@ dcRenderMacro();
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-sintese')" style="cursor:pointer">Três Jornadas</span>
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-scorecard')" style="cursor:pointer">Top/Bottom por perfil</span>
 <span class="ind-pill active">Recomendações por perfil</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-drivers')" style="cursor:pointer">Drivers de Satisfação</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-saude-patroc')" style="cursor:pointer">Saúde e Patrocinadoras</span>
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-recomendacoes')" style="cursor:pointer">Recomendações transversais</span>
 </div></div>
 <h2 class="title">Recomendações Estratégicas por Perfil</h2>
@@ -6551,11 +6573,309 @@ dcRenderMacro();
 </div>
 </section>
 
+<section class="slide" style="--ind:#e63d67" id="concl-drivers">
+<div class="ind-nav"><span class="ind-label">Cap. 08 · Conclusões e Recomendações</span><div class="ind-pills">
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-sintese')" style="cursor:pointer">Três Jornadas</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-scorecard')" style="cursor:pointer">Top/Bottom por perfil</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-agenda-perfil')" style="cursor:pointer">Recomendações por perfil</span>
+<span class="ind-pill active">Drivers de Satisfação</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-saude-patroc')" style="cursor:pointer">Saúde e Patrocinadoras</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-recomendacoes')" style="cursor:pointer">Recomendações transversais</span>
+</div></div>
+<h2 class="title">O que realmente faz diferença na opinião do participante</h2>
+<div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
+<p class="subtitle">Por meio de uma análise estatística multivariada, cruzamos as respostas de todos os participantes para descobrir quais aspectos da Vivest mais influenciam a nota final e a disposição de recomendar. As barras e os valores mostram o <strong>peso relativo</strong> de cada fator — quanto maior, mais aquele aspecto move o resultado.</p>
+<div class="grid2" style="grid-template-columns:1fr 1fr;align-items:start;gap:clamp(12px,1.6vw,22px)">
+
+<!-- Coluna 1: Satisfação Geral -->
+<div class="card" style="padding-bottom:16px">
+  <h3 style="margin-bottom:4px">O que move a <span style="color:#5b4b9e">Satisfação Geral</span></h3>
+  <div style="font-size:11px;color:var(--muted);margin-bottom:14px">Peso relativo de cada fator na nota final dada à Vivest</div>
+  <!-- Comunicação -->
+  <div style="margin-bottom:10px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+      <span style="font-size:12px;font-weight:600;color:var(--ink)">🥇 Comunicação institucional</span>
+      <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:2px 7px;border-radius:10px">Maior influência</span>
+    </div>
+    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
+      <div style="width:88%;height:100%;border-radius:5px;background:linear-gradient(90deg,#5b4b9e,#857ca3)"></div>
+    </div>
+  </div>
+  <!-- Plano de Saúde -->
+  <div style="margin-bottom:10px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+      <span style="font-size:12px;font-weight:700;color:#0ea874">🥈 Plano de saúde</span>
+      <span style="font-size:11px;font-weight:700;color:#0ea874;background:rgba(14,168,116,.1);padding:2px 7px;border-radius:10px">2.ª maior</span>
+    </div>
+    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
+      <div style="width:53%;height:100%;border-radius:5px;background:linear-gradient(90deg,#0ea874,#6ecfb0)"></div>
+    </div>
+  </div>
+  <!-- Autosserviço -->
+  <div style="margin-bottom:10px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+      <span style="font-size:12px;font-weight:600;color:var(--ink)">🥉 Autosserviço (portal)</span>
+      <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:2px 7px;border-radius:10px">0,186</span>
+    </div>
+    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
+      <div style="width:44%;height:100%;border-radius:5px;background:linear-gradient(90deg,#5b4b9e,#857ca3)"></div>
+    </div>
+  </div>
+  <!-- Previdência -->
+  <div style="margin-bottom:10px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+      <span style="font-size:12px;font-weight:600;color:var(--ink)">4.º Plano de previdência</span>
+      <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:2px 7px;border-radius:10px">0,158</span>
+    </div>
+    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
+      <div style="width:37%;height:100%;border-radius:5px;background:linear-gradient(90deg,#5b4b9e,#857ca3)"></div>
+    </div>
+  </div>
+  <!-- Atendimento -->
+  <div style="margin-bottom:4px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+      <span style="font-size:12px;font-weight:600;color:var(--ink)">5.º Atendimento</span>
+      <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:2px 7px;border-radius:10px">0,133</span>
+    </div>
+    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
+      <div style="width:31%;height:100%;border-radius:5px;background:linear-gradient(90deg,#5b4b9e,#857ca3)"></div>
+    </div>
+  </div>
+  <div style="margin-top:14px;padding:8px 12px;background:rgba(91,75,158,.06);border-left:3px solid #5b4b9e;border-radius:0 8px 8px 0;font-size:11.5px;line-height:1.55;color:var(--ink)">
+    Comunicar bem é o que mais impacta a satisfação geral. O plano de saúde ocupa o 2.º lugar — um resultado relevante, porque ele existe em apenas 5 das 12 patrocinadoras.
+  </div>
+</div>
+
+<!-- Coluna 2: NPS Vivest -->
+<div class="card" style="padding-bottom:16px">
+  <h3 style="margin-bottom:4px">O que move a <span style="color:#0ea874">disposição de recomendar (NPS)</span></h3>
+  <div style="font-size:11px;color:var(--muted);margin-bottom:14px">Peso relativo de cada fator na probabilidade de indicar a Vivest</div>
+  <!-- Saúde no topo -->
+  <div style="margin-bottom:10px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+      <span style="font-size:12px;font-weight:700;color:#0ea874">🥇 Plano de saúde</span>
+      <span style="font-size:11px;font-weight:700;color:#0ea874;background:rgba(14,168,116,.1);padding:2px 7px;border-radius:10px">Maior influência</span>
+    </div>
+    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
+      <div style="width:100%;height:100%;border-radius:5px;background:linear-gradient(90deg,#0ea874,#6ecfb0)"></div>
+    </div>
+  </div>
+  <!-- Comunicação -->
+  <div style="margin-bottom:10px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+      <span style="font-size:12px;font-weight:600;color:var(--ink)">🥈 Comunicação institucional</span>
+      <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:2px 7px;border-radius:10px">0,220</span>
+    </div>
+    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
+      <div style="width:52%;height:100%;border-radius:5px;background:linear-gradient(90deg,#5b4b9e,#857ca3)"></div>
+    </div>
+  </div>
+  <!-- Previdência -->
+  <div style="margin-bottom:10px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+      <span style="font-size:12px;font-weight:600;color:var(--ink)">🥉 Plano de previdência</span>
+      <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:2px 7px;border-radius:10px">0,181</span>
+    </div>
+    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
+      <div style="width:42%;height:100%;border-radius:5px;background:linear-gradient(90deg,#5b4b9e,#857ca3)"></div>
+    </div>
+  </div>
+  <!-- Atendimento -->
+  <div style="margin-bottom:10px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+      <span style="font-size:12px;font-weight:600;color:var(--ink)">4.º Atendimento</span>
+      <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:2px 7px;border-radius:10px">0,159</span>
+    </div>
+    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
+      <div style="width:37%;height:100%;border-radius:5px;background:linear-gradient(90deg,#5b4b9e,#857ca3)"></div>
+    </div>
+  </div>
+  <!-- Autosserviço (não significativo) -->
+  <div style="margin-bottom:4px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+      <span style="font-size:12px;font-weight:600;color:var(--muted)">Autosserviço (portal) — pouca influência</span>
+    </div>
+    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
+      <div style="width:15%;height:100%;border-radius:5px;background:#d0cde8;opacity:.5"></div>
+    </div>
+  </div>
+  <div style="margin-top:14px;padding:8px 12px;background:rgba(14,168,116,.07);border-left:3px solid #0ea874;border-radius:0 8px 8px 0;font-size:11.5px;line-height:1.55;color:var(--ink)">
+    Quando o assunto é recomendar a Vivest, o plano de saúde pesa mais do que qualquer outro fator — mais do que comunicação e previdência juntos. Quem está insatisfeito com o plano vira detrator. Quem está satisfeito vira promotor.
+  </div>
+</div>
+
+</div>
+<div class="card">
+<h3>Como este gráfico foi construído</h3>
+<div class="callout" style="margin-top:0;display:flex;flex-direction:column;gap:8px">
+<p style="margin:0;font-size:12px;line-height:1.65"><strong>O que foi analisado:</strong> cruzamos as avaliações dos participantes para medir o quanto a variação na nota de cada aspecto — comunicação, plano de saúde, autosserviço, previdência e atendimento — acompanha a variação na satisfação final e no NPS. As barras mostram a <strong>influência relativa isolada</strong> de cada fator, ou seja, o quanto cada um contribui independentemente dos demais.</p>
+<p style="margin:0;font-size:12px;line-height:1.65"><strong>Por que não são 1.080 participantes:</strong> partimos de 1.080 respondentes, mas o modelo exige que cada participante tenha avaliado todos os fatores incluídos. Dois filtros reduzem essa base — primeiro, apenas 631 têm plano de saúde Vivest e responderam essa avaliação; segundo, de 631, somente 361 responderam todos os demais blocos (atendimento, autosserviço, comunicação, previdência). Quem não usou um canal no último ano, por exemplo, não tem nota de atendimento e não entra no cálculo. Os resultados são representativos dos perfis com plano.</p>
+<p style="margin:0;font-size:12px;line-height:1.65"><strong>O que ficou de fora e por quê:</strong> empréstimos — apenas 14% dos participantes contrataram no último ano, base insuficiente para o modelo geral; pontualidade do pagamento — exclusiva de Assistidos, o que inviabilizaria a comparação entre perfis. A nota de referência é a <strong>satisfação final</strong>, perguntada ao fim do questionário após o participante ter avaliado todos os temas.</p>
+<p style="margin:0;font-size:12px;line-height:1.65"><strong>Precisão do modelo:</strong> o conjunto de fatores explica mais de 80% das diferenças de opinião entre os participantes — o que indica que o modelo captura bem a realidade. O que "sobra" são variações individuais que nenhuma pesquisa consegue prever.</p>
+</div>
+</div>
+</section>
+
+<section class="slide" style="--ind:#e63d67" id="concl-saude-patroc">
+<div class="ind-nav"><span class="ind-label">Cap. 08 · Conclusões e Recomendações</span><div class="ind-pills">
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-sintese')" style="cursor:pointer">Três Jornadas</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-scorecard')" style="cursor:pointer">Top/Bottom por perfil</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-agenda-perfil')" style="cursor:pointer">Recomendações por perfil</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-drivers')" style="cursor:pointer">Drivers de Satisfação</span>
+<span class="ind-pill active">Saúde e Patrocinadoras</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-recomendacoes')" style="cursor:pointer">Recomendações transversais</span>
+</div></div>
+<h2 class="title">O plano de saúde arrasta a avaliação — mas o peso varia por perfil</h2>
+<div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
+<p class="subtitle">O efeito do plano de saúde não é uniforme: depende de quanto cada perfil depende exclusivamente desse produto para se relacionar com a Vivest. Quanto maior a dependência, maior o impacto na nota e na recomendação.</p>
+
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:12px">
+
+  <!-- Ativos -->
+  <div class="card" style="border:1.5px solid rgba(230,61,103,.2);background:#fff">
+    <h3 style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;background:#e63d67;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">A</span>
+      <span style="color:#e63d67">Ativos</span>
+      <span style="font-size:12px;font-weight:400;color:var(--muted)">— n = 89 com plano</span>
+    </h3>
+    <div style="font-size:12px;font-weight:700;color:#e63d67;margin-bottom:6px">Comunicação move a nota. Saúde move a recomendação.</div>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:8px">
+      <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#e63d67;flex-shrink:0;margin-top:5px"></span><span>Na satisfação geral, comunicação é o fator dominante.</span></div>
+      <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#e63d67;flex-shrink:0;margin-top:5px"></span><span>No NPS, o plano de saúde supera todos os outros fatores.</span></div>
+    </div>
+    <div style="background:rgba(180,130,0,.07);border-left:2.5px solid #d97706;border-radius:0 5px 5px 0;padding:5px 8px;font-size:11.5px;line-height:1.55;color:var(--ink);margin-bottom:8px">Melhorar comunicação sobe a nota — mas não gera promotores. Só o plano converte Ativos em quem recomenda a Vivest. <em style="font-size:11px">(36% dos Ativos têm plano Vivest)</em></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+      <div style="padding:5px 7px;background:rgba(230,61,103,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:1px">Sat. Vivest</div><div style="font-size:14px;font-weight:800;color:#e63d67">7,43</div></div>
+      <div style="padding:5px 7px;background:rgba(230,61,103,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:1px">NPS Vivest</div><div style="font-size:14px;font-weight:800;color:#e63d67">7,37</div></div>
+      <div style="padding:5px 7px;background:rgba(230,61,103,.07);border-radius:7px;grid-column:1/-1"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:1px">Sat. plano saúde</div><div style="font-size:14px;font-weight:800;color:#e63d67">6,40</div></div>
+    </div>
+  </div>
+
+  <!-- Assistidos -->
+  <div class="card" style="border:1.5px solid rgba(103,80,181,.2);background:#fff">
+    <h3 style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;background:#6750b5;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">A</span>
+      <span style="color:#6750b5">Assistidos</span>
+      <span style="font-size:12px;font-weight:400;color:var(--muted)">— n = 469 com plano</span>
+    </h3>
+    <div style="font-size:12px;font-weight:700;color:#6750b5;margin-bottom:6px">Saúde lidera, mas a relação é mais equilibrada.</div>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:8px">
+      <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#6750b5;flex-shrink:0;margin-top:5px"></span><span>Plano de saúde lidera, mas comunicação, atendimento e previdência também pesam.</span></div>
+      <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#6750b5;flex-shrink:0;margin-top:5px"></span><span>A relação previdenciária consolidada atenua o efeito isolado da saúde.</span></div>
+      <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#6750b5;flex-shrink:0;margin-top:5px"></span><span>Perfil com base mais robusta — resultados mais confiáveis.</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+      <div style="padding:5px 7px;background:rgba(103,80,181,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:1px">Sat. Vivest</div><div style="font-size:14px;font-weight:800;color:#6750b5">8,29</div></div>
+      <div style="padding:5px 7px;background:rgba(103,80,181,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:1px">NPS Vivest</div><div style="font-size:14px;font-weight:800;color:#6750b5">8,30</div></div>
+      <div style="padding:5px 7px;background:rgba(103,80,181,.07);border-radius:7px;grid-column:1/-1"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:1px">Sat. plano saúde</div><div style="font-size:14px;font-weight:800;color:#6750b5">7,92</div></div>
+    </div>
+  </div>
+
+  <!-- Saúde -->
+  <div class="card" style="border:1.5px solid rgba(14,168,116,.2);background:#fff">
+    <h3 style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;background:#0ea874;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">S</span>
+      <span style="color:#0ea874">Saúde</span>
+      <span style="font-size:12px;font-weight:400;color:var(--muted)">— n = 68</span>
+    </h3>
+    <div style="font-size:12px;font-weight:700;color:#0ea874;margin-bottom:6px">Para quem só tem plano, a Vivest <em>é</em> o plano.</div>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:8px">
+      <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#0ea874;flex-shrink:0;margin-top:5px"></span><span>Plano de saúde é o fator decisivo — na satisfação e na recomendação.</span></div>
+      <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#0ea874;flex-shrink:0;margin-top:5px"></span><span>A nota dada ao plano e à Vivest são praticamente idênticas.</span></div>
+      <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#0ea874;flex-shrink:0;margin-top:5px"></span><span>Qualquer melhora no plano tem retorno imediato na percepção institucional.</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+      <div style="padding:5px 7px;background:rgba(14,168,116,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:1px">Sat. Vivest</div><div style="font-size:14px;font-weight:800;color:#0ea874">7,87</div></div>
+      <div style="padding:5px 7px;background:rgba(14,168,116,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:1px">NPS Vivest</div><div style="font-size:14px;font-weight:800;color:#0ea874">7,88</div></div>
+      <div style="padding:5px 7px;background:rgba(14,168,116,.07);border-radius:7px;grid-column:1/-1"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:1px">Sat. plano saúde</div><div style="font-size:14px;font-weight:800;color:#0ea874">7,74</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="grid2" style="grid-template-columns:1.35fr 1fr;align-items:start;gap:clamp(10px,1.4vw,18px);margin-bottom:12px">
+
+  <div class="card" style="padding:0;overflow:hidden">
+    <div style="padding:9px 13px 7px;border-bottom:1px solid var(--line)">
+      <h3 style="margin:0">Notas médias por patrocinadora</h3>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">Escala 0–10 · — = sem plano de saúde Vivest · patrocinadoras com menos de 10 respostas não entram na comparação</div>
+    </div>
+    <div class="table-wrap">
+    <table class="table table--compact" style="font-size:12px">
+      <thead>
+        <tr>
+          <th>Patrocinadora</th>
+          <th style="text-align:right"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#e63d67;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em">SAT</span></th>
+          <th style="text-align:right"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#d97706;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em">NPS</span></th>
+          <th style="text-align:right"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#6750b5;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em">PP</span></th>
+          <th style="text-align:right"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em">PAM</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:rgba(14,168,116,.04)">
+          <td><span style="font-size:10px;font-weight:700;color:#085041;background:rgba(14,168,116,.12);border-radius:4px;padding:1px 5px;margin-right:4px">sem saúde</span>FORD</td>
+          <td style="text-align:right;font-weight:700">8,71</td><td style="text-align:right;font-weight:700">8,80</td>
+          <td style="text-align:right">8,90</td><td style="text-align:right;color:var(--muted)">—</td>
+        </tr>
+        <tr style="background:rgba(14,168,116,.04)">
+          <td><span style="font-size:10px;font-weight:700;color:#085041;background:rgba(14,168,116,.12);border-radius:4px;padding:1px 5px;margin-right:4px">sem saúde</span>FAMILINVEST</td>
+          <td style="text-align:right;font-weight:700">8,47</td><td style="text-align:right;font-weight:700">8,57</td>
+          <td style="text-align:right">8,44</td><td style="text-align:right;color:var(--muted)">—</td>
+        </tr>
+        <tr>
+          <td>CESP</td>
+          <td style="text-align:right;font-weight:700">8,26</td><td style="text-align:right;font-weight:700">8,32</td>
+          <td style="text-align:right">7,97</td><td style="text-align:right;font-weight:700;color:#5b4b9e">7,69</td>
+        </tr>
+        <tr>
+          <td>EMAE</td>
+          <td style="text-align:right;font-weight:700">8,22</td><td style="text-align:right;font-weight:700">8,06</td>
+          <td style="text-align:right">8,55</td><td style="text-align:right;font-weight:700;color:#5b4b9e">7,77</td>
+        </tr>
+        <tr>
+          <td>ENEL</td>
+          <td style="text-align:right;font-weight:700">7,79</td><td style="text-align:right;font-weight:700">7,83</td>
+          <td style="text-align:right">7,72</td><td style="text-align:right;font-weight:700;color:#5b4b9e">7,51</td>
+        </tr>
+        <tr>
+          <td>ISA ENERGIA</td>
+          <td style="text-align:right;font-weight:700">7,67</td><td style="text-align:right;font-weight:700">7,51</td>
+          <td style="text-align:right">7,93</td><td style="text-align:right;font-weight:700;color:#e63d67">7,24</td>
+        </tr>
+        <tr style="background:rgba(230,61,103,.04)">
+          <td style="font-weight:700;color:#be123c">CPFL ⚠</td>
+          <td style="text-align:right;font-weight:800;color:#be123c">7,54</td><td style="text-align:right;font-weight:800;color:#be123c">7,37</td>
+          <td style="text-align:right;color:#be123c">7,39</td><td style="text-align:right;font-weight:800;color:#be123c">6,86</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div class="card" style="border:1.5px solid rgba(14,168,116,.25);background:#fff">
+      <h3 style="color:#0ea874;margin-bottom:6px">Quem não tem plano avalia melhor</h3>
+      <p style="font-size:12.5px;line-height:1.6;margin:0;color:var(--ink)">Patrocinadoras sem plano de saúde Vivest têm nota média <strong>8,47</strong>. As que têm plano ficam em <strong>8,01</strong>. São 0,46 ponto a menos — diferença confirmada pelos dados. O plano, quando presente, puxa a avaliação institucional para baixo.</p>
+    </div>
+    <div class="card" style="border:1.5px solid rgba(230,61,103,.25);background:#fff">
+      <h3 style="color:#be123c;margin-bottom:6px">CPFL: insatisfação além do plano</h3>
+      <p style="font-size:12.5px;line-height:1.6;margin:0;color:var(--ink)">Pior avaliação de saúde (6,86) e pior nota geral entre as grandes patrocinadoras. Mesmo descontando o efeito do plano, os participantes da CPFL ainda avaliam abaixo da média — sinal de insatisfação estrutural que merece investigação separada.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+<h3>Como ler esta análise</h3>
+<div class="callout" style="margin-top:0">A comparação entre patrocinadoras controla diferenças de perfil — não são notas brutas, mas resultados ajustados por quem responde em cada grupo. A diferença de 0,46 ponto foi testada e confirmada como não sendo resultado do acaso. Patrocinadoras com menos de 10 respostas (ABRAPP, AUREN, ROCHE, PARANAPANEMA, TIM CELULAR) ficaram fora da comparação por insuficiência de base — isso não invalida o padrão geral: muito provavelmente o mesmo efeito se aplica a elas, já que a associação entre satisfação com saúde e avaliação da Vivest é consistente em todos os grupos analisados. O efeito da CPFL foi identificado depois de isolar matematicamente a influência dos demais fatores.</div>
+</div>
+</section>
+
 <section class="slide" style="--ind:#e63d67" id="concl-recomendacoes">
 <div class="ind-nav"><span class="ind-label">Cap. 08 · Conclusões e Recomendações</span><div class="ind-pills">
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-sintese')" style="cursor:pointer">Três Jornadas</span>
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-scorecard')" style="cursor:pointer">Top/Bottom por perfil</span>
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-agenda-perfil')" style="cursor:pointer">Recomendações por perfil</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-drivers')" style="cursor:pointer">Drivers de Satisfação</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-saude-patroc')" style="cursor:pointer">Saúde e Patrocinadoras</span>
 <span class="ind-pill active">Recomendações transversais</span>
 </div></div>
 <h2 class="title">Recomendações Estratégicas Transversais</h2>
@@ -6564,23 +6884,23 @@ dcRenderMacro();
 <div class="grid2" style="grid-template-columns:1fr 1fr;align-items:stretch">
 <div class="card">
 <h3 style="display:flex;align-items:center;gap:6px"><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#e63d67;flex-shrink:0"></span>R1 · Rede e Prestadores de Saúde</h3>
-<p style="font-size:13px;line-height:1.6;margin:4px 0">Revisar e atualizar a rede credenciada com foco nas cidades de maior incidência de dificuldades: <strong>São Paulo (45%), Campinas (11%) e Ribeirão Preto (7%)</strong>. Priorizar Exames e Diagnósticos (31,8% das dificuldades) e Especialidades Clínicas Gerais (19,2%). Monitorar qualidade dos prestadores com indicadores de satisfação pós-consulta.</p>
-<div style="margin-top:8px;padding:8px;background:rgba(230,61,103,.05);border-radius:8px;font-size:11px;color:var(--muted)">Impacto esperado: Reembolso, Aprovação de Procedimentos, Sat. Geral Saúde</div>
+<p style="font-size:13px;line-height:1.6;margin:4px 0">Revisar e atualizar a rede credenciada com foco nas cidades de maior incidência de dificuldades: <strong>São Paulo (45%), Campinas (11%) e Ribeirão Preto (7%)</strong>. Priorizar Exames e Diagnósticos (31,8% das dificuldades) e Especialidades Clínicas Gerais (19,2%). Monitorar qualidade dos prestadores com indicadores de satisfação pós-consulta. A análise multivariada confirma que o plano de saúde é o <strong>principal preditor do NPS</strong> — especialmente para Ativos e Saúde. Melhorar a rede não é apenas resolver uma queixa operacional: é a alavanca mais direta para converter detratores em promotores.</p>
+<div style="margin-top:8px;padding:8px;background:rgba(230,61,103,.05);border-radius:8px;font-size:11px;color:var(--muted)">Impacto esperado: NPS Vivest, Reembolso, Aprovação de Procedimentos, Sat. Geral Saúde</div>
 </div>
 <div class="card">
 <h3 style="display:flex;align-items:center;gap:6px"><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#e63d67;flex-shrink:0"></span>R2 · Processo de Reembolso</h3>
-<p style="font-size:13px;line-height:1.6;margin:4px 0">Reembolso em 41,4% é o segundo pior indicador do relatório (−8,1 p.p.). Simplificar o processo digital de solicitação, reduzir tempo de análise e comunicar proativamente o status ao beneficiário. Foco especial em Ativos (31,0%).</p>
-<div style="margin-top:8px;padding:8px;background:rgba(230,61,103,.05);border-radius:8px;font-size:11px;color:var(--muted)">Impacto esperado: Reembolso, Sat. Saúde Ativos, NPS do plano</div>
+<p style="font-size:13px;line-height:1.6;margin:4px 0">Reembolso em 41,4% é o segundo pior indicador do relatório (−8,1 p.p.). Simplificar o processo digital de solicitação, reduzir tempo de análise e comunicar proativamente o status ao beneficiário. Foco especial em Ativos (31,0%) — perfil para o qual o plano de saúde é o principal preditor do NPS, tornando cada ponto de insatisfação com saúde um risco direto de geração de detratores.</p>
+<div style="margin-top:8px;padding:8px;background:rgba(230,61,103,.05);border-radius:8px;font-size:11px;color:var(--muted)">Impacto esperado: Reembolso, Sat. Saúde Ativos, NPS Ativos</div>
 </div>
 <div class="card">
 <h3 style="display:flex;align-items:center;gap:6px"><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#d97706;flex-shrink:0"></span>R3 · Portal e App · Usabilidade</h3>
-<p style="font-size:13px;line-height:1.6;margin:4px 0">O autosserviço caiu ~9 p.p. em todos os atributos e a busca de médicos no app aparece como driver de insatisfação no NPS, no Saúde e nos Canais. Revisar UX do portal e app com foco em busca de rede credenciada, solicitação de reembolso e autoatendimento. Reduz volume de chamadas para o atendimento telefônico.</p>
-<div style="margin-top:8px;padding:8px;background:rgba(217,119,6,.05);border-radius:8px;font-size:11px;color:var(--muted)">Impacto esperado: Autosserviço, Tempo de resolução, Dificuldades na rede</div>
+<p style="font-size:13px;line-height:1.6;margin:4px 0">O autosserviço caiu ~9 p.p. em todos os atributos e a busca de médicos no app aparece como driver de insatisfação no NPS, no Saúde e nos Canais. Revisar UX do portal e app com foco em busca de rede credenciada, solicitação de reembolso e autoatendimento. Um ponto importante trazido pela análise multivariada: autosserviço melhora a <strong>satisfação operacional</strong> e reduz volume de chamadas, mas seu efeito no NPS é limitado — a melhora do portal não substitui a agenda de saúde para gerar promotores.</p>
+<div style="margin-top:8px;padding:8px;background:rgba(217,119,6,.05);border-radius:8px;font-size:11px;color:var(--muted)">Impacto esperado: Autosserviço, Sat. Canais, redução de volume de atendimento telefônico</div>
 </div>
 <div class="card">
 <h3 style="display:flex;align-items:center;gap:6px"><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#d97706;flex-shrink:0"></span>R4 · Comunicação Segmentada</h3>
-<p style="font-size:13px;line-height:1.6;margin:4px 0">Saúde (63,7%) e Ativos (67,7%) avaliam mal a comunicação. Desenvolver trilhas comunicacionais diferenciadas por perfil: <strong style="color:#0ea874">Saúde</strong> necessita de conteúdo sobre uso da rede e custo-benefício do plano; <strong style="color:#e63d67">Ativos</strong> demandam clareza sobre rentabilidade e processo de aposentadoria. Comunicar ativamente os avanços da Previdência como evidência de entrega de valor.</p>
-<div style="margin-top:8px;padding:8px;background:rgba(217,119,6,.05);border-radius:8px;font-size:11px;color:var(--muted)">Impacto esperado: Comunicação Saúde e Ativos, Imagem · Preocupação</div>
+<p style="font-size:13px;line-height:1.6;margin:4px 0">Saúde (63,7%) e Ativos (67,7%) avaliam mal a comunicação. Desenvolver trilhas comunicacionais diferenciadas por perfil: <strong style="color:#0ea874">Saúde</strong> necessita de conteúdo sobre uso da rede e custo-benefício do plano; <strong style="color:#e63d67">Ativos</strong> demandam clareza sobre rentabilidade e processo de aposentadoria. Comunicar ativamente os avanços da Previdência como evidência de entrega de valor. A análise multivariada traz uma distinção importante: para os Ativos, melhorar comunicação eleva a <strong>nota de satisfação</strong> — mas não gera promotores. Para converter Ativos em quem recomenda a Vivest, a comunicação precisa ser usada como instrumento para valorizar e explicar o plano de saúde, não apenas como canal institucional.</p>
+<div style="margin-top:8px;padding:8px;background:rgba(217,119,6,.05);border-radius:8px;font-size:11px;color:var(--muted)">Impacto esperado: Comunicação Saúde e Ativos, NPS Ativos, Imagem · Preocupação</div>
 </div>
 <div class="card">
 <h3 style="display:flex;align-items:center;gap:6px"><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#6750b5;flex-shrink:0"></span>R5 · Percepção de Custo-Benefício</h3>
