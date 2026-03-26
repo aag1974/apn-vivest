@@ -44,8 +44,11 @@ body {
 .deck {
   position:fixed; top:60px; left:0; right:0; bottom:52px;
   background:linear-gradient(180deg,#fcfbfe 0%, #f8f6fc 100%);
-  overflow-y:auto;
+  overflow-y:hidden;
   overflow-x:hidden;
+}
+@media (max-width:1023px) {
+  .deck { overflow-y:auto; }
 }
 .content { width:100%; }
 .slides  { width:100%; }
@@ -942,6 +945,34 @@ table td:first-child::after, table th:first-child::after {
   transition: background .15s;
 }
 .nav a:hover { background: rgba(232,72,85,.08); }
+
+/* ── Badges de elegibilidade ── */
+.badge-perfil {
+  display: inline-flex; align-items: center;
+  padding: 3px 10px; border-radius: 999px;
+  font-size: 10.5px; font-weight: 700; letter-spacing: .04em;
+  white-space: nowrap;
+}
+.badge-ativo   { background: rgba(230,61,103,.10); color: #9c1a34; }
+.badge-assist  { background: rgba(103,80,181,.10); color: #3d2480; }
+.badge-saude-p { background: rgba(14,168,116,.10); color: #065e40; }
+.badges-row    { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+
+/* Badges invertidos nas capas de capítulo */
+.chapter .badge-ativo   { background: rgba(230,61,103,.28); color: #ffc5d4; }
+.chapter .badge-assist  { background: rgba(103,80,181,.28); color: #d3caff; }
+.chapter .badge-saude-p { background: rgba(14,168,116,.28); color: #a0f0d8; }
+
+/* Nota de elegibilidade */
+.elig-note {
+  font-size: 11.5px;
+  background: rgba(180,130,0,.07);
+  border-left: 2.5px solid #d97706;
+  border-radius: 0 6px 6px 0;
+  padding: 8px 12px; color: #7a4a00; line-height: 1.6;
+  margin-bottom: 10px;
+}
+.elig-note strong { color: #5c3600; font-weight: 700; }
 </style>
 </head>
 <body>
@@ -957,6 +988,8 @@ table td:first-child::after, table th:first-child::after {
     <p style="font-size:11px;color:#ccc;margin:20px 0 0;">Reprodução Proibida</p>
   </div>
 </div>
+</div><!-- /deck -->
+</div><!-- /stage -->
 
 <script>
   // SHA-256 em JS puro — funciona em HTTP e HTTPS
@@ -1052,7 +1085,7 @@ table td:first-child::after, table th:first-child::after {
 <p class="subtitle">Escopo da pesquisa, desenho metodológico, plano amostral e critérios técnicos que orientam a leitura dos indicadores ao longo do relatório.</p>
 <div class="hero-num">01</div>
 </section>
-<section class="slide id="cap01-objetivo">
+<section class="slide" id="cap01-objetivo">
 <div class="kicker">01 · Objetivo e Métodos</div>
 <h2 class="title">Objetivo do estudo</h2>
 <div class="rule"></div>
@@ -1068,7 +1101,7 @@ table td:first-child::after, table th:first-child::after {
 <div class="callout" style="margin-top:0">Os resultados são organizados por tema. Quando a base e o histórico permitem, cada indicador é apresentado em visões complementares: consolidado executivo, abertura por patrocinadora e série histórica. Indicadores novos ou com série incompleta são apresentados com o recorte disponível.</div>
 </div>
 </section>
-<section class="slide id="cap01-metodologia">
+<section class="slide" id="cap01-metodologia">
 <div class="kicker">01 · Objetivo e Métodos</div>
 <h2 class="title">Metodologia quantitativa</h2>
 <div class="rule"></div>
@@ -1094,7 +1127,7 @@ table td:first-child::after, table th:first-child::after {
 </div>
 </div>
 </section>
-<section class="slide id="cap01-amostral">
+<section class="slide" id="cap01-amostral">
 <div class="kicker">01 · Objetivo e Métodos</div>
 <h2 class="title">Plano amostral</h2>
 <div class="rule"></div>
@@ -1152,7 +1185,7 @@ table td:first-child::after, table th:first-child::after {
 <div class="callout" style="margin-top:0">O perfil <strong>Saúde</strong> é composto exclusivamente pelos participantes cujo único vínculo com a Vivest é o plano de assistência médica. Ativos e assistidos que também possuem cobertura de saúde <em>não</em> integram este estrato — suas avaliações entram apenas nos perfis Ativo e Assistido. Esse critério preserva a comparabilidade com as séries históricas e evita dupla contagem nos indicadores de saúde. O perfil <strong>Assistido</strong> agrupa aposentados e pensionistas.</div>
 </div>
 </section>
-<section class="slide id="cap01-tecnicos">
+<section class="slide" id="cap01-tecnicos">
 <div class="kicker">01 · Objetivo e Métodos</div>
 <h2 class="title">Esclarecimentos técnicos</h2>
 <div class="rule"></div>
@@ -1175,11 +1208,52 @@ table td:first-child::after, table th:first-child::after {
 </div>
 </div>
 </section>
+<section class="slide" id="cap01-perfis">
+<div class="kicker">01 · Objetivo e Métodos</div>
+<h2 class="title">Perfis de participantes</h2>
+<div class="rule"></div>
+<p class="subtitle">A pesquisa cobre três perfis com vínculos e experiências distintas com a Vivest. Nem todos os módulos se aplicam a todos os perfis — a capa de cada capítulo indica quais perfis compõem o universo avaliado.</p>
+<div class="grid2" style="grid-template-columns:1fr 1fr 1fr;align-items:stretch">
+
+<div class="card" style="border:1.5px solid rgba(230,61,103,.2);background:#fff">
+<div style="margin-bottom:12px"><span class="badge-perfil badge-ativo" style="background:rgba(230,61,103,.10);color:#9c1a34;">Ativos</span></div>
+<h3 style="color:#e63d67;margin-bottom:6px">Participante ativo</h3>
+<p style="font-size:13px;line-height:1.65;color:var(--muted);margin-bottom:14px">Vínculo empregatício ativo com a patrocinadora, na fase de acumulação do plano previdenciário.</p>
+<div style="height:0.5px;background:rgba(0,0,0,.08);margin-bottom:12px"></div>
+<div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Base ponderada</div>
+<div style="font-size:26px;font-weight:800;color:#e63d67;line-height:1">416</div>
+<div style="font-size:11px;color:var(--muted);font-weight:600">respondentes</div>
+</div>
+
+<div class="card" style="border:1.5px solid rgba(103,80,181,.2);background:#fff">
+<div style="margin-bottom:12px"><span class="badge-perfil badge-assist" style="background:rgba(103,80,181,.10);color:#3d2480;">Assistidos</span></div>
+<h3 style="color:#6750b5;margin-bottom:6px">Aposentado ou pensionista</h3>
+<p style="font-size:13px;line-height:1.65;color:var(--muted);margin-bottom:14px">Em gozo de benefício previdenciário — aposentadoria ou pensão — com plano ativo na fase de assistência.</p>
+<div style="height:0.5px;background:rgba(0,0,0,.08);margin-bottom:12px"></div>
+<div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Base ponderada</div>
+<div style="font-size:26px;font-weight:800;color:#6750b5;line-height:1">440</div>
+<div style="font-size:11px;color:var(--muted);font-weight:600">respondentes</div>
+</div>
+
+<div class="card" style="border:1.5px solid rgba(14,168,116,.2);background:#fff">
+<div style="margin-bottom:12px"><span class="badge-perfil badge-saude-p" style="background:rgba(14,168,116,.10);color:#065e40;">Saúde</span></div>
+<h3 style="color:#0ea874;margin-bottom:6px">Plano de Assistência Médica</h3>
+<p style="font-size:13px;line-height:1.65;color:var(--muted);margin-bottom:14px">Parentes de beneficiários, ex-dependentes e colaboradores sem vínculo previdenciário. Relação exclusivamente contratual com mensalidade pré-paga.</p>
+<div style="height:0.5px;background:rgba(0,0,0,.08);margin-bottom:12px"></div>
+<div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Base ponderada</div>
+<div style="font-size:26px;font-weight:800;color:#0ea874;line-height:1">133</div>
+<div style="font-size:11px;color:var(--muted);font-weight:600">respondentes</div>
+</div>
+
+</div>
+</section>
+
 <section class="slide chapter" id="cap02">
 <div class="kicker">Capítulo 02</div>
 <h2 class="title">Satisfação, NPS<br/>e Imagem</h2>
 <div class="rule"></div>
 <p class="subtitle">Satisfação geral inicial e final, Net Promoter Score e atributos de imagem institucional — leituras executiva, por patrocinadora e em série histórica.</p>
+<div class="badges-row"><span class="badge-perfil badge-ativo">Ativos</span><span class="badge-perfil badge-assist">Assistidos</span><span class="badge-perfil badge-saude-p">Saúde</span></div>
 <div class="hero-num">02</div>
 </section>
 <section class="slide" style="--ind:#e63d67" id="img-visao">
@@ -2492,6 +2566,7 @@ renderMain();
 <h2 class="title">Plano de<br/>Previdência</h2>
 <div class="rule"></div>
 <p class="subtitle">Satisfação com o plano previdenciário e com a rentabilidade, separados por Ativos e Assistidos.</p>
+<div class="badges-row"><span class="badge-perfil badge-ativo">Ativos</span><span class="badge-perfil badge-assist">Assistidos</span></div>
 <div class="hero-num">03</div>
 </section>
 <!-- ============================================================ -->
@@ -2551,7 +2626,7 @@ renderMain();
 </div>
 </section>
 
-<!-- SLIDE 2: Sat. Geral · Patrocinadoras -->
+<!-- SLIDE 2: Sat. Geral -->
 <section class="slide" style="--ind:#e63d67" id="prev-geral-patroc">
 <div class="ind-nav"><span class="ind-label">Cap. 03 · Plano de Previdência</span><div class="ind-pills">
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('prev-geral')" style="cursor:pointer">Visão executiva</span>
@@ -2595,7 +2670,7 @@ renderMain();
 </div>
 </section>
 
-<!-- SLIDE 3: Sat. Geral · Série Histórica -->
+<!-- SLIDE 3: Sat. Geral -->
 <section class="slide" style="--ind:#e63d67" id="prev-geral-serie">
 <div class="ind-nav"><span class="ind-label">Cap. 03 · Plano de Previdência</span><div class="ind-pills">
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('prev-geral')" style="cursor:pointer">Visão executiva</span>
@@ -3083,6 +3158,7 @@ renderMain();
 <h2 class="title">Pontualidade do Pagamento</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Satisfação com a pontualidade dos pagamentos do plano previdenciário · Assistidos · 2025. Pergunta incluída a partir de 2024.</p>
+<div class="elig-note">Pergunta aplicada apenas a <strong>Assistidos</strong> — participantes em gozo de benefício. Ativos estão na fase de acumulação e não recebem pagamento do plano.</div>
 <div class="kpis">
 <div class="kpi"><div class="label">T3B 2025</div><div class="value">98,6%</div><div class="meta">Assistidos</div></div>
 <div class="kpi"><div class="label">Variação</div><div class="value">+0,4 p.p.</div><div class="meta">vs. 2024</div></div>
@@ -3273,6 +3349,7 @@ renderMain();
 <h2 class="title">Empréstimos</h2>
 <div class="rule"></div>
 <p class="subtitle">Avaliação do produto de crédito consignado: uso, satisfação e percepção dos participantes elegíveis.</p>
+<div class="badges-row"><span class="badge-perfil badge-ativo">Ativos</span><span class="badge-perfil badge-assist">Assistidos</span></div>
 <div class="hero-num">04</div>
 </section>
 <section class="slide" style="--ind:#e63d67" id="empr-uso">
@@ -3343,6 +3420,7 @@ renderMain();
 <h2 class="title">Facilidade de Contratação</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Satisfação com a facilidade do processo de contratação do empréstimo. Universo: participantes que contrataram empréstimo nos últimos 12 meses (n=159).</p>
+<div class="elig-note">Pergunta aplicada apenas a quem <strong>contratou empréstimo</strong> nos últimos 12 meses (n≈161). Participantes que não contrataram não avaliam facilidade nem taxa.</div>
 <div class="kpis">
 <div class="kpi"><div class="label">T3B 2025</div><div class="value">81,0%</div><div class="meta">Total válido</div></div>
 <div class="kpi"><div class="label">Média</div><div class="value">8,6</div><div class="meta">Escala 0–10</div></div>
@@ -3386,10 +3464,10 @@ renderMain();
 </div>
 </section>
 
-<!-- SLIDE 3: Facilidade · Patrocinadoras -->
+<!-- SLIDE 3: Facilidade -->
 
 
-<!-- SLIDE 4: Facilidade · Série Histórica -->
+<!-- SLIDE 4: Facilidade -->
 <section class="slide" style="--ind:#e63d67" id="empr-facil-serie">
 <div class="ind-nav"><span class="ind-label">Cap. 04 · Empréstimos</span><div class="ind-pills">
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('empr-facil')" style="cursor:pointer">Visão executiva</span>
@@ -3484,6 +3562,7 @@ renderMain();
 <h2 class="title">Taxa Cobrada dos Empréstimos</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Satisfação com a taxa cobrada nos empréstimos. Universo: participantes que contrataram empréstimo nos últimos 12 meses (n=160).</p>
+<div class="elig-note">Pergunta aplicada apenas a quem <strong>contratou empréstimo</strong> nos últimos 12 meses (n≈161). Participantes que não contrataram não avaliam facilidade nem taxa.</div>
 <div class="kpis">
 <div class="kpi"><div class="label">T3B 2025</div><div class="value" style="color:#e63d67">61,5%</div><div class="meta">Total válido</div></div>
 <div class="kpi"><div class="label">Média</div><div class="value">7,5</div><div class="meta">Escala 0–10</div></div>
@@ -3527,10 +3606,10 @@ renderMain();
 </div>
 </section>
 
-<!-- SLIDE 6: Taxa · Patrocinadoras -->
+<!-- SLIDE 6: Taxa -->
 
 
-<!-- SLIDE 7: Taxa · Série Histórica -->
+<!-- SLIDE 7: Taxa -->
 <section class="slide" style="--ind:#e63d67" id="empr-taxa-serie">
 <div class="ind-nav"><span class="ind-label">Cap. 04 · Empréstimos</span><div class="ind-pills">
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('empr-taxa')" style="cursor:pointer">Visão executiva</span>
@@ -3713,6 +3792,7 @@ renderMain();
 <h2 class="title">Plano de<br/>Assistência Médica</h2>
 <div class="rule"></div>
 <p class="subtitle">Satisfação com o plano de saúde, NPS e atributos específicos do produto — leitura restrita ao público elegível.</p>
+<div class="badges-row"><span class="badge-perfil badge-ativo">Ativos</span><span class="badge-perfil badge-assist">Assistidos</span><span class="badge-perfil badge-saude-p">Saúde</span></div>
 <div class="hero-num">05</div>
 </section>
 <!-- ─────────────────────────────────────────────────────
@@ -4391,6 +4471,7 @@ renderMain();
 <h2 class="title">Valor da Mensalidade</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Satisfação com o valor da mensalidade do plano de saúde em 2025. Universo: Assistidos e Saúde (perfis que pagam mensalidade).</p>
+<div class="elig-note">Pergunta aplicada a <strong>Assistidos</strong> e <strong>Perfil Saúde</strong>. Ativos não pagam mensalidade do plano de saúde e não integram este universo.</div>
 <div class="kpis">
 <div class="kpi"><div class="label">T3B 2025</div><div class="value" style="color:#e63d67">35,4%</div><div class="meta">−1,7 p.p. vs. 2024</div></div>
 <div class="kpi"><div class="label">Média</div><div class="value">5,9</div><div class="meta">Escala 0–10</div></div>
@@ -4544,6 +4625,7 @@ renderMain();
 <h2 class="title">Atenção Primária à Saúde</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Uso e satisfação com o serviço de Atenção Primária à Saúde (APS) em 2025. Universo: elegíveis ao plano.</p>
+<div class="elig-note">Pergunta exclusiva do <strong>Perfil Saúde</strong> com planos <strong>Essência</strong> ou <strong>Plenivita</strong>, que disponibilizam médico de família. Demais planos não têm acesso ao programa.</div>
 <div class="kpis">
 <div class="kpi"><div class="label">Usaram o serviço</div><div class="value">41,3%</div><div class="meta">dos elegíveis (n=180 usuários)</div></div>
 <div class="kpi"><div class="label">T3B satisfação</div><div class="value">75,2%</div><div class="meta">−3,3 p.p. vs. 2024</div></div>
@@ -4593,7 +4675,7 @@ renderMain();
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('saude-aps')" style="cursor:pointer">Visão executiva</span>
 <span class="ind-pill active">Série histórica</span>
 </div></div>
-<h2 class="title">Atenção Primária à Saúde · Série</h2>
+<h2 class="title">Atenção Primária à Saúde</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Evolução do T3B de satisfação com o programa APS em 2024–2025. Indicador medido a partir de 2024. Ativos com base insuficiente.</p>
 <div class="history-grid">
@@ -4673,7 +4755,7 @@ renderMain();
 <div class="ind-nav"><span class="ind-label">Cap. 05 · Plano de Assistência Médica</span><div class="ind-pills">
 <span class="ind-pill active">Visão executiva</span>
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('saude-dificuldades-serie')" style="cursor:pointer">Série histórica</span>
-<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('saude-dificuldades-cat')" style="cursor:pointer">Categorias</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('saude-dificuldades-cat')" style="cursor:pointer">Dificuldades</span>
 </div></div>
 <h2 class="title">Dificuldades na Rede Credenciada</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
@@ -4731,9 +4813,9 @@ renderMain();
 <div class="ind-nav"><span class="ind-label">Cap. 05 · Plano de Assistência Médica</span><div class="ind-pills">
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('saude-dificuldades')" style="cursor:pointer">Visão executiva</span>
 <span class="ind-pill active">Série histórica</span>
-<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('saude-dificuldades-cat')" style="cursor:pointer">Categorias</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('saude-dificuldades-cat')" style="cursor:pointer">Dificuldades</span>
 </div></div>
-<h2 class="title">Dificuldades na Rede · Série</h2>
+<h2 class="title">Dificuldades na Rede Credenciada</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Evolução do percentual que encontrou dificuldade na rede credenciada em 2024–2025.</p>
 <div class="history-grid">
@@ -4819,9 +4901,9 @@ renderMain();
 <div class="ind-nav"><span class="ind-label">Cap. 05 · Plano de Assistência Médica</span><div class="ind-pills">
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('saude-dificuldades')" style="cursor:pointer">Visão executiva</span>
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('saude-dificuldades-serie')" style="cursor:pointer">Série histórica</span>
-<span class="ind-pill active">Categorias</span>
+<span class="ind-pill active">Dificuldades</span>
 </div></div>
-<h2 class="title">Categorias de Dificuldade</h2>
+<h2 class="title">Dificuldades na Rede Credenciada</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Especialidade ou tipo de serviço em que ocorreu a dificuldade · base: 224 respondentes. Clique em uma categoria para ver as subcategorias.</p>
 <div class="grid2" style="grid-template-columns:1fr 1fr;align-items:stretch">
@@ -4989,6 +5071,216 @@ dcRenderMacro();
 </section>
 
 
+<section class="slide" style="--ind:#e63d67" id="nps-plano-geral">
+<div class="ind-nav"><span class="ind-label">Cap. 05 · Plano de Assistência Médica</span><div class="ind-pills">
+<span class="ind-pill active">Visão executiva</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('nps-plano-patroc')" style="cursor:pointer">Patrocinadoras</span>
+</div></div>
+<h2 class="title">NPS do Plano de Saúde</h2>
+<div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
+<p class="subtitle">Net Promoter Score do plano de assistência médica em 2025: proporção de promotores menos detratores. Escala de −100 a +100. Primeiro ano com dado disponível.</p>
+<div class="grid2" style="grid-template-columns:2fr 3fr;gap:clamp(14px,1.6vw,22px);align-items:start">
+<div class="card">
+<h3 style="margin-bottom:clamp(6px,.8vw,12px)">NPS consolidado · 2025</h3>
+<svg viewBox="0 0 400 210" width="100%" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;max-width:100%;aspect-ratio:400/210"><path d="M72.0,152.0 A128,128 0 0 1 200.0,24.0 L200.0,66.0 A86,86 0 0 0 114.0,152.0 Z" fill="#fecdd3"/><path d="M200.0,24.0 A128,128 0 0 1 290.5,61.5 L260.8,91.2 A86,86 0 0 0 200.0,66.0 Z" fill="#fde68a"/><path d="M290.5,61.5 A128,128 0 0 1 328.0,152.0 L286.0,152.0 A86,86 0 0 0 260.8,91.2 Z" fill="#a7f3d0"/><line x1="200.0" y1="68.0" x2="200.0" y2="22.0" stroke="white" stroke-width="2.5"/><line x1="259.4" y1="92.6" x2="291.9" y2="60.1" stroke="white" stroke-width="2.5"/><text x="57.0" y="155.0" text-anchor="start" font-family="Montserrat,sans-serif" font-size="11" fill="#be123c" font-weight="700">-100</text><text x="200.0" y="12.0" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="11" fill="#92400e" font-weight="700">0</text><text x="343.0" y="155.0" text-anchor="end" font-family="Montserrat,sans-serif" font-size="11" fill="#065f46" font-weight="700">+100</text><line x1="197.2" y1="171.8" x2="212.1" y2="66.9" stroke="#d97706" stroke-width="3.5" stroke-linecap="round"/><circle cx="200" cy="152" r="9" fill="#d97706"/><circle cx="200" cy="152" r="4" fill="white"/><text x="200" y="202" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="34" font-weight="800" fill="#d97706">+9</text></svg>
+<div style="display:flex;gap:clamp(6px,.8vw,12px);margin-top:clamp(8px,1vw,14px)">
+<div style="flex:1;background:rgba(248,215,220,.5);border-radius:12px;padding:8px;text-align:center">
+<div style="font-size:11px;font-weight:700;color:#be123c;text-transform:uppercase;letter-spacing:.06em">Detratores</div>
+<div style="font-size:20px;font-weight:800;color:#be123c">32,4%</div>
+</div>
+<div style="flex:1;background:rgba(254,243,199,.5);border-radius:12px;padding:8px;text-align:center">
+<div style="font-size:11px;font-weight:700;color:#92400e;text-transform:uppercase;letter-spacing:.06em">Passivos</div>
+<div style="font-size:20px;font-weight:800;color:#92400e">26,0%</div>
+</div>
+<div style="flex:1;background:rgba(209,250,229,.5);border-radius:12px;padding:8px;text-align:center">
+<div style="font-size:11px;font-weight:700;color:#065f46;text-transform:uppercase;letter-spacing:.06em">Promotores</div>
+<div style="font-size:20px;font-weight:800;color:#065f46">41,6%</div>
+</div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:clamp(10px,1.2vw,16px);width:100%">
+<div class="card" style="width:100%">
+<h3>Comparativo por perfil · 2025</h3>
+<div style="margin-top:clamp(8px,1vw,14px)">
+<div style="margin-bottom:clamp(8px,.9vw,12px)">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+<span style="font-size:13px;font-weight:800;color:#2f6fb0">Total</span>
+<span style="font-size:13px;font-weight:700;color:#d97706">NPS +9</span>
+</div>
+<div style="display:flex;border-radius:8px;overflow:hidden;height:28px;">
+<div style="width:32.4%;background:#f8d7dc;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#be123c">32,4%</div>
+<div style="width:26.0%;background:#fef3c7;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#92400e">26,0%</div>
+<div style="width:41.6%;background:#d1fae5;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#065f46">41,6%</div>
+</div>
+</div>
+<div style="margin-bottom:clamp(8px,.9vw,12px)">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+<span style="font-size:13px;font-weight:800;color:#e63d67">Ativos</span>
+<span style="font-size:13px;font-weight:700;color:#be123c">NPS -17</span>
+</div>
+<div style="display:flex;border-radius:8px;overflow:hidden;height:28px;">
+<div style="width:44.7%;background:#f8d7dc;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#be123c">44,7%</div>
+<div style="width:27.4%;background:#fef3c7;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#92400e">27,4%</div>
+<div style="width:27.9%;background:#d1fae5;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#065f46">27,9%</div>
+</div>
+</div>
+<div style="margin-bottom:clamp(8px,.9vw,12px)">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+<span style="font-size:13px;font-weight:800;color:#6750b5">Assistidos</span>
+<span style="font-size:13px;font-weight:700;color:#d97706">NPS +19</span>
+</div>
+<div style="display:flex;border-radius:8px;overflow:hidden;height:28px;">
+<div style="width:27.0%;background:#f8d7dc;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#be123c">27,0%</div>
+<div style="width:27.5%;background:#fef3c7;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#92400e">27,5%</div>
+<div style="width:45.5%;background:#d1fae5;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#065f46">45,5%</div>
+</div>
+</div>
+<div style="margin-bottom:clamp(8px,.9vw,12px)">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+<span style="font-size:13px;font-weight:800;color:#0ea874">Saúde</span>
+<span style="font-size:13px;font-weight:700;color:#d97706">NPS +35</span>
+</div>
+<div style="display:flex;border-radius:8px;overflow:hidden;height:28px;">
+<div style="width:22.2%;background:#f8d7dc;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#be123c">22,2%</div>
+<div style="width:20.8%;background:#fef3c7;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#92400e">20,8%</div>
+<div style="width:57.0%;background:#d1fae5;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#065f46">57,0%</div>
+</div>
+</div>
+</div>
+<div style="margin-top:clamp(10px,1.2vw,16px);padding-top:clamp(8px,1vw,12px);border-top:1px solid var(--line);display:flex;justify-content:center;gap:12px;font-size:11px;font-weight:700">
+<span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#f8d7dc;display:inline-block"></span><span style="color:#be123c">Detratores</span></span>
+<span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#fef3c7;display:inline-block"></span><span style="color:#92400e">Passivos</span></span>
+<span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#d1fae5;display:inline-block"></span><span style="color:#065f46">Promotores</span></span>
+</div>
+</div>
+<div style="margin:clamp(10px,1.2vw,16px) 0 0;padding:clamp(10px,1.2vw,16px);background:rgba(75,46,144,.04);border:1px solid rgba(75,46,144,.08);border-radius:14px">
+<div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px">Interpretação por zona de pontuação</div>
+<div style="display:flex;height:22px;border-radius:8px;overflow:hidden;margin-bottom:8px">
+<div style="width:25%;background:#fecdd3"></div>
+<div style="width:12.5%;background:#fed7aa"></div>
+<div style="width:12.5%;background:#fde68a"></div>
+<div style="width:25%;background:#bbf7d0"></div>
+<div style="width:25%;background:#a7f3d0"></div>
+</div>
+<div style="display:flex;justify-content:space-between;font-size:10px;font-weight:700;margin-bottom:6px">
+<span style="color:#9f1239">−100</span><span style="color:#b45309">0</span><span style="color:#065f46">+100</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;font-size:11px">
+<div style="text-align:center;padding:4px 6px;background:#fecdd3;border-radius:6px"><div style="font-weight:800;color:#9f1239">Crítica</div><div style="color:#be123c">−100 a 0</div></div>
+<div style="text-align:center;padding:4px 6px;background:#fde68a;border-radius:6px"><div style="font-weight:800;color:#78350f">Aperfeiçoamento</div><div style="color:#92400e">1 a 50</div></div>
+<div style="text-align:center;padding:4px 6px;background:#bbf7d0;border-radius:6px"><div style="font-weight:800;color:#065f46">Qualidade</div><div style="color:#047857">51 a 75</div></div>
+<div style="text-align:center;padding:4px 6px;background:#a7f3d0;border-radius:6px"><div style="font-weight:800;color:#065f46">Excelência</div><div style="color:#047857">76 a 100</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<h3>Leitura dos dados</h3>
+<div class="callout" style="margin-top:0">O NPS do plano de saúde fecha 2025 em <strong>9</strong> — zona de aperfeiçoamento, abaixo do NPS institucional da Vivest (33). A polarização entre perfis é expressiva: <strong style="color:#e63d67">Ativos</strong> registram NPS −17, com 44,7% de detratores — reflexo da insatisfação concentrada com rede, reembolso e aprovação de procedimentos. <strong style="color:#0ea874">Saúde</strong> lidera com NPS 35, com 57,0% de promotores, sustentado pela percepção favorável do plano em relação ao mercado. <strong style="color:#6750b5">Assistidos</strong> fecham em NPS 19, em linha com o consolidado.</div>
+</div>
+</section>
+
+
+<section class="slide" style="--ind:#e63d67" id="nps-plano-patroc">
+<div class="ind-nav"><span class="ind-label">Cap. 05 · Plano de Assistência Médica</span><div class="ind-pills">
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('nps-plano-geral')" style="cursor:pointer">Visão executiva</span>
+<span class="ind-pill active">Patrocinadoras</span>
+</div></div>
+<h2 class="title">NPS do Plano de Saúde</h2>
+<div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
+<p class="subtitle">Distribuição do NPS do plano de saúde entre as patrocinadoras em 2025. Patrocinadoras com base inferior a 30 respondentes ficam fora do ranking.</p>
+<div class="grid2" style="grid-template-columns:1fr 1fr;align-items:stretch">
+<div class="card">
+<h3>Comparativo por patrocinadora — 2025</h3>
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><div style="min-width:340px">
+<div style="display:grid;grid-template-columns:120px 1fr 46px 42px;gap:8px;margin-bottom:6px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">
+<div></div><div></div><div style="text-align:right">NPS</div><div style="text-align:right">Base Pond.</div>
+</div>
+<div style="display:grid;grid-template-columns:120px 1fr 46px 42px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line)">
+<div style="font-size:12px;font-weight:700;color:#2f6fb0;">Total</div>
+<div style="display:flex;border-radius:8px;overflow:hidden;height:26px;">
+<div style="width:32.4%;background:#fecdd3;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#be123c;min-width:0">32,4%</div>
+<div style="width:26.0%;background:#fde68a;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#92400e;min-width:0">26,0%</div>
+<div style="width:41.6%;background:#d1fae5;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#065f46;min-width:0">41,6%</div>
+</div>
+<div style="font-size:13px;font-weight:800;color:#d97706;text-align:right">+9</div>
+<div style="font-size:11px;color:var(--muted);text-align:right">989</div>
+</div>
+<div style="display:grid;grid-template-columns:120px 1fr 46px 42px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line)">
+<div style="font-size:12px;font-weight:700;">EMAE</div>
+<div style="display:flex;border-radius:8px;overflow:hidden;height:26px;">
+<div style="width:24.9%;background:#fecdd3;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#be123c;min-width:0">24,9%</div>
+<div style="width:9.7%;background:#fde68a;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#92400e;min-width:0">9,7%</div>
+<div style="width:65.4%;background:#d1fae5;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#065f46;min-width:0">65,4%</div>
+</div>
+<div style="font-size:13px;font-weight:800;color:#d97706;text-align:right">+41</div>
+<div style="font-size:11px;color:var(--muted);text-align:right">37</div>
+</div>
+<div style="display:grid;grid-template-columns:120px 1fr 46px 42px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line)">
+<div style="font-size:12px;font-weight:700;">CESP</div>
+<div style="display:flex;border-radius:8px;overflow:hidden;height:26px;">
+<div style="width:23.3%;background:#fecdd3;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#be123c;min-width:0">23,3%</div>
+<div style="width:37.5%;background:#fde68a;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#92400e;min-width:0">37,5%</div>
+<div style="width:39.2%;background:#d1fae5;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#065f46;min-width:0">39,2%</div>
+</div>
+<div style="font-size:13px;font-weight:800;color:#d97706;text-align:right">+16</div>
+<div style="font-size:11px;color:var(--muted);text-align:right">65</div>
+</div>
+<div style="display:grid;grid-template-columns:120px 1fr 46px 42px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line)">
+<div style="font-size:12px;font-weight:700;">CPFL</div>
+<div style="display:flex;border-radius:8px;overflow:hidden;height:26px;">
+<div style="width:37.5%;background:#fecdd3;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#be123c;min-width:0">37,5%</div>
+<div style="width:13.9%;background:#fde68a;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#92400e;min-width:0">13,9%</div>
+<div style="width:48.6%;background:#d1fae5;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#065f46;min-width:0">48,6%</div>
+</div>
+<div style="font-size:13px;font-weight:800;color:#d97706;text-align:right">+11</div>
+<div style="font-size:11px;color:var(--muted);text-align:right">210</div>
+</div>
+<div style="display:grid;grid-template-columns:120px 1fr 46px 42px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line)">
+<div style="font-size:12px;font-weight:700;color:#d97706;">ENEL</div>
+<div style="display:flex;border-radius:8px;overflow:hidden;height:26px;">
+<div style="width:32.3%;background:#fecdd3;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#be123c;min-width:0">32,3%</div>
+<div style="width:29.3%;background:#fde68a;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#92400e;min-width:0">29,3%</div>
+<div style="width:38.4%;background:#d1fae5;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#065f46;min-width:0">38,4%</div>
+</div>
+<div style="font-size:13px;font-weight:800;color:#d97706;text-align:right">+6</div>
+<div style="font-size:11px;color:var(--muted);text-align:right">416</div>
+</div>
+<div style="display:grid;grid-template-columns:120px 1fr 46px 42px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line)">
+<div style="font-size:12px;font-weight:700;color:#e63d67;">ISA ENERGIA</div>
+<div style="display:flex;border-radius:8px;overflow:hidden;height:26px;">
+<div style="width:29.7%;background:#fecdd3;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#be123c;min-width:0">29,7%</div>
+<div style="width:40.9%;background:#fde68a;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#92400e;min-width:0">40,9%</div>
+<div style="width:29.4%;background:#d1fae5;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#065f46;min-width:0">29,4%</div>
+</div>
+<div style="font-size:13px;font-weight:800;color:#d97706;text-align:right">0</div>
+<div style="font-size:11px;color:var(--muted);text-align:right">82</div>
+</div>
+<div style="margin-top:10px;padding-top:8px;border-top:1px solid var(--line);display:flex;justify-content:center;gap:14px;font-size:11px;font-weight:700">
+<span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#fecdd3;display:inline-block"></span><span style="color:#be123c">Detratores</span></span>
+<span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#fde68a;display:inline-block"></span><span style="color:#92400e">Passivos</span></span>
+<span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#d1fae5;display:inline-block"></span><span style="color:#065f46">Promotores</span></span>
+</div>
+</div></div></div>
+<div class="card">
+<h4 class="pane-title">Destaques</h4>
+<div class="note-list">
+<div class="note-item"><div class="label" style="color:#065f46">EMAE — ponto positivo</div><div class="text">NPS 41 — única patrocinadora em zona de qualidade. 65,4% de promotores, a maior proporção do ranking.</div></div>
+<div class="note-item"><div class="label" style="color:#92400e">CESP e CPFL</div><div class="text">NPS 16 e 11 — zona de aperfeiçoamento. CPFL (n=210) concentra alta proporção de detratores (37,5%).</div></div>
+<div class="note-item"><div class="label" style="color:#d97706">ENEL como âncora</div><div class="text">Com 52% da base elegível (n=416), ENEL (NPS 6) exerce peso estrutural determinante no consolidado.</div></div>
+<div class="note-item"><div class="label" style="color:#be123c">ISA ENERGIA</div><div class="text">NPS 0 — empate entre promotores (29,4%) e detratores (29,7%). Agenda de atenção prioritária.</div></div>
+</div>
+</div>
+</div>
+<div class="card">
+<h3>Leitura dos dados</h3>
+<div class="callout" style="margin-top:0">EMAE (NPS 41) é a única patrocinadora em zona de qualidade. CESP (16) e CPFL (11) ficam acima do consolidado (9). ENEL — a maior base individual (n=416) — fecha em NPS 6 e puxa o consolidado para baixo. ISA ENERGIA (NPS 0) concentra a maior agenda de atenção, com proporção equivalente de detratores e promotores.</div>
+</div>
+</section>
+
+
+
+
 <section class="slide" style="--ind:#e63d67" id="exec-cap05">
 <div class="ind-nav"><span class="ind-label">Cap. 05 · Plano de Assistência Médica</span><div class="ind-pills"><span class="ind-pill active">Análise Executiva</span></div></div>
 <h2 class="title">Análise Executiva · Cap. 05</h2>
@@ -4996,18 +5288,23 @@ dcRenderMacro();
 <p class="subtitle">Síntese dos principais indicadores do Plano de Assistência Médica em 2025.</p>
 <div class="kpis" style="margin-bottom:clamp(8px,1vw,14px)">
 <div class="kpi"><div class="label">Sat. geral</div><div class="value" style="color:#e63d67">59,5%</div><div class="meta">−6,6 p.p. vs. 2024</div></div>
-<div class="kpi"><div class="label">NPS do plano</div><div class="value" style="color:#d97706">9</div><div class="meta">Zona de aperfeiçoamento</div></div>
+<div class="kpi" onclick="window.goToSlide&&window.goToSlide('nps-plano-geral')" style="cursor:pointer" title="Ver NPS do plano"><div class="label">NPS do plano</div><div class="value" style="color:#d97706">9</div><div class="meta">Zona de aperfeiçoamento</div></div>
 <div class="kpi"><div class="label">Dificuldades</div><div class="value" style="color:#e63d67">36,1%</div><div class="meta">+3,8 p.p. vs. 2024</div></div>
 <div class="kpi"><div class="label">Mensalidade</div><div class="value" style="color:#e63d67">35,4%</div><div class="meta">Piso do relatório</div></div>
 </div>
 <div class="grid2" style="grid-template-columns:1fr 1fr;align-items:stretch">
 <div class="card">
 <h3 style="display:flex;align-items:center;gap:6px"><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#e63d67;flex-shrink:0"></span>Satisfação Geral e NPS</h3>
-<p style="font-size:13px;line-height:1.6;margin:8px 0">T3B de <strong>59,5%</strong> (−6,6 p.p.) e NPS 9 — zona de aperfeiçoamento. Maior polarização do relatório: <strong style="color:#e63d67">Ativos</strong> 40,6% vs. <strong style="color:#0ea874">Saúde</strong> 73,2% — gap de 32,6 p.p.</p>
-<div style="margin-top:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
-<div style="text-align:center;padding:8px 4px;background:rgba(230,61,103,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">Ativos</div><div style="font-size:16px;font-weight:800;color:#e63d67">40,6%</div></div>
-<div style="text-align:center;padding:8px 4px;background:rgba(103,80,181,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">Assistidos</div><div style="font-size:16px;font-weight:800;color:#6750b5">68,2%</div></div>
-<div style="text-align:center;padding:8px 4px;background:rgba(14,168,116,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">Saúde</div><div style="font-size:16px;font-weight:800;color:#0ea874">73,2%</div></div>
+<p style="font-size:13px;line-height:1.6;margin:8px 0">T3B de <strong>59,5%</strong> (−6,6 p.p.) e NPS do plano 9 — zona de aperfeiçoamento. Maior polarização do relatório: <strong style="color:#e63d67">Ativos</strong> 40,6% vs. <strong style="color:#0ea874">Saúde</strong> 73,2% — gap de 32,6 p.p.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px">
+<div style="text-align:center;padding:8px 4px;background:rgba(230,61,103,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">Ativos T3B</div><div style="font-size:15px;font-weight:800;color:#e63d67">40,6%</div></div>
+<div style="text-align:center;padding:8px 4px;background:rgba(103,80,181,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">Assistidos T3B</div><div style="font-size:15px;font-weight:800;color:#6750b5">68,2%</div></div>
+<div style="text-align:center;padding:8px 4px;background:rgba(14,168,116,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">Saúde T3B</div><div style="font-size:15px;font-weight:800;color:#0ea874">73,2%</div></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+<div style="text-align:center;padding:8px 4px;background:rgba(230,61,103,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">NPS Ativos</div><div style="font-size:15px;font-weight:800;color:#e63d67">−17</div></div>
+<div style="text-align:center;padding:8px 4px;background:rgba(103,80,181,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">NPS Assistidos</div><div style="font-size:15px;font-weight:800;color:#6750b5">19</div></div>
+<div style="text-align:center;padding:8px 4px;background:rgba(14,168,116,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">NPS Saúde</div><div style="font-size:15px;font-weight:800;color:#0ea874">35</div></div>
 </div>
 </div>
 <div class="card">
@@ -5070,8 +5367,154 @@ dcRenderMacro();
 <h2 class="title">Canais de Atendimento<br/>e Autosserviço</h2>
 <div class="rule"></div>
 <p class="subtitle">Avaliação dos canais de relacionamento: presencial, telefone, portal e app. Uso e satisfação com recursos de autosserviço.</p>
+<div class="badges-row"><span class="badge-perfil badge-ativo">Ativos</span><span class="badge-perfil badge-assist">Assistidos</span><span class="badge-perfil badge-saude-p">Saúde</span></div>
 <div class="hero-num">06</div>
 </section>
+
+
+
+
+
+
+<section class="slide" style="--ind:#e63d67" id="canais-geral">
+<div class="ind-nav"><span class="ind-label">Cap. 06 · Canais de Atendimento e Autosserviço</span><div class="ind-pills">
+<span class="ind-pill active">Visão executiva</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('canais-patroc')" style="cursor:pointer">Patrocinadoras</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('canais-serie')" style="cursor:pointer">Série histórica</span>
+</div></div>
+<h2 class="title">Canais de Atendimento Utilizados</h2>
+<div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
+<p class="subtitle">Canais de atendimento utilizados no último ano · 2025. Pergunta de múltipla resposta — percentuais somam mais de 100%.</p>
+<div class="kpis">
+<div class="kpi"><div class="label">Disque Vivest</div><div class="value">53,3%</div><div class="meta">Canal principal · Total</div></div>
+<div class="kpi"><div class="label">E-mail / chat</div><div class="value">31,4%</div><div class="meta">2º canal mais utilizado</div></div>
+<div class="kpi"><div class="label">Presencial</div><div class="value">10,4%</div><div class="meta">Menor penetração</div></div>
+<div class="kpi"><div class="label" style="color:#e63d67">Nenhum canal</div><div class="value" style="color:#e63d67">26,3%</div><div class="meta">Não utilizou no último ano</div></div>
+</div>
+<div class="grid2" style="grid-template-columns:1fr 1fr;align-items:stretch">
+<div class="card">
+<h3>Ranking de canais · Total 2025</h3>
+<div class="bar-list" style="--bar-cols:minmax(160px,55%) 1fr 52px">
+<div class="col-header" style="grid-template-columns:minmax(160px,55%) 1fr 52px"><div></div><div></div><div>% uso</div></div>
+<div class="bar-row"><div style="font-weight:700;">Disque Vivest (telefone)</div><div class="track"><div class="fill" style="width:53.3%;background:linear-gradient(90deg,#2f6fb088,#2f6fb0)"></div></div><div style="font-weight:700;">53.3%</div></div>
+<div class="bar-row"><div style="">Comunicação escrita (e-mail/chat)</div><div class="track"><div class="fill" style="width:31.4%;background:linear-gradient(90deg,#6750b588,#6750b5)"></div></div><div style="">31.4%</div></div>
+<div class="bar-row"><div style="">Atendimento presencial</div><div class="track"><div class="fill" style="width:10.4%;background:linear-gradient(90deg,#0ea87488,#0ea874)"></div></div><div style="">10.4%</div></div>
+</div>
+<div style="height:0.5px;background:var(--line);margin:8px 0"></div>
+<div class="bar-list" style="--bar-cols:minmax(160px,55%) 1fr 52px">
+<div class="bar-row"><div style="">Não utilizou nenhum canal</div><div class="track"><div class="fill" style="width:26.3%;background:linear-gradient(90deg,#8b9aad88,#8b9aad)"></div></div><div style="">26.3%</div></div>
+</div>
+</div>
+<div class="card">
+<h3>Comparativo por perfil · 2025</h3>
+<div class="table-wrap"><table class="table table--compact">
+<thead><tr><th></th><th style="text-align:right;color:#e63d67">Ativos</th><th style="text-align:right;color:#6750b5">Assistidos</th><th style="text-align:right;color:#0ea874">Saúde</th><th style="text-align:right">Total</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:700">Disque Vivest</td><td style="text-align:right;color:#e63d67">42,6%</td><td style="text-align:right;color:#6750b5">60,6%</td><td style="text-align:right;color:#0ea874">62,7%</td><td style="text-align:right;font-weight:700">53,3%</td></tr>
+<tr><td style="font-weight:700">E-mail / chat</td><td style="text-align:right;color:#e63d67">34,5%</td><td style="text-align:right;color:#6750b5">29,7%</td><td style="text-align:right;color:#0ea874">27,0%</td><td style="text-align:right;font-weight:700">31,4%</td></tr>
+<tr><td style="font-weight:700">Presencial</td><td style="text-align:right;color:#e63d67">9,2%</td><td style="text-align:right;color:#6750b5">12,0%</td><td style="text-align:right;color:#0ea874">9,1%</td><td style="text-align:right;font-weight:700">10,4%</td></tr>
+<tr style="border-top:2px solid var(--line)"><td style="color:var(--muted)">Nenhum canal</td><td style="text-align:right;color:#e63d67;font-weight:700">31,1%</td><td style="text-align:right;color:#6750b5">23,1%</td><td style="text-align:right;color:#0ea874">21,8%</td><td style="text-align:right;font-weight:700">26,3%</td></tr>
+</tbody>
+</table></div>
+<div class="note-list" style="margin-top:12px">
+<div class="note-item"><div class="label" style="color:#e63d67">Ativos — perfil digital</div><div class="text">Maior uso de e-mail/chat (34,5%) e maior proporção sem nenhum canal (31,1%).</div></div>
+<div class="note-item"><div class="label"><span style="color:#6750b5">Assistidos</span> e <span style="color:#0ea874">Saúde</span></div><div class="text">Maiores usuários do Disque Vivest (60,6% e 62,7%). Menor taxa sem canal (&lt;25%).</div></div>
+</div>
+</div>
+</div>
+<div class="card"><h3>Leitura dos dados</h3><div class="callout" style="margin-top:0">O Disque Vivest é o canal dominante em todos os perfis (53,3% no total). <strong style="color:#0ea874">Saúde</strong> (62,7%) e <strong style="color:#6750b5">Assistidos</strong> (60,6%) são os maiores usuários do telefone. <strong style="color:#e63d67">Ativos</strong> são o perfil mais digital — maior uso de e-mail/chat (34,5%) — e também o que mais declarou não ter utilizado nenhum canal (31,1%).</div></div>
+</section>
+
+
+<section class="slide" style="--ind:#e63d67" id="canais-patroc">
+<div class="ind-nav"><span class="ind-label">Cap. 06 · Canais de Atendimento e Autosserviço</span><div class="ind-pills">
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('canais-geral')" style="cursor:pointer">Visão executiva</span>
+<span class="ind-pill active">Patrocinadoras</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('canais-serie')" style="cursor:pointer">Série histórica</span>
+</div></div>
+<h2 class="title">Canais de Atendimento Utilizados</h2>
+<div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
+<p class="subtitle">Uso dos canais de atendimento por patrocinadora em 2025. Múltipla resposta — barras em escala real (eixo a 120%), percentuais não somam 100%.</p>
+<div class="grid2" style="grid-template-columns:1fr 1fr;align-items:stretch">
+<div class="card">
+<h3>Utilização por patrocinadora · 2025</h3>
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><div style="min-width:320px">
+<div style="display:grid;grid-template-columns:110px 1fr 42px;gap:8px;margin-bottom:2px"><div></div><div style="position:relative;height:18px"><span style="position:absolute;left:0.0%;font-size:10px;color:var(--muted);transform:translateX(-50%)">0%</span><span style="position:absolute;left:25.0%;font-size:10px;color:var(--muted);transform:translateX(-50%)">30%</span><span style="position:absolute;left:50.0%;font-size:10px;color:var(--muted);transform:translateX(-50%)">60%</span><span style="position:absolute;left:75.0%;font-size:10px;color:var(--muted);transform:translateX(-50%)">90%</span><span style="position:absolute;left:100.0%;font-size:10px;color:var(--muted);transform:translateX(-50%)">120%</span></div><div></div></div>
+<div style="display:grid;grid-template-columns:110px 1fr 42px;gap:8px;align-items:center;padding:5px 0;border-bottom:2px solid var(--line);"><div style="font-size:12px;font-weight:700;">Total</div><div style="position:relative;height:26px;background:#f3f4f6;border-radius:4px;overflow:visible;"><div style="position:absolute;left:0%;top:0;height:100%;width:44.42%;background:#bfdbfe;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1d4ed8;box-sizing:border-box;overflow:hidden">53.3%</div><div style="position:absolute;left:44.42%;top:0;height:100%;width:26.17%;background:#e9d5ff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#7c3aed;box-sizing:border-box;overflow:hidden">31.4%</div><div style="position:absolute;left:70.59%;top:0;height:100%;width:8.67%;background:#a7f3d0;box-sizing:border-box;border-radius:0 4px 4px 0;"></div><div style="position:absolute;left:79.26%;top:50%;transform:translateY(-50%);padding-left:3px;font-size:10px;font-weight:700;color:#065f46;white-space:nowrap">10.4%</div></div><div style="font-size:11px;text-align:right;color:var(--muted)">n=987</div></div>
+<div style="display:grid;grid-template-columns:110px 1fr 42px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line);"><div style="font-size:12px;">CESP</div><div style="position:relative;height:26px;background:#f3f4f6;border-radius:4px;overflow:visible;"><div style="position:absolute;left:0%;top:0;height:100%;width:51.92%;background:#bfdbfe;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1d4ed8;box-sizing:border-box;overflow:hidden">62.3%</div><div style="position:absolute;left:51.92%;top:0;height:100%;width:23.33%;background:#e9d5ff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#7c3aed;box-sizing:border-box;overflow:hidden">28.0%</div><div style="position:absolute;left:75.25%;top:0;height:100%;width:14.17%;background:#a7f3d0;box-sizing:border-box;border-radius:0 4px 4px 0;"></div><div style="position:absolute;left:89.42%;top:50%;transform:translateY(-50%);padding-left:3px;font-size:10px;font-weight:700;color:#065f46;white-space:nowrap">17.0%</div></div><div style="font-size:11px;text-align:right;color:var(--muted)">n=65</div></div>
+<div style="display:grid;grid-template-columns:110px 1fr 42px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line);"><div style="font-size:12px;">CPFL</div><div style="position:relative;height:26px;background:#f3f4f6;border-radius:4px;overflow:visible;"><div style="position:absolute;left:0%;top:0;height:100%;width:51.08%;background:#bfdbfe;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1d4ed8;box-sizing:border-box;overflow:hidden">61.3%</div><div style="position:absolute;left:51.08%;top:0;height:100%;width:24.42%;background:#e9d5ff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#7c3aed;box-sizing:border-box;overflow:hidden">29.3%</div><div style="position:absolute;left:75.5%;top:0;height:100%;width:14.17%;background:#a7f3d0;box-sizing:border-box;border-radius:0 4px 4px 0;"></div><div style="position:absolute;left:89.67%;top:50%;transform:translateY(-50%);padding-left:3px;font-size:10px;font-weight:700;color:#065f46;white-space:nowrap">17.0%</div></div><div style="font-size:11px;text-align:right;color:var(--muted)">n=210</div></div>
+<div style="display:grid;grid-template-columns:110px 1fr 42px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line);"><div style="font-size:12px;">EMAE</div><div style="position:relative;height:26px;background:#f3f4f6;border-radius:4px;overflow:visible;"><div style="position:absolute;left:0%;top:0;height:100%;width:50.75%;background:#bfdbfe;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1d4ed8;box-sizing:border-box;overflow:hidden">60.9%</div><div style="position:absolute;left:50.75%;top:0;height:100%;width:25.25%;background:#e9d5ff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#7c3aed;box-sizing:border-box;overflow:hidden">30.3%</div><div style="position:absolute;left:76.0%;top:0;height:100%;width:14.92%;background:#a7f3d0;box-sizing:border-box;border-radius:0 4px 4px 0;"></div><div style="position:absolute;left:90.92%;top:50%;transform:translateY(-50%);padding-left:3px;font-size:10px;font-weight:700;color:#065f46;white-space:nowrap">17.9%</div></div><div style="font-size:11px;text-align:right;color:var(--muted)">n=37</div></div>
+<div style="display:grid;grid-template-columns:110px 1fr 42px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line);"><div style="font-size:12px;">ENEL</div><div style="position:relative;height:26px;background:#f3f4f6;border-radius:4px;overflow:visible;"><div style="position:absolute;left:0%;top:0;height:100%;width:46.08%;background:#bfdbfe;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1d4ed8;box-sizing:border-box;overflow:hidden">55.3%</div><div style="position:absolute;left:46.08%;top:0;height:100%;width:25.58%;background:#e9d5ff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#7c3aed;box-sizing:border-box;overflow:hidden">30.7%</div><div style="position:absolute;left:71.66%;top:0;height:100%;width:6.83%;background:#a7f3d0;box-sizing:border-box;border-radius:0 4px 4px 0;"></div><div style="position:absolute;left:78.49%;top:50%;transform:translateY(-50%);padding-left:3px;font-size:10px;font-weight:700;color:#065f46;white-space:nowrap">8.2%</div></div><div style="font-size:11px;text-align:right;color:var(--muted)">n=414</div></div>
+<div style="display:grid;grid-template-columns:110px 1fr 42px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line);"><div style="font-size:12px;">FAMILINVEST</div><div style="position:relative;height:26px;background:#f3f4f6;border-radius:4px;overflow:visible;"><div style="position:absolute;left:0%;top:0;height:100%;width:43.58%;background:#bfdbfe;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1d4ed8;box-sizing:border-box;overflow:hidden">52.3%</div><div style="position:absolute;left:43.58%;top:0;height:100%;width:30.33%;background:#e9d5ff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#7c3aed;box-sizing:border-box;overflow:hidden">36.4%</div><div style="position:absolute;left:73.91%;top:0;height:100%;width:7.58%;background:#a7f3d0;box-sizing:border-box;border-radius:0 4px 4px 0;"></div><div style="position:absolute;left:81.49%;top:50%;transform:translateY(-50%);padding-left:3px;font-size:10px;font-weight:700;color:#065f46;white-space:nowrap">9.1%</div></div><div style="font-size:11px;text-align:right;color:var(--muted)">n=54</div></div>
+<div style="display:grid;grid-template-columns:110px 1fr 42px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line);"><div style="font-size:12px;">ISA ENERGIA</div><div style="position:relative;height:26px;background:#f3f4f6;border-radius:4px;overflow:visible;"><div style="position:absolute;left:0%;top:0;height:100%;width:42.58%;background:#bfdbfe;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1d4ed8;box-sizing:border-box;overflow:hidden">51.1%</div><div style="position:absolute;left:42.58%;top:0;height:100%;width:28.17%;background:#e9d5ff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#7c3aed;box-sizing:border-box;overflow:hidden">33.8%</div><div style="position:absolute;left:70.75%;top:0;height:100%;width:7.0%;background:#a7f3d0;box-sizing:border-box;border-radius:0 4px 4px 0;"></div><div style="position:absolute;left:77.75%;top:50%;transform:translateY(-50%);padding-left:3px;font-size:10px;font-weight:700;color:#065f46;white-space:nowrap">8.4%</div></div><div style="font-size:11px;text-align:right;color:var(--muted)">n=82</div></div>
+<div style="display:grid;grid-template-columns:110px 1fr 42px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line);"><div style="font-size:12px;">ROCHE</div><div style="position:relative;height:26px;background:#f3f4f6;border-radius:4px;overflow:visible;"><div style="position:absolute;left:0%;top:0;height:100%;width:25.67%;background:#bfdbfe;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1d4ed8;box-sizing:border-box;overflow:hidden">30.8%</div><div style="position:absolute;left:25.67%;top:0;height:100%;width:38.5%;background:#e9d5ff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#7c3aed;box-sizing:border-box;overflow:hidden">46.2%</div></div><div style="font-size:11px;text-align:right;color:var(--muted)">n=32</div></div>
+<div style="display:grid;grid-template-columns:110px 1fr 42px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line);"><div style="font-size:12px;">FORD</div><div style="position:relative;height:26px;background:#f3f4f6;border-radius:4px;overflow:visible;"><div style="position:absolute;left:0%;top:0;height:100%;width:22.5%;background:#bfdbfe;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1d4ed8;box-sizing:border-box;overflow:hidden">27.0%</div><div style="position:absolute;left:22.5%;top:0;height:100%;width:25.25%;background:#e9d5ff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#7c3aed;box-sizing:border-box;overflow:hidden">30.3%</div><div style="position:absolute;left:47.75%;top:0;height:100%;width:2.83%;background:#a7f3d0;box-sizing:border-box;border-radius:0 4px 4px 0;"></div><div style="position:absolute;left:50.58%;top:50%;transform:translateY(-50%);padding-left:3px;font-size:10px;font-weight:700;color:#065f46;white-space:nowrap">3.4%</div></div><div style="font-size:11px;text-align:right;color:var(--muted)">n=85</div></div>
+<div style="margin-top:10px;padding-top:8px;border-top:1px solid var(--line);display:flex;gap:16px;font-size:11px;font-weight:700;justify-content:center;flex-wrap:wrap"><span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#bfdbfe;display:inline-block"></span><span style="color:#1d4ed8">Disque Vivest</span></span><span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#e9d5ff;display:inline-block"></span><span style="color:#7c3aed">E-mail/chat</span></span><span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#a7f3d0;display:inline-block"></span><span style="color:#065f46">Presencial</span></span></div>
+<p style="font-size:11px;color:var(--muted);margin-top:8px">* Patrocinadoras com menos de 30 respondentes não são exibidas.</p>
+</div></div>
+</div>
+<div class="card">
+<h4 class="pane-title">Destaques</h4>
+<div class="note-list">
+<div class="note-item"><div class="label" style="color:#1d4ed8">CESP, CPFL e EMAE lideram Disque Vivest</div><div class="text">Acima de 60% no canal telefônico — maior adesão ao Disque Vivest entre as patrocinadoras.</div></div>
+<div class="note-item"><div class="label">ENEL — base estrutural</div><div class="text">Com n=414 (42% da base total), ENEL (55,3%) ancora o consolidado. Perfil equilibrado entre os canais.</div></div>
+<div class="note-item"><div class="label" style="color:#7c3aed">ROCHE e FORD — perfil digital</div><div class="text">Menor uso de Disque Vivest e maior de e-mail/chat. FORD registra o maior "Nenhum canal" (50,6%).</div></div>
+<div class="note-item"><div class="label">FAMILINVEST e ISA ENERGIA</div><div class="text">Maior e-mail/chat entre as patrocinadoras intermediárias (36,4% e 33,8%).</div></div>
+</div>
+</div>
+</div>
+<div class="card"><h3>Leitura dos dados</h3><div class="callout" style="margin-top:0">CESP (62,3%), CPFL (61,3%) e EMAE (60,9%) lideram o uso do Disque Vivest. ENEL, com 42% da base total (n=414), ancora o consolidado em 55,3%. FORD registra o maior percentual sem nenhum canal (50,6%), sugerindo baixo engajamento com os canais da Vivest. ROCHE destaca-se no e-mail/chat (46,2%), sem nenhum registro de atendimento presencial.</div></div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<section class="slide" style="--ind:#e63d67" id="canais-serie">
+<div class="ind-nav"><span class="ind-label">Cap. 06 · Canais de Atendimento e Autosserviço</span><div class="ind-pills">
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('canais-geral')" style="cursor:pointer">Visão executiva</span>
+<span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('canais-patroc')" style="cursor:pointer">Patrocinadoras</span>
+<span class="ind-pill active">Série histórica</span>
+</div></div>
+<h2 class="title">Canais de Atendimento Utilizados</h2>
+<div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
+<p class="subtitle">Evolução do uso dos canais por perfil · 2020–2025. Múltipla resposta — percentuais não são comparáveis entre si. Perfil Saúde disponível a partir de 2024.</p>
+<div class="grid2" style="grid-template-columns:1fr 1fr;gap:12px;align-items:start">
+<div class="card">
+<h3>Disque Vivest</h3>
+<div class="table-wrap"><table class="table table--compact">
+<thead><tr><th></th><th style="text-align:right">2020</th><th style="text-align:right">2021</th><th style="text-align:right">2024</th><th style="text-align:right">2025</th><th style="text-align:right">Δ</th></tr></thead><tbody><tr><td style="font-weight:700;color:#2f6fb0">Total</td><td style="text-align:right">33.6%</td><td style="text-align:right">47.4%</td><td style="text-align:right">49.3%</td><td style="text-align:right">53.3%</td><td style="text-align:right;font-weight:700;color:#10b981">+4.0</td></tr><tr><td style="font-weight:700;color:#e63d67">Ativos</td><td style="text-align:right">37.1%</td><td style="text-align:right">49.5%</td><td style="text-align:right">40.1%</td><td style="text-align:right">42.6%</td><td style="text-align:right;font-weight:700;color:#10b981">+2.5</td></tr><tr><td style="font-weight:700;color:#6750b5">Assistidos</td><td style="text-align:right">30.3%</td><td style="text-align:right">46.8%</td><td style="text-align:right">59.0%</td><td style="text-align:right">60.6%</td><td style="text-align:right;font-weight:700;color:#10b981">+1.6</td></tr><tr><td style="font-weight:700;color:#0ea874">Saúde</td><td style="text-align:right;color:var(--muted)">—</td><td style="text-align:right;color:var(--muted)">—</td><td style="text-align:right">47.4%</td><td style="text-align:right">62.7%</td><td style="text-align:right;font-weight:700;color:#10b981">+15.3</td></tr></tbody>
+</table></div>
+</div>
+<div class="card">
+<h3>E-mail / chat</h3>
+<div class="table-wrap"><table class="table table--compact">
+<thead><tr><th></th><th style="text-align:right">2020</th><th style="text-align:right">2021</th><th style="text-align:right">2024</th><th style="text-align:right">2025</th><th style="text-align:right">Δ</th></tr></thead><tbody><tr><td style="font-weight:700;color:#2f6fb0">Total</td><td style="text-align:right">20.4%</td><td style="text-align:right">31.1%</td><td style="text-align:right">29.6%</td><td style="text-align:right">31.4%</td><td style="text-align:right;font-weight:700;color:#10b981">+1.8</td></tr><tr><td style="font-weight:700;color:#e63d67">Ativos</td><td style="text-align:right">25.4%</td><td style="text-align:right">41.0%</td><td style="text-align:right">28.8%</td><td style="text-align:right">34.5%</td><td style="text-align:right;font-weight:700;color:#10b981">+5.7</td></tr><tr><td style="font-weight:700;color:#6750b5">Assistidos</td><td style="text-align:right">15.6%</td><td style="text-align:right">28.3%</td><td style="text-align:right">30.7%</td><td style="text-align:right">29.7%</td><td style="text-align:right;font-weight:700;color:#e63d67">-1.0</td></tr><tr><td style="font-weight:700;color:#0ea874">Saúde</td><td style="text-align:right;color:var(--muted)">—</td><td style="text-align:right;color:var(--muted)">—</td><td style="text-align:right">29.2%</td><td style="text-align:right">27.0%</td><td style="text-align:right;font-weight:700;color:#e63d67">-2.2</td></tr></tbody>
+</table></div>
+</div>
+<div class="card">
+<h3>Presencial</h3>
+<div class="table-wrap"><table class="table table--compact">
+<thead><tr><th></th><th style="text-align:right">2020</th><th style="text-align:right">2021</th><th style="text-align:right">2024</th><th style="text-align:right">2025</th><th style="text-align:right">Δ</th></tr></thead><tbody><tr><td style="font-weight:700;color:#2f6fb0">Total</td><td style="text-align:right">8.8%</td><td style="text-align:right">14.9%</td><td style="text-align:right">9.9%</td><td style="text-align:right">10.4%</td><td style="text-align:right;font-weight:700;color:#10b981">+0.5</td></tr><tr><td style="font-weight:700;color:#e63d67">Ativos</td><td style="text-align:right">7.5%</td><td style="text-align:right">17.1%</td><td style="text-align:right">7.0%</td><td style="text-align:right">9.2%</td><td style="text-align:right;font-weight:700;color:#10b981">+2.2</td></tr><tr><td style="font-weight:700;color:#6750b5">Assistidos</td><td style="text-align:right">10.0%</td><td style="text-align:right">14.3%</td><td style="text-align:right">12.7%</td><td style="text-align:right">12.0%</td><td style="text-align:right;font-weight:700;color:#e63d67">-0.7</td></tr><tr><td style="font-weight:700;color:#0ea874">Saúde</td><td style="text-align:right;color:var(--muted)">—</td><td style="text-align:right;color:var(--muted)">—</td><td style="text-align:right">9.6%</td><td style="text-align:right">9.1%</td><td style="text-align:right;font-weight:700;color:#e63d67">-0.5</td></tr></tbody>
+</table></div>
+</div>
+<div class="card">
+<h3>Nenhum canal</h3>
+<div class="table-wrap"><table class="table table--compact">
+<thead><tr><th></th><th style="text-align:right">2020</th><th style="text-align:right">2021</th><th style="text-align:right">2024</th><th style="text-align:right">2025</th><th style="text-align:right">Δ</th></tr></thead><tbody><tr><td style="font-weight:700;color:#2f6fb0">Total</td><td style="text-align:right">39.7%</td><td style="text-align:right">26.2%</td><td style="text-align:right">30.7%</td><td style="text-align:right">26.3%</td><td style="text-align:right;font-weight:700;color:#10b981">-4.4</td></tr><tr><td style="font-weight:700;color:#e63d67">Ativos</td><td style="text-align:right">31.6%</td><td style="text-align:right">9.9%</td><td style="text-align:right">38.3%</td><td style="text-align:right">31.1%</td><td style="text-align:right;font-weight:700;color:#10b981">-7.2</td></tr><tr><td style="font-weight:700;color:#6750b5">Assistidos</td><td style="text-align:right">47.3%</td><td style="text-align:right">30.8%</td><td style="text-align:right">23.0%</td><td style="text-align:right">23.1%</td><td style="text-align:right;font-weight:700;color:#e63d67">+0.1</td></tr><tr><td style="font-weight:700;color:#0ea874">Saúde</td><td style="text-align:right;color:var(--muted)">—</td><td style="text-align:right;color:var(--muted)">—</td><td style="text-align:right">31.5%</td><td style="text-align:right">21.8%</td><td style="text-align:right;font-weight:700;color:#10b981">-9.7</td></tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="card"><h3>Leitura dos dados</h3><div class="callout" style="margin-top:0">O Disque Vivest cresce de forma consistente em todos os perfis desde 2020. <strong style="color:#6750b5">Assistidos</strong> registram a trajetória mais longa (30,3% → 60,6%). <strong style="color:#0ea874">Saúde</strong>, com série a partir de 2024, tem o maior salto no Disque Vivest (+15,3 p.p.) e a maior redução em "Nenhum canal" (−9,7 p.p.). <strong style="color:#e63d67">Ativos</strong> mantêm o maior percentual sem canal (31,1%), com melhora vs. 2024 (−7,2 p.p.).</div></div>
+</section>
+
+
+
 <section class="slide" style="--ind:#e63d67" id="atend-geral">
 <div class="ind-nav"><span class="ind-label">Cap. 06 · Canais de Atendimento e Autosserviço</span><div class="ind-pills">
 <span class="ind-pill active">Visão executiva</span>
@@ -5083,6 +5526,7 @@ dcRenderMacro();
 <h2 class="title">Atendimento</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Satisfação geral e atributos de atendimento em 2025. Universo: participantes que utilizaram algum canal de atendimento.</p>
+<div class="elig-note">Atributos de atendimento avaliados apenas por participantes que utilizaram algum canal de atendimento da Vivest no último ano (n≈656).</div>
 <div class="kpis">
 <div class="kpi"><div class="label">Sat. geral atendimento</div><div class="value">69,2%</div><div class="meta" style="color:#e63d67">−6,1 p.p. vs. 2024</div></div>
 <div class="kpi"><div class="label">Cordialidade</div><div class="value">86,4%</div><div class="meta">Ponto mais forte</div></div>
@@ -5135,7 +5579,7 @@ dcRenderMacro();
 
 
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('atend-atributos')" style="cursor:pointer">Atributos</span></div></div>
-<h2 class="title">Atendimento · Patrocinadoras</h2>
+<h2 class="title">Atendimento</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">T3B da satisfação geral com o atendimento por patrocinadora em 2025.</p>
 <div class="object-grid sponsors-grid">
@@ -5175,7 +5619,7 @@ dcRenderMacro();
 
 
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('atend-atributos')" style="cursor:pointer">Atributos</span></div></div>
-<h2 class="title">Atendimento · Série Histórica</h2>
+<h2 class="title">Atendimento</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Comparativo 2024 × 2025 — satisfação geral com o atendimento por perfil.</p>
 <div class="history-grid">
@@ -5263,7 +5707,7 @@ dcRenderMacro();
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('atend-serie')" style="cursor:pointer">Série histórica</span>
 <span class="ind-pill active">Atributos</span>
 </div></div>
-<h2 class="title">Atendimento · Atributos</h2>
+<h2 class="title">Atendimento</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Síntese dos 6 atributos de qualidade do atendimento em 2025, com evolução vs. 2024 e comparativo por perfil.</p>
 <div class="history-grid">
@@ -5373,6 +5817,7 @@ dcRenderMacro();
 <h2 class="title">Autosserviço</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Satisfação com os canais digitais de autosserviço (portal, app) em 2025. Universo: participantes que utilizaram o portal ou app.</p>
+<div class="elig-note">Autosserviço avaliado apenas por participantes que utilizaram o portal Vivest nos últimos 12 meses (n≈752).</div>
 <div class="kpis">
 <div class="kpi"><div class="label">Sat. geral</div><div class="value">63,0%</div><div class="meta" style="color:#e63d67">−8,2 p.p. vs. 2024</div></div>
 <div class="kpi"><div class="label">Opções disponíveis</div><div class="value">65,2%</div><div class="meta">Melhor atributo</div></div>
@@ -5422,7 +5867,7 @@ dcRenderMacro();
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('auto-serie')" style="cursor:pointer">Série histórica</span>
 
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('auto-atributos')" style="cursor:pointer">Atributos</span></div></div>
-<h2 class="title">Autosserviço · Patrocinadoras</h2>
+<h2 class="title">Autosserviço</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">T3B da satisfação geral com o autosserviço por patrocinadora em 2025.</p>
 <div class="object-grid sponsors-grid">
@@ -5464,7 +5909,7 @@ dcRenderMacro();
 <span class="ind-pill active">Série histórica</span>
 
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('auto-atributos')" style="cursor:pointer">Atributos</span></div></div>
-<h2 class="title">Autosserviço · Série Histórica</h2>
+<h2 class="title">Autosserviço</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Comparativo 2024 × 2025 — satisfação geral com autosserviço por perfil.</p>
 <div class="history-grid">
@@ -5554,7 +5999,7 @@ dcRenderMacro();
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('auto-serie')" style="cursor:pointer">Série histórica</span>
 <span class="ind-pill active">Atributos</span>
 </div></div>
-<h2 class="title">Autosserviço · Atributos</h2>
+<h2 class="title">Autosserviço</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Síntese dos atributos de qualidade do autosserviço em 2025, com evolução vs. 2024 e comparativo por perfil.</p>
 <div class="history-grid">
@@ -5684,6 +6129,7 @@ dcRenderMacro();
 <h2 class="title">Comunicação<br/>Institucional</h2>
 <div class="rule"></div>
 <p class="subtitle">Percepção sobre clareza, frequência e qualidade da comunicação da Vivest com seus participantes.</p>
+<div class="badges-row"><span class="badge-perfil badge-ativo">Ativos</span><span class="badge-perfil badge-assist">Assistidos</span><span class="badge-perfil badge-saude-p">Saúde</span></div>
 <div class="hero-num">07</div>
 </section>
 <section class="slide" style="--ind:#e63d67" id="comunic">
@@ -5744,7 +6190,7 @@ dcRenderMacro();
 <span class="ind-pill active">Patrocinadoras</span>
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('comunic-serie')" style="cursor:pointer">Série histórica</span>
 </div></div>
-<h2 class="title">Comunicação Institucional · Patrocinadoras</h2>
+<h2 class="title">Comunicação Institucional</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Distribuição do T3B de comunicação institucional entre as patrocinadoras em 2025.</p>
 <div class="object-grid sponsors-grid">
@@ -5951,46 +6397,25 @@ dcRenderMacro();
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">A satisfação não é uniforme porque a relação não é uniforme. Cada perfil tem uma história, uma expectativa e uma agenda específica.</p>
 <div class="grid2" style="grid-template-columns:1fr 1fr 1fr;align-items:stretch">
-<div class="card">
-<h3 style="display:flex;align-items:center;gap:8px">
-<span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:#6750b5;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">A</span>
-<span style="color:#6750b5">Assistidos</span> <span style="font-size:13px;font-weight:400;color:var(--muted)">— a relação consolidada</span>
-</h3>
-<p style="font-size:13px;line-height:1.7;margin:10px 0">Os <strong style="color:#6750b5">Assistidos</strong> completaram o ciclo com a Vivest: contribuíram durante a vida profissional e hoje dependem diretamente das entregas da fundação. Com T3B de satisfação de 75,9% e NPS 46 — o mais alto entre todos os perfis —, representam o maior ativo de reputação da instituição. 61% deles são promotores espontâneos. A agenda para este perfil é de <em>continuidade e aprofundamento</em>: garantir que as entregas atuais sejam mantidas e que os sinais de vulnerabilidade — Mensalidade (T3B 27,7%) e Reembolso — sejam endereçados antes de se tornarem fontes de insatisfação estrutural.</p>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:auto">
-<div style="text-align:center;padding:8px 4px;background:rgba(103,80,181,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">NPS</div><div style="font-size:18px;font-weight:800;color:#6750b5">46</div></div>
-<div style="text-align:center;padding:8px 4px;background:rgba(103,80,181,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">Sat. final T3B</div><div style="font-size:18px;font-weight:800;color:#6750b5">75,9%</div></div>
-<div style="text-align:center;padding:8px 4px;background:rgba(103,80,181,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">Promotores</div><div style="font-size:18px;font-weight:800;color:#6750b5">61%</div></div>
+<div class="card" style="border:1.5px solid rgba(230,61,103,.2);background:#fff"><h3 style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;background:#e63d67;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">A</span><span style="color:#e63d67">Ativos</span><span style="font-size:12px;font-weight:400;color:var(--muted)">— a relação em construção</span></h3><div style="display:flex;flex-direction:column;gap:5px;margin-bottom:14px"><div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#e63d67;flex-shrink:0;margin-top:5px"></span><span>Os Ativos de hoje são os Assistidos de amanhã — a percepção que formam agora moldará o vínculo por décadas.</span></div>
+<div style="background:rgba(180,130,0,.07);border-left:2.5px solid #d97706;border-radius:0 5px 5px 0;padding:5px 8px;"><div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#e63d67;flex-shrink:0;margin-top:5px"></span><span>Indicadores abaixo da média em todos os capítulos avaliados.</span></div></div>
+<div style="background:rgba(180,130,0,.07);border-left:2.5px solid #d97706;border-radius:0 5px 5px 0;padding:5px 8px;"><div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#e63d67;flex-shrink:0;margin-top:5px"></span><span>NPS 18, com 28% de detratores — percepções negativas a reverter antes da aposentadoria.</span></div></div>
+<div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#e63d67;flex-shrink:0;margin-top:5px"></span><span>Agenda: <em>recuperação e conquista</em>.</span></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;padding-top:12px;border-top:0.5px solid rgba(230,61,103,.12)"><div style="padding:6px 8px;background:rgba(230,61,103,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">Satisfação final</div><div style="font-size:15px;font-weight:800;color:#e63d67">64,9%</div></div><div style="padding:6px 8px;background:rgba(230,61,103,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">NPS Vivest</div><div style="font-size:15px;font-weight:800;color:#e63d67">18</div></div><div style="padding:6px 8px;background:rgba(230,61,103,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">Satisfação prev.</div><div style="font-size:15px;font-weight:800;color:#e63d67">68,8%</div></div><div style="padding:6px 8px;background:rgba(230,61,103,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">Comunicação</div><div style="font-size:15px;font-weight:800;color:#e63d67">67,7%</div></div><div style="padding:6px 8px;background:rgba(230,61,103,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">Sat. plano saúde</div><div style="font-size:15px;font-weight:800;color:#e63d67">40,6%</div></div><div style="padding:6px 8px;background:rgba(230,61,103,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">NPS plano saúde</div><div style="font-size:15px;font-weight:800;color:#e63d67">−17</div></div></div></div>
+<div class="card" style="border:1.5px solid rgba(103,80,181,.2);background:#fff"><h3 style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;background:#6750b5;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">A</span><span style="color:#6750b5">Assistidos</span><span style="font-size:12px;font-weight:400;color:var(--muted)">— a relação consolidada</span></h3><div style="display:flex;flex-direction:column;gap:5px;margin-bottom:14px"><div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#6750b5;flex-shrink:0;margin-top:5px"></span><span>Completaram o ciclo — contribuíram durante a vida profissional e dependem diretamente das entregas da Vivest.</span></div>
+<div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#6750b5;flex-shrink:0;margin-top:5px"></span><span>61% são promotores espontâneos — o maior ativo de reputação da instituição.</span></div>
+<div style="background:rgba(180,130,0,.07);border-left:2.5px solid #d97706;border-radius:0 5px 5px 0;padding:5px 8px;"><div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#6750b5;flex-shrink:0;margin-top:5px"></span><span>Mensalidade (T3B 27,7%) e Reembolso são sinais de vulnerabilidade a endereçar.</span></div></div>
+<div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#6750b5;flex-shrink:0;margin-top:5px"></span><span>Agenda: <em>continuidade e aprofundamento</em> das entregas atuais.</span></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;padding-top:12px;border-top:0.5px solid rgba(103,80,181,.12)"><div style="padding:6px 8px;background:rgba(103,80,181,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">Satisfação final</div><div style="font-size:15px;font-weight:800;color:#6750b5">76,8%</div></div><div style="padding:6px 8px;background:rgba(103,80,181,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">NPS Vivest</div><div style="font-size:15px;font-weight:800;color:#6750b5">46</div></div><div style="padding:6px 8px;background:rgba(103,80,181,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">Satisfação prev.</div><div style="font-size:15px;font-weight:800;color:#6750b5">73,0%</div></div><div style="padding:6px 8px;background:rgba(103,80,181,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">Comunicação</div><div style="font-size:15px;font-weight:800;color:#6750b5">79,5%</div></div><div style="padding:6px 8px;background:rgba(103,80,181,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">Sat. plano saúde</div><div style="font-size:15px;font-weight:800;color:#6750b5">68,2%</div></div><div style="padding:6px 8px;background:rgba(103,80,181,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">NPS plano saúde</div><div style="font-size:15px;font-weight:800;color:#6750b5">19</div></div></div></div>
+<div class="card" style="border:1.5px solid rgba(14,168,116,.2);background:#fff"><h3 style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;background:#0ea874;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">S</span><span style="color:#0ea874">Saúde</span><span style="font-size:12px;font-weight:400;color:var(--muted)">— a relação centrada no produto</span></h3><div style="display:flex;flex-direction:column;gap:5px;margin-bottom:14px"><div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#0ea874;flex-shrink:0;margin-top:5px"></span><span>Relação exclusiva com o plano — satisfação depende inteiramente da experiência com o produto.</span></div>
+<div style="background:rgba(180,130,0,.07);border-left:2.5px solid #d97706;border-radius:0 5px 5px 0;padding:5px 8px;"><div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#0ea874;flex-shrink:0;margin-top:5px"></span><span>Satisfação geral recuou −6,6 p.p. e 32,4% relataram dificuldades na rede credenciada (+4,6 p.p.).</span></div></div>
+<div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#0ea874;flex-shrink:0;margin-top:5px"></span><span>APS registra T3B 81,1% — o resultado mais positivo do capítulo de saúde.</span></div>
+<div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.55;color:var(--ink)"><span style="width:6px;height:6px;border-radius:50%;background:#0ea874;flex-shrink:0;margin-top:5px"></span><span>Agenda: <em>melhoria da experiência e ampliação dos pontos de contato positivos</em>.</span></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;padding-top:12px;border-top:0.5px solid rgba(14,168,116,.12)"><div style="padding:6px 8px;background:rgba(14,168,116,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">Satisfação final</div><div style="font-size:15px;font-weight:800;color:#0ea874">72,8%</div></div><div style="padding:6px 8px;background:rgba(14,168,116,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">NPS Vivest</div><div style="font-size:15px;font-weight:800;color:#0ea874">37</div></div><div style="padding:6px 8px;background:rgba(14,168,116,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">Qualidade prestadores</div><div style="font-size:15px;font-weight:800;color:#0ea874">77,8%</div></div><div style="padding:6px 8px;background:rgba(14,168,116,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">Comunicação</div><div style="font-size:15px;font-weight:800;color:#0ea874">63,7%</div></div><div style="padding:6px 8px;background:rgba(14,168,116,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">Sat. plano saúde</div><div style="font-size:15px;font-weight:800;color:#0ea874">73,2%</div></div><div style="padding:6px 8px;background:rgba(14,168,116,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:2px">NPS plano saúde</div><div style="font-size:15px;font-weight:800;color:#0ea874">35</div></div></div></div>
 </div>
-</div>
-<div class="card">
-<h3 style="display:flex;align-items:center;gap:8px">
-<span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:#e63d67;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">A</span>
-<span style="color:#e63d67">Ativos</span> <span style="font-size:13px;font-weight:400;color:var(--muted)">— a relação em construção</span>
-</h3>
-<p style="font-size:13px;line-height:1.7;margin:10px 0">Os <strong style="color:#e63d67">Ativos</strong> de hoje são os Assistidos de amanhã. A percepção que formam agora sobre a capacidade de entrega da Vivest moldará o vínculo que terão nas próximas décadas. Os indicadores atuais mostram uma experiência abaixo da média em todos os capítulos: T3B de 40,6% no plano de saúde, 59,9% nos canais de atendimento e 67,7% na comunicação institucional. O NPS 18 — com 28% de detratores — indica que uma parcela relevante desse grupo está acumulando percepções negativas que precisam ser revertidas antes da transição para a aposentadoria. A agenda é de <em>recuperação e conquista</em>.</p>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:auto">
-<div style="text-align:center;padding:8px 4px;background:rgba(230,61,103,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">NPS</div><div style="font-size:18px;font-weight:800;color:#e63d67">18</div></div>
-<div style="text-align:center;padding:8px 4px;background:rgba(230,61,103,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">T3B Saúde</div><div style="font-size:18px;font-weight:800;color:#e63d67">40,6%</div></div>
-<div style="text-align:center;padding:8px 4px;background:rgba(230,61,103,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">Detratores</div><div style="font-size:18px;font-weight:800;color:#e63d67">28%</div></div>
-</div>
-</div>
-<div class="card">
-<h3 style="display:flex;align-items:center;gap:8px">
-<span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:#0ea874;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">S</span>
-<span style="color:#0ea874">Saúde</span> <span style="font-size:13px;font-weight:400;color:var(--muted)">— a relação centrada no produto</span>
-</h3>
-<p style="font-size:13px;line-height:1.7;margin:10px 0">Os participantes do perfil <strong style="color:#0ea874">Saúde</strong> têm relação exclusiva com o plano de assistência médica — sem vínculo previdenciário. Sua satisfação depende inteiramente da experiência com o produto. Em 2025, o T3B de satisfação geral recuou para 59,5% (−6,6 p.p.), a comunicação caiu para 63,7% (−7,7 p.p.) e 32,4% relataram dificuldades na rede credenciada (+4,6 p.p.). O Programa de Atenção Primária à Saúde — APS, serviço de saúde preventiva e orientação médica oferecido pela Vivest — registra T3B de 81,1% entre este perfil, o resultado mais positivo do capítulo. A agenda é de <em>melhoria da experiência e ampliação dos pontos de contato positivos</em>.</p>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:auto">
-<div style="text-align:center;padding:8px 4px;background:rgba(14,168,116,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">T3B Saúde geral</div><div style="font-size:18px;font-weight:800;color:#0ea874">59,5%</div></div>
-<div style="text-align:center;padding:8px 4px;background:rgba(14,168,116,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">APS T3B</div><div style="font-size:18px;font-weight:800;color:#0ea874">81,1%</div></div>
-<div style="text-align:center;padding:8px 4px;background:rgba(14,168,116,.06);border-radius:8px"><div style="font-size:10px;color:var(--muted)">Dif. rede</div><div style="font-size:18px;font-weight:800;color:#e63d67">32,4%</div></div>
-</div>
-</div>
-</div>
+
+
+
+
+
 </section>
-
-
 <section class="slide" style="--ind:#e63d67" id="concl-scorecard">
 <div class="ind-nav"><span class="ind-label">Cap. 08 · Conclusões e Recomendações</span><div class="ind-pills">
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-sintese')" style="cursor:pointer">Três Jornadas</span>
@@ -6002,7 +6427,7 @@ dcRenderMacro();
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Os cinco indicadores com maior e menor T3B em cada perfil. Clique no nome para ir ao slide correspondente. Δ vs. 2024 onde disponível.</p>
 <div class="grid2" style="grid-template-columns:1fr 1fr 1fr;align-items:start">
-<div class="card">
+<div class="card" style="border:1.5px solid rgba(230,61,103,.2);background:#fff">
 <h3 style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
 <span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:#e63d67;color:#fff;font-size:12px;font-weight:800;flex-shrink:0">A</span>
 <span style="color:#e63d67">Ativos</span>
@@ -6015,7 +6440,8 @@ dcRenderMacro();
 <div class="table-wrap">
 <table style="width:100%;border-collapse:collapse"><thead><tr style="border-bottom:1px solid var(--line)"><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left"></th><th></th><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right">T3B</th><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right">Δ</th></tr></thead><tbody><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('auto-geral')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#2f6fb0;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">AUTO</span>Autosserviço</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:56.1%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">56,1%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#e63d67;white-space:nowrap">-13,8</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('atend-atributos')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#2f6fb0;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">ATE</span>Resolução tempo</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:52.2%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">52,2%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#e63d67;white-space:nowrap">-14,1</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('saude-geral')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PAM</span>Saúde geral</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:40.6%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">40,6%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#e63d67;white-space:nowrap">-7,6</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('saude-aprovacao')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PAM</span>Aprovação proc.</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:36.3%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">36,3%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#e63d67;white-space:nowrap">-13,7</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('saude-reembolso')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PAM</span>Reembolso</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:31.0%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">31,0%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#e63d67;white-space:nowrap">-10,3</td></tr></tbody></table>
 </div>
-</div><div class="card">
+</div>
+<div class="card" style="border:1.5px solid rgba(103,80,181,.2);background:#fff">
 <h3 style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
 <span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:#6750b5;color:#fff;font-size:12px;font-weight:800;flex-shrink:0">A</span>
 <span style="color:#6750b5">Assistidos</span>
@@ -6028,7 +6454,8 @@ dcRenderMacro();
 <div class="table-wrap">
 <table style="width:100%;border-collapse:collapse"><thead><tr style="border-bottom:1px solid var(--line)"><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left"></th><th></th><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right">T3B</th><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right">Δ</th></tr></thead><tbody><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('saude-geral')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PAM</span>Saúde geral</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:68.2%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">68,2%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#e63d67;white-space:nowrap">-1,4</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('saude-aprovacao')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PAM</span>Aprovação proc.</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:65.6%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">65,6%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#10b981;white-space:nowrap">+0,7</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('prev-rent')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#6750b5;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PP</span>Rentabilidade</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:59.1%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">59,1%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#10b981;white-space:nowrap">+8,3</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('saude-reembolso')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PAM</span>Reembolso</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:47.8%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">47,8%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#e63d67;white-space:nowrap">-5,9</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('saude-mensalidade')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PAM</span>Mensalidade</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:27.7%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">27,7%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#10b981;white-space:nowrap">+2,7</td></tr></tbody></table>
 </div>
-</div><div class="card">
+</div>
+<div class="card" style="border:1.5px solid rgba(14,168,116,.2);background:#fff">
 <h3 style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
 <span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:#0ea874;color:#fff;font-size:12px;font-weight:800;flex-shrink:0">S</span>
 <span style="color:#0ea874">Saúde</span>
@@ -6040,7 +6467,6 @@ dcRenderMacro();
 <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#e63d67;margin-bottom:4px">▼ Bottom 5</div>
 <div class="table-wrap">
 <table style="width:100%;border-collapse:collapse"><thead><tr style="border-bottom:1px solid var(--line)"><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left"></th><th></th><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right">T3B</th><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right">Δ</th></tr></thead><tbody><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('img-visao')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#e63d67;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">SAT</span>Sat. inicial</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:66.0%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">66,0%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#e63d67;white-space:nowrap">-6,6</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('comunic')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#d97706;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">COM</span>Comunicação</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:63.7%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">63,7%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#e63d67;white-space:nowrap">-7,7</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('auto-geral')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#2f6fb0;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">AUTO</span>Autosserviço</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:57.4%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">57,4%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#e63d67;white-space:nowrap">-11,6</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('saude-reembolso')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PAM</span>Reembolso</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:56.1%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">56,1%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#10b981;white-space:nowrap">+3,3</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('saude-mensalidade')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PAM</span>Mensalidade</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:52.8%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">52,8%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#10b981;white-space:nowrap">+6,2</td></tr></tbody></table>
-</div>
 </div>
 </div>
 <div class="card" style="margin-top:0;width:100%;box-sizing:border-box">
@@ -6069,15 +6495,8 @@ dcRenderMacro();
 </span>
 </div>
 </div>
+</div>
 </section>
-
-
-
-
-
-
-
-
 
 <section class="slide" style="--ind:#e63d67" id="concl-agenda-perfil">
 <div class="ind-nav"><span class="ind-label">Cap. 08 · Conclusões e Recomendações</span><div class="ind-pills">
@@ -6086,11 +6505,11 @@ dcRenderMacro();
 <span class="ind-pill active">Recomendações por perfil</span>
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-recomendacoes')" style="cursor:pointer">Recomendações transversais</span>
 </div></div>
-<h2 class="title">Recomendações Estratégicas por Perfil · 2026</h2>
+<h2 class="title">Recomendações Estratégicas por Perfil</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Três perguntas estratégicas, três agendas distintas.</p>
 <div class="grid2" style="grid-template-columns:1fr 1fr 1fr;align-items:stretch">
-<div class="card">
+<div class="card" style="border:1.5px solid rgba(230,61,103,.2);background:#fff">
 <h3 style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
 <span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:#e63d67;color:#fff;font-size:12px;font-weight:800;flex-shrink:0">A</span>
 <span style="color:#e63d67">Ativos</span>
@@ -6103,7 +6522,7 @@ dcRenderMacro();
 <div class="note-item"><div class="label" style="color:#e63d67">Impacto direto</div><div class="text">Cada melhoria nessas frentes tem impacto direto sobre os 28% de detratores do grupo.</div></div>
 </div>
 </div>
-<div class="card">
+<div class="card" style="border:1.5px solid rgba(103,80,181,.2);background:#fff">
 <h3 style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
 <span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:#6750b5;color:#fff;font-size:12px;font-weight:800;flex-shrink:0">A</span>
 <span style="color:#6750b5">Assistidos</span>
@@ -6116,7 +6535,7 @@ dcRenderMacro();
 <div class="note-item"><div class="label" style="color:#6750b5">Base promotora</div><div class="text">Os 61% de promotores representam uma base sólida para engajamento e construção de reputação institucional.</div></div>
 </div>
 </div>
-<div class="card">
+<div class="card" style="border:1.5px solid rgba(14,168,116,.2);background:#fff">
 <h3 style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
 <span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:#0ea874;color:#fff;font-size:12px;font-weight:800;flex-shrink:0">S</span>
 <span style="color:#0ea874">Saúde</span>
@@ -6132,14 +6551,6 @@ dcRenderMacro();
 </div>
 </section>
 
-
-
-
-
-
-
-
-
 <section class="slide" style="--ind:#e63d67" id="concl-recomendacoes">
 <div class="ind-nav"><span class="ind-label">Cap. 08 · Conclusões e Recomendações</span><div class="ind-pills">
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-sintese')" style="cursor:pointer">Três Jornadas</span>
@@ -6147,7 +6558,7 @@ dcRenderMacro();
 <span class="ind-pill" onclick="window.goToSlide&&window.goToSlide('concl-agenda-perfil')" style="cursor:pointer">Recomendações por perfil</span>
 <span class="ind-pill active">Recomendações transversais</span>
 </div></div>
-<h2 class="title">Recomendações Estratégicas Transversais · 2026</h2>
+<h2 class="title">Recomendações Estratégicas Transversais</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Seis frentes prioritárias de ação derivadas dos achados da Pesquisa de Satisfação 2025.</p>
 <div class="grid2" style="grid-template-columns:1fr 1fr;align-items:stretch">
@@ -6183,11 +6594,8 @@ dcRenderMacro();
 </div>
 </div>
 </section>
-
-
-<!-- /slides -->
-<!-- /content -->
-
+</div><!-- /slides -->
+</div><!-- /content -->
 
 <div class="bottombar">
   <div class="logo-opiniao">
