@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Vivest · APN Executiva 2025</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --violet:#4b2e90; --violet-2:#6750b5;
+  --magenta:#e63d67; --pink:#f36a84;
+  --blue:#2f6fb0; --green:#0ea874;
+  --muted:#7e769a; --line:#ddd4f0;
+  --ink:#111316; --bg-soft:#f6f7f9;
+  --lilac:#f6f2fb; --panel:#ffffff;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;height:100%;overflow:hidden;}
+body{font-family:"Montserrat",system-ui,sans-serif;color:var(--ink);background:#ececf1;}
+
+/* TOPBAR */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:56px;background:#fff;
+  border-top:4px solid var(--magenta);
+  border-bottom:1px solid #ece8f5;
+  display:flex;align-items:center;justify-content:space-between;padding:0 28px;
+}
+.deck{
+  position:fixed;top:56px;left:0;right:0;bottom:48px;
+  overflow-y:auto;overflow-x:hidden;
+  background:linear-gradient(180deg,#fcfbfe 0%,#f8f6fc 100%);
+}
+.cover-active .deck,.chapter-active .deck{
+  background:linear-gradient(148deg,#330f60 0%,#4b2e90 48%,#5c38a8 100%);
+}
+.bottombar{
+  position:fixed;left:0;right:0;bottom:0;z-index:200;
+  height:48px;background:rgba(255,255,255,.97);
+  border-top:1px solid rgba(75,46,144,.10);
+  display:flex;align-items:center;justify-content:space-between;padding:0 18px;
+  backdrop-filter:blur(8px);
+}
+.brand{display:flex;align-items:center;gap:14px;}
+.brand img{height:28px;}
+.brand-tag{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.apn-tag{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--magenta);background:rgba(230,61,103,.08);padding:3px 10px;border-radius:20px;}
+
+
+/* SLIDES */
+.slide{
+  display:none;position:relative;
+  min-height:calc(100vh - 56px - 48px);
+  padding:clamp(28px,3vw,40px) clamp(24px,3vw,40px) clamp(24px,3vw,36px);
+  flex-direction:column;gap:clamp(8px,1vw,14px);
+  box-sizing:border-box;
+}
+.slide.active{display:flex;animation:fadeIn .2s ease forwards;}
+@keyframes fadeIn{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:none}}
+
+/* CAPA / CHAPTER */
+.cover,.chapter{
+  background:
+    radial-gradient(ellipse 80% 60% at 3% 100%,rgba(230,61,103,.72),transparent 52%),
+    radial-gradient(ellipse 60% 45% at 100% 2%,rgba(150,90,220,.48),transparent 52%),
+    linear-gradient(148deg,#330f60 0%,#4b2e90 48%,#5c38a8 100%);
+  color:#fff;
+}
+.cover .title,.chapter .title{color:#fff;font-size:clamp(32px,4vw,54px);}
+.cover .subtitle,.chapter .subtitle{color:rgba(255,255,255,.86);font-size:clamp(16px,1.4vw,20px);}
+.cover .kicker,.chapter .kicker{color:rgba(255,255,255,.8);}
+.cover .rule,.chapter .rule{background:rgba(255,255,255,.9);}
+.hero-num{
+  position:absolute;right:clamp(16px,3vw,48px);bottom:-0.1em;
+  font-size:clamp(120px,14vw,200px);font-weight:800;line-height:1;
+  letter-spacing:-.03em;color:rgba(255,255,255,.07);
+  pointer-events:none;user-select:none;z-index:0;white-space:nowrap;
+}
+.chapter .hero-num{font-size:clamp(160px,19vw,280px);color:rgba(255,255,255,.12);}
+.cover .kicker,.cover .title,.cover .rule,.cover .subtitle,
+.chapter .kicker,.chapter .title,.chapter .rule,.chapter .subtitle{position:relative;z-index:1;}
+
+/* TYPOGRAPHY */
+.title{margin:0;font-size:clamp(24px,3vw,40px);line-height:1;letter-spacing:-.04em;font-weight:800;color:var(--violet);flex-shrink:0;}
+.subtitle{font-size:clamp(13px,1.1vw,15px);line-height:1.5;color:var(--muted);max-width:900px;flex-shrink:0;margin:0;}
+.kicker{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--magenta);margin-bottom:4px;flex-shrink:0;}
+.rule{width:52px;height:4px;background:linear-gradient(90deg,var(--magenta),var(--violet));border-radius:4px;flex-shrink:0;}
+
+/* CARDS */
+.card{
+  background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:18px;
+  padding:clamp(12px,1.4vw,18px) clamp(14px,1.6vw,22px);
+  box-shadow:0 4px 16px rgba(75,46,144,.05);
+  display:flex;flex-direction:column;box-sizing:border-box;
+}
+.card h3{margin:0 0 clamp(6px,.7vw,10px);font-size:clamp(12px,1.1vw,15px);font-weight:800;color:var(--violet);}
+
+/* GRID */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.2vw,18px);align-items:stretch;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(10px,1.2vw,16px);align-items:stretch;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1vw,14px);}
+
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1vw,14px);flex-shrink:0;}
+.kpi{background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:16px;padding:clamp(8px,1vw,14px) clamp(10px,1.2vw,16px);}
+.kpi .label{font-size:clamp(9px,.8vw,11px);font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.kpi .value{font-size:clamp(20px,2.2vw,30px);font-weight:800;line-height:1;color:var(--violet);}
+.kpi .meta{margin-top:3px;font-size:clamp(9px,.85vw,12px);color:var(--muted);}
+.kpi-3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1vw,14px);flex-shrink:0;}
+
+  #apn-gate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:linear-gradient(148deg,#330f60 0%,#4b2e90 60%,#5c38a8 100%);}
+  #apn-gate-box{background:#fff;border-radius:16px;padding:40px 36px;width:340px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.25);}
+  #apn-gate-box img{height:36px;margin-bottom:20px;}
+  #apn-gate-box h2{font-size:18px;font-weight:800;color:#4b2e90;margin:0 0 6px;}
+  #apn-gate-box p{font-size:13px;color:#888;margin:0 0 24px;line-height:1.5;}
+  #apn-pw{width:100%;padding:12px 16px;border:1.5px solid #e8e8ec;border-radius:10px;font-size:16px;font-family:inherit;outline:none;margin-bottom:10px;box-sizing:border-box;}
+  #apn-pw:focus{border-color:#E84855;}
+  #apn-btn{width:100%;padding:13px;background:#4b2e90;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;}
+  #apn-btn:hover{background:#3d2480;}
+  #apn-err{color:#e63d67;font-size:13px;min-height:18px;margin-top:4px;}
+  /* CALLOUT */
+.callout{
+  margin-top:14px;background:#f7fafb;border:1px solid #cfe2e8;
+  border-left:5px solid var(--magenta);border-radius:12px;
+  padding:14px 16px;font-size:13px;line-height:1.5;color:var(--violet);
+}
+
+/* BARS */
+.bar-item{margin-bottom:8px;}
+.bar-label-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;font-size:12px;}
+.bar-name{font-weight:600;color:var(--ink);}
+.bar-val{font-weight:800;font-size:12px;}
+.bar-track{height:9px;border-radius:5px;background:var(--bg-soft);overflow:hidden;}
+.bar-fill{height:100%;border-radius:5px;}
+
+/* TABLE */
+.table{width:100%;border-collapse:collapse;font-size:12px;}
+.table th{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:5px 6px;border-bottom:1px solid var(--line);text-align:left;}
+.table td{padding:5px 6px;border-bottom:1px solid rgba(221,212,240,.4);color:var(--ink);}
+.table-wrap{overflow-x:auto;border-radius:8px;}
+
+/* BADGE PERFIL */
+.badge{display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;border-radius:6px;color:#fff;
+  font-size:11px;font-weight:800;flex-shrink:0;}
+.badge-a{background:#e63d67;} .badge-as{background:#6750b5;} .badge-s{background:#0ea874;}
+
+/* BOTTOM BAR */
+
+.cover-active .bottombar,.chapter-active .bottombar{
+  background:linear-gradient(148deg,#330f60 0%,#4b2e90 60%,#5c38a8 100%);
+  border-top-color:rgba(255,255,255,.15);
+  backdrop-filter:none;-webkit-backdrop-filter:none;
+}
+.cover-active .bottombar .btn,.chapter-active .bottombar .btn{color:rgba(255,255,255,.9);}
+.cover-active .bottombar .counter,.chapter-active .bottombar .counter{color:rgba(255,255,255,.7);}
+.cover-active .bottombar .btn-divider,.chapter-active .bottombar .btn-divider{background:rgba(255,255,255,.25);}
+.cover-active .bottombar .logo-opiniao img,.chapter-active .bottombar .logo-opiniao img{
+  filter:brightness(0) invert(1);opacity:.85;}
+.logo-opiniao img{height:30px;display:block;}
+.controls{display:flex;align-items:center;gap:6px;user-select:none;}
+.btn{border:0;background:transparent;font:inherit;color:var(--violet);font-weight:800;
+  padding:4px 8px;border-radius:999px;cursor:pointer;font-size:18px;}
+.btn:hover{background:rgba(75,46,144,.08);}
+.counter{font-size:11px;font-weight:800;color:rgba(75,46,144,.55);padding:0 4px;min-width:56px;text-align:center;}
+.btn-divider{width:1px;height:18px;background:var(--line);margin:0 3px;flex-shrink:0;}
+
+/* PERFIL CARDS */
+.perfil-card{border-radius:16px;padding:14px 16px;border:1.5px solid;}
+
+/* SECTION LABEL */
+.sec-label{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:4px;
+}
+.sec-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+
+/* DELTA BADGE */
+.delta-pos{color:#059669;background:rgba(5,150,105,.1);padding:1px 7px;border-radius:10px;font-size:11px;font-weight:800;}
+.delta-neg{color:#dc2626;background:rgba(220,38,38,.08);padding:1px 7px;border-radius:10px;font-size:11px;font-weight:800;}
+.delta-neu{color:var(--muted);background:rgba(126,118,154,.1);padding:1px 7px;border-radius:10px;font-size:11px;font-weight:800;}
+
+/* FOOTNOTE */
+.footnote{font-size:10px;color:var(--muted);line-height:1.5;margin-top:auto;flex-shrink:0;padding-top:6px;}
+
+/* rank-row: barra horizontal estilo v48 */
+.track{height:clamp(20px,2.2vw,26px);background:rgba(75,46,144,.07);border-radius:6px;overflow:hidden;}
+.fill{height:100%;border-radius:0;}
+.rank-row{display:grid;grid-template-columns:minmax(130px,40%) 1fr 56px;gap:8px;align-items:center;padding:7px 0;border-top:1px solid rgba(221,212,240,.4);font-size:12.5px;}
+.rank-row:first-child{border-top:0;padding-top:2px;}
+.rank-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600;color:var(--ink);}
+.rank-val{font-weight:800;text-align:right;}
+/* note-list v48 */
+.note-list{display:grid;gap:0;}
+.note-item{display:grid;grid-template-columns:minmax(80px,18%) 1fr;gap:2px;padding:9px 0;border-top:1px solid #eee7f7;}
+.note-item:first-child{padding-top:2px;border-top:0;}
+.note-item .label{font-size:13px;font-weight:700;color:var(--muted);}
+.note-item .text{font-size:12px;line-height:1.55;color:var(--ink);text-align:left;}
+
+/* MOBILE */
+@media(max-width:768px){
+  .topbar{padding:0 14px;height:48px;}
+  .brand img{height:22px;}
+  .deck{top:48px;bottom:44px;}
+  .bottombar{height:44px;padding:0 12px;}
+  .slide{min-height:calc(100vh - 48px - 44px);padding:12px 14px 14px;gap:8px;}
+  .cover .title,.chapter .title{font-size:clamp(22px,6vw,32px);}
+  .grid2,.grid3,.grid4,.kpis,.kpi-3{grid-template-columns:1fr!important;gap:8px;}
+  .kpi .value{font-size:clamp(18px,5vw,26px);}
+  .hero-num{position:fixed;bottom:44px;right:12px;top:auto;left:auto;}
+  .chapter .hero-num{font-size:clamp(60px,18vw,100px);}
+  /* note-list: empilha label acima do texto */
+  .note-item{grid-template-columns:1fr!important;}
+  .note-item .label{padding-bottom:2px;}
+  /* rank-rows: remove larguras fixas, empilha verticalmente */
+  .rank-row-mobile{flex-direction:column;align-items:flex-start;}
+  /* bar charts: remove widths fixas nos spans do rank-row */
+  .slide span[style*="width:140px"],
+  .slide span[style*="width:110px"]{width:auto!important;flex-shrink:1!important;}
+  .slide span[style*="width:48px"],
+  .slide span[style*="width:76px"]{width:auto!important;min-width:0!important;}
+  /* focos tiles slide 2: colapsa para 1 coluna */
+  .slide div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  /* tabelas: scroll horizontal */
+  .table-wrap,.card table{overflow-x:auto;display:block;width:100%;}
+  .card table{width:100%;table-layout:fixed;}
+  .card table th,.card table td{font-size:11px;padding:5px 3px;}
+  /* cards dentro de grid2 assimétrico: padding menor */
+  .card{padding:10px 12px;}
+  /* callout: font menor */
+  .callout{font-size:12px;padding:10px 12px;}
+  /* cover/chapter bottombar */
+  .cover-active .bottombar,.chapter-active .bottombar{
+    background:linear-gradient(148deg,#330f60 0%,#4b2e90 60%,#5c38a8 100%)!important;
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+  .cover-active .bottombar .btn,.chapter-active .bottombar .btn{color:rgba(255,255,255,.9)!important;}
+  .cover-active .bottombar .counter,.chapter-active .bottombar .counter{color:rgba(255,255,255,.7)!important;}
+  .cover-active .bottombar .logo-opiniao img,.chapter-active .bottombar .logo-opiniao img{
+    filter:brightness(0) invert(1)!important;opacity:.85!important;}
+}
+</style>
+</head>
+<body>
+
+<div id="apn-gate">
+  <div id="apn-gate-box">
+    <img src="https://www.vivest.com.br/site/assets/img/icons/logo_novamarca.svg" alt="Vivest"/>
+    <h2>Apresentação Executiva</h2>
+    <p>Documento confidencial.<br/>Insira a senha para continuar.</p>
+    <input id="apn-pw" type="password" placeholder="Senha"
+      onkeydown="if(event.key==='Enter')apnCheck()"
+      onfocus="this.style.borderColor='#E84855'"
+      onblur="this.style.borderColor='#e8e8ec'"/>
+    <div id="apn-err"></div>
+    <button id="apn-btn" onclick="apnCheck()">Acessar</button>
+  </div>
+</div>
+<div class="topbar">
+  <div class="brand">
+    <img src="https://www.vivest.com.br/site/assets/img/icons/logo_novamarca.svg" alt="Vivest"/>
+  </div>
+  <span class="apn-tag">Apresentação Executiva</span>
+</div>
+
+<div class="deck">
+
+<!-- ══════════════════════════════════════════
+     SLIDE 1 — CAPA
+══════════════════════════════════════════ -->
+<section class="slide cover active" id="capa">
+<div class="hero-num">Vivest</div>
+<div class="kicker">Pesquisa de opinião · Participantes Vivest</div>
+<h1 class="title">Apresentação Executiva<br/>de Resultados 2025</h1>
+<div class="rule"></div>
+<p class="subtitle">Satisfação e lealdade dos participantes da Vivest, com ênfase na avaliação dos produtos e serviços oferecidos e administrados pela instituição, comparando resultados com medições anteriores.</p>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 2 — OBJETIVO E METODOLOGIA
+══════════════════════════════════════════ -->
+<section class="slide" id="metodologia">
+<div class="kicker">Apresentação Executiva</div>
+<h2 class="title">Objetivo e Metodologia</h2>
+<div class="rule"></div>
+<div class="grid2" style="grid-template-columns:1fr 1fr;flex:1;min-height:0;gap:clamp(10px,1.2vw,18px)">
+
+  <!-- ESQUERDA: objetivo + focos + metodologia -->
+  <div style="display:flex;flex-direction:column;gap:clamp(8px,1vw,12px)">
+    <div class="card">
+      <h3>Objetivo</h3>
+      <p style="font-size:12.5px;line-height:1.65;color:var(--ink);margin:0 0 10px">Medir a satisfação e lealdade dos participantes da Vivest, com ênfase na avaliação dos produtos e serviços oferecidos e administrados, comparando os resultados com medições anteriores da série histórica desde 2019.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        <div style="padding:7px 10px;background:var(--lilac);border-radius:8px">
+          <div style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px">Foco 1</div>
+          <div style="font-size:12px;font-weight:700;color:var(--violet)">Mensurar satisfação</div>
+        </div>
+        <div style="padding:7px 10px;background:var(--lilac);border-radius:8px">
+          <div style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px">Foco 2</div>
+          <div style="font-size:12px;font-weight:700;color:var(--violet)">Comparar públicos</div>
+        </div>
+        <div style="padding:7px 10px;background:var(--lilac);border-radius:8px">
+          <div style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px">Foco 3</div>
+          <div style="font-size:12px;font-weight:700;color:var(--violet)">Acompanhar histórico</div>
+        </div>
+        <div style="padding:7px 10px;background:var(--lilac);border-radius:8px">
+          <div style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px">Foco 4</div>
+          <div style="font-size:12px;font-weight:700;color:var(--violet)">Gerar insumos</div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="flex:1">
+      <h3>Metodologia</h3>
+      <div class="table-wrap" style="margin-top:6px"><table class="table">
+        <tr><td style="color:var(--muted);font-weight:600;width:36%;font-size:11.5px">Abordagem</td><td style="font-size:11.5px">Pesquisa quantitativa por e-mail</td></tr>
+        <tr><td style="color:var(--muted);font-weight:600;font-size:11.5px">Amostragem</td><td style="font-size:11.5px">Não probabilística com cotas por patrocinadora e perfil, corrigida por ponderação</td></tr>
+        <tr><td style="color:var(--muted);font-weight:600;font-size:11.5px">Margem de erro</td><td style="font-size:11.5px">±2,9 p.p. (IC 95%)</td></tr>
+        <tr><td style="color:var(--muted);font-weight:600;font-size:11.5px">Escala</td><td style="font-size:11.5px">0 a 10 — indicadores em T3B (notas 8, 9 e 10)</td></tr>
+        <tr><td style="color:var(--muted);font-weight:600;font-size:11.5px">Coleta</td><td style="font-size:11.5px">06/02 a 16/03/2026</td></tr>
+        <tr><td style="color:var(--muted);font-weight:600;font-size:11.5px">Série histórica</td><td style="font-size:11.5px">2019 · 2020 · 2021 · 2024 · 2025</td></tr>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- DIREITA: amostra por perfil + por patrocinadora -->
+  <div style="display:flex;flex-direction:column;gap:clamp(8px,1vw,12px)">
+    <div class="card">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px">
+        <h3 style="margin:0">Amostra · n = 1.080</h3>
+        <span style="font-size:11px;color:var(--muted)">Base ponderada: n = 989</span>
+      </div>
+      <div class="grid3" style="gap:8px;margin-bottom:10px">
+        <div style="text-align:center;padding:8px 6px;background:rgba(230,61,103,.06);border-radius:10px">
+          <div style="font-size:10px;color:#e63d67;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px">Ativos</div>
+          <div style="font-size:24px;font-weight:800;color:#e63d67;line-height:1">250</div>
+          <div style="font-size:10px;color:var(--muted);margin-top:2px">23,1%</div>
+        </div>
+        <div style="text-align:center;padding:8px 6px;background:rgba(103,80,181,.06);border-radius:10px">
+          <div style="font-size:10px;color:#6750b5;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px">Assistidos</div>
+          <div style="font-size:24px;font-weight:800;color:#6750b5;line-height:1">760</div>
+          <div style="font-size:10px;color:var(--muted);margin-top:2px">70,4%</div>
+        </div>
+        <div style="text-align:center;padding:8px 6px;background:rgba(14,168,116,.06);border-radius:10px">
+          <div style="font-size:10px;color:#0ea874;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px">Saúde</div>
+          <div style="font-size:24px;font-weight:800;color:#0ea874;line-height:1">70</div>
+          <div style="font-size:10px;color:var(--muted);margin-top:2px">6,5%</div>
+        </div>
+      </div>
+      <div class="callout" style="margin:0;font-size:11px">
+        A análise usa a base ponderada (n = 989) para corrigir desvios de coleta e restabelecer as proporções planejadas por patrocinadora e perfil.
+      </div>
+    </div>
+    <div class="card" style="flex:1;overflow:hidden">
+      <h3>Entrevistados por patrocinadora</h3>
+      <div class="table-wrap" style="margin-top:8px">
+        <table class="table" style="font-size:11.5px">
+          <thead><tr>
+            <th>Patrocinadora</th>
+            <th style="text-align:right;color:#e63d67">Ativo</th>
+            <th style="text-align:right;color:#6750b5">Assist.</th>
+            <th style="text-align:right;color:#0ea874">Saúde</th>
+            <th style="text-align:right;color:var(--violet)">Total</th>
+          </tr></thead>
+          <tbody>
+            <tr><td><strong>ENEL</strong></td><td style="text-align:right">49</td><td style="text-align:right">297</td><td style="text-align:right">36</td><td style="text-align:right;font-weight:700">382</td></tr>
+            <tr><td>CPFL</td><td style="text-align:right">25</td><td style="text-align:right">150</td><td style="text-align:right">12</td><td style="text-align:right;font-weight:700">187</td></tr>
+            <tr><td>CESP</td><td style="text-align:right">—</td><td style="text-align:right">145</td><td style="text-align:right">6</td><td style="text-align:right;font-weight:700">151</td></tr>
+            <tr><td>ISA ENERGIA</td><td style="text-align:right">16</td><td style="text-align:right">102</td><td style="text-align:right">14</td><td style="text-align:right;font-weight:700">132</td></tr>
+            <tr><td>FORD</td><td style="text-align:right">89</td><td style="text-align:right">—</td><td style="text-align:right">—</td><td style="text-align:right;font-weight:700">89</td></tr>
+            <tr><td>EMAE</td><td style="text-align:right">10</td><td style="text-align:right">52</td><td style="text-align:right">2</td><td style="text-align:right;font-weight:700">64</td></tr>
+            <tr><td>FAMILINVEST</td><td style="text-align:right">44</td><td style="text-align:right">—</td><td style="text-align:right">—</td><td style="text-align:right;font-weight:700">44</td></tr>
+            <tr style="color:var(--muted);font-size:11px"><td>Demais <span style="font-size:10px">(ROCHE, ABRAPP…)</span></td><td style="text-align:right">17</td><td style="text-align:right">14</td><td style="text-align:right">—</td><td style="text-align:right;font-weight:700">31</td></tr>
+            <tr style="border-top:2px solid var(--line);font-weight:800;color:var(--violet)">
+              <td>Total</td>
+              <td style="text-align:right;color:#e63d67">250</td>
+              <td style="text-align:right;color:#6750b5">760</td>
+              <td style="text-align:right;color:#0ea874">70</td>
+              <td style="text-align:right">1.080</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SLIDE 3 — CICLO 2025 · SÉRIE + PERFIS
+══════════════════════════════════════════ -->
+<section class="slide" id="perspectiva">
+<div class="kicker">Apresentação Executiva</div>
+<h2 class="title">O ciclo 2025 em perspectiva</h2>
+<div class="rule"></div>
+
+<!-- ROW 1: dois gráficos lado a lado -->
+<div class="grid2" style="gap:clamp(8px,1vw,14px);flex-shrink:0;grid-template-columns:3fr 2fr">
+  <div class="card" style="padding:clamp(10px,1.2vw,16px)">
+    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px">Satisfação Geral Final (T3B)</div>
+    <svg viewBox="0 0 580 150" width="100%">
+      <line x1="60" x2="560" y1="14" y2="14" stroke="#f0ebfc" stroke-width="1"/>
+      <line x1="60" x2="560" y1="46" y2="46" stroke="#f0ebfc" stroke-width="1"/>
+      <line x1="60" x2="560" y1="78" y2="78" stroke="#f0ebfc" stroke-width="1"/>
+      <line x1="60" x2="560" y1="110" y2="110" stroke="#f0ebfc" stroke-width="1"/>
+      <text x="52" y="17" fill="#857ca3" font-size="9" text-anchor="end">90%</text>
+      <text x="52" y="49" fill="#857ca3" font-size="9" text-anchor="end">80%</text>
+      <text x="52" y="81" fill="#857ca3" font-size="9" text-anchor="end">70%</text>
+      <text x="52" y="113" fill="#857ca3" font-size="9" text-anchor="end">60%</text>
+      <!-- y=110-(val-60)*3 → 81.5→50, 71.5→82, 65→95, 69.9→80, 71.3→76 -->
+      <polygon points="100,50 200,82 280,95 400,80 490,76 490,120 100,120" fill="rgba(91,75,158,.07)"/>
+      <polyline points="100,50 200,82 280,95 400,80 490,76" fill="none" stroke="#5b4b9e" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="100" cy="50" r="4" fill="#5b4b9e"/>
+      <circle cx="200" cy="82" r="4" fill="#5b4b9e"/>
+      <circle cx="280" cy="95" r="4" fill="#5b4b9e"/>
+      <circle cx="400" cy="80" r="4" fill="#5b4b9e"/>
+      <circle cx="490" cy="76" r="6" fill="#4b2e90" stroke="#fff" stroke-width="2"/>
+      <text x="100" y="43" fill="#5b4b9e" font-size="10" font-weight="700" text-anchor="middle">81,5%</text>
+      <text x="200" y="75" fill="#5b4b9e" font-size="10" font-weight="700" text-anchor="middle">71,5%</text>
+      <text x="280" y="88" fill="#5b4b9e" font-size="10" font-weight="700" text-anchor="middle">65,0%</text>
+      <text x="400" y="73" fill="#5b4b9e" font-size="10" font-weight="700" text-anchor="middle">69,9%</text>
+      <text x="490" y="68" fill="#4b2e90" font-size="12" font-weight="800" text-anchor="middle">71,3%</text>
+      <text x="100" y="140" fill="#857ca3" font-size="10" text-anchor="middle">2019</text>
+      <text x="200" y="140" fill="#857ca3" font-size="10" text-anchor="middle">2020</text>
+      <text x="280" y="140" fill="#857ca3" font-size="10" text-anchor="middle">2021</text>
+      <text x="400" y="140" fill="#857ca3" font-size="10" text-anchor="middle">2024</text>
+      <text x="490" y="140" fill="#4b2e90" font-size="10" font-weight="800" text-anchor="middle">2025</text>
+    </svg>
+  </div>
+  <div class="card" style="padding:clamp(10px,1.2vw,16px)">
+    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px">NPS Vivest</div>
+    <svg viewBox="0 0 400 150" width="100%">
+      <line x1="40" x2="380" y1="14" y2="14" stroke="#f0ebfc" stroke-width="1"/>
+      <line x1="40" x2="380" y1="46" y2="46" stroke="#f0ebfc" stroke-width="1"/>
+      <line x1="40" x2="380" y1="78" y2="78" stroke="#f0ebfc" stroke-width="1"/>
+      <line x1="40" x2="380" y1="110" y2="110" stroke="#f0ebfc" stroke-width="1"/>
+      <text x="32" y="17" fill="#857ca3" font-size="9" text-anchor="end">50</text>
+      <text x="32" y="49" fill="#857ca3" font-size="9" text-anchor="end">40</text>
+      <text x="32" y="81" fill="#857ca3" font-size="9" text-anchor="end">30</text>
+      <text x="32" y="113" fill="#857ca3" font-size="9" text-anchor="end">20</text>
+      <!-- y=110-(val-15)*3.2 → 41→47, 20→114, 34→69, 33→73 -->
+      <polygon points="80,47 170,114 260,69 340,73 340,120 80,120" fill="rgba(217,119,6,.07)"/>
+      <polyline points="80,47 170,114 260,69 340,73" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="80" cy="47" r="4" fill="#d97706"/>
+      <circle cx="170" cy="114" r="4" fill="#d97706"/>
+      <circle cx="260" cy="69" r="4" fill="#d97706"/>
+      <circle cx="340" cy="73" r="6" fill="#4b2e90" stroke="#fff" stroke-width="2"/>
+      <text x="80" y="40" fill="#d97706" font-size="12" font-weight="800" text-anchor="middle">41</text>
+      <text x="170" y="107" fill="#d97706" font-size="12" font-weight="800" text-anchor="middle">20</text>
+      <text x="260" y="62" fill="#d97706" font-size="12" font-weight="800" text-anchor="middle">34</text>
+      <text x="340" y="65" fill="#4b2e90" font-size="13" font-weight="800" text-anchor="middle">33</text>
+      <rect x="105" y="14" width="140" height="14" rx="7" fill="rgba(217,119,6,.12)"/>
+      <text x="175" y="24" fill="#d97706" font-size="9" font-weight="800" text-anchor="middle">Zona de aperfeiçoamento</text>
+      <text x="80" y="140" fill="#857ca3" font-size="10" text-anchor="middle">2020</text>
+      <text x="170" y="140" fill="#857ca3" font-size="10" text-anchor="middle">2021</text>
+      <text x="260" y="140" fill="#857ca3" font-size="10" text-anchor="middle">2024</text>
+      <text x="340" y="140" fill="#4b2e90" font-size="10" font-weight="800" text-anchor="middle">2025</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ROW 2: perfis compactos -->
+<div class="grid3" style="gap:clamp(8px,1vw,14px);flex-shrink:0">
+  <!-- Ativos -->
+  <div class="card" style="border-color:rgba(230,61,103,.25);padding:clamp(10px,1.2vw,14px)">
+    <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px">
+      <span class="badge badge-a">A</span>
+      <span style="font-size:13px;font-weight:800;color:#e63d67">Ativos</span>
+      <span style="font-size:10px;color:var(--muted)">n = 250</span>
+    </div>
+    <div class="grid2" style="gap:5px;margin-bottom:8px">
+      <div style="padding:5px 7px;background:rgba(230,61,103,.07);border-radius:8px;text-align:center">
+        <div style="font-size:9px;color:var(--muted);font-weight:700;margin-bottom:1px">Sat. Final</div>
+        <div style="font-size:18px;font-weight:800;color:#e63d67;line-height:1.1">64,9%</div>
+        <div class="delta-pos" style="font-size:9px;margin-top:1px">+1,7 p.p. vs. 2024</div>
+      </div>
+      <div style="padding:5px 7px;background:rgba(230,61,103,.07);border-radius:8px;text-align:center">
+        <div style="font-size:9px;color:var(--muted);font-weight:700;margin-bottom:1px">NPS</div>
+        <div style="font-size:18px;font-weight:800;color:#d97706;line-height:1.1"><strong>18</strong></div>
+        <div class="delta-neg" style="font-size:9px;margin-top:1px">−8 pts vs. 2024</div>
+      </div>
+    </div>
+    <div style="font-size:11px;line-height:1.55;color:var(--ink)">Perfil mais crítico. NPS cai para 18 com <strong>28% de detratores</strong> — maior proporção do relatório.</div>
+  </div>
+  <!-- Assistidos -->
+  <div class="card" style="border-color:rgba(103,80,181,.25);padding:clamp(10px,1.2vw,14px)">
+    <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px">
+      <span class="badge badge-as">A</span>
+      <span style="font-size:13px;font-weight:800;color:#6750b5">Assistidos</span>
+      <span style="font-size:10px;color:var(--muted)">n = 760</span>
+    </div>
+    <div class="grid2" style="gap:5px;margin-bottom:8px">
+      <div style="padding:5px 7px;background:rgba(103,80,181,.07);border-radius:8px;text-align:center">
+        <div style="font-size:9px;color:var(--muted);font-weight:700;margin-bottom:1px">Sat. Final</div>
+        <div style="font-size:18px;font-weight:800;color:#6750b5;line-height:1.1">76,8%</div>
+        <div class="delta-pos" style="font-size:9px;margin-top:1px">+3,3 p.p. vs. 2024</div>
+      </div>
+      <div style="padding:5px 7px;background:rgba(103,80,181,.07);border-radius:8px;text-align:center">
+        <div style="font-size:9px;color:var(--muted);font-weight:700;margin-bottom:1px">NPS</div>
+        <div style="font-size:18px;font-weight:800;color:#d97706;line-height:1.1"><strong>46</strong></div>
+        <div class="delta-pos" style="font-size:9px;margin-top:1px">+7 pts vs. 2024</div>
+      </div>
+    </div>
+    <div style="font-size:11px;line-height:1.55;color:var(--ink)">Lidera todos os indicadores. NPS 46 é o <strong>melhor resultado da série</strong> — 61% de promotores.</div>
+  </div>
+  <!-- Saúde -->
+  <div class="card" style="border-color:rgba(14,168,116,.25);padding:clamp(10px,1.2vw,14px)">
+    <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px">
+      <span class="badge badge-s">S</span>
+      <span style="font-size:13px;font-weight:800;color:#0ea874">Saúde</span>
+      <span style="font-size:10px;color:var(--muted)">n = 70</span>
+    </div>
+    <div class="grid2" style="gap:5px;margin-bottom:8px">
+      <div style="padding:5px 7px;background:rgba(14,168,116,.07);border-radius:8px;text-align:center">
+        <div style="font-size:9px;color:var(--muted);font-weight:700;margin-bottom:1px">Sat. Final</div>
+        <div style="font-size:18px;font-weight:800;color:#0ea874;line-height:1.1">72,8%</div>
+        <div class="delta-pos" style="font-size:9px;margin-top:1px">+0,2 p.p. vs. 2024</div>
+      </div>
+      <div style="padding:5px 7px;background:rgba(14,168,116,.07);border-radius:8px;text-align:center">
+        <div style="font-size:9px;color:var(--muted);font-weight:700;margin-bottom:1px">NPS</div>
+        <div style="font-size:18px;font-weight:800;color:#d97706;line-height:1.1"><strong>37</strong></div>
+        <div class="delta-pos" style="font-size:9px;margin-top:1px">+1 pt vs. 2024</div>
+      </div>
+    </div>
+    <div style="font-size:11px;line-height:1.55;color:var(--ink)">Maior salto inicial→final (<strong>+6,8 p.p.</strong>). A nota dada ao plano e à Vivest são praticamente idênticas.</div>
+  </div>
+</div>
+
+<!-- ROW 3: callout compacto -->
+<div class="card" style="flex-shrink:0"><h3>Leitura dos dados</h3>
+<div class="callout" style="margin-top:8px;font-size:11.5px">
+  <strong>71,3%</strong> de satisfação final — +1,4 p.p. vs. 2024. NPS estável em <strong>33</strong>, mas com polarização crescente: <strong style="color:#6750b5">Assistidos</strong> NPS 46 vs. <strong style="color:#e63d67">Ativos</strong> NPS 18. A heterogeneidade entre perfis é o traço mais relevante do ciclo 2025.
+</div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 5 — IMAGEM INSTITUCIONAL
+══════════════════════════════════════════ -->
+<section class="slide" id="imagem">
+<div class="kicker">Apresentação Executiva</div>
+<h2 class="title">Atributos de imagem: solidez consolidada</h2>
+<div class="rule"></div>
+<p class="subtitle">Os quatro atributos de imagem apresentam trajetória consistente de recuperação desde 2021 e permanecem como o conjunto de indicadores mais estável do relatório.</p>
+
+<!-- ROW 1: barras + tabela por perfil -->
+<div class="grid2" style="gap:clamp(8px,1vw,14px);flex-shrink:0">
+  <!-- Card barras -->
+  <div class="card" style="align-self:start">
+    <h3>Resultados T3B · 2025</h3>
+    <div style="margin-top:10px">
+      <!-- cabeçalhos -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--line)">
+        <span style="width:140px;flex-shrink:0"></span>
+        <span style="flex:1"></span>
+        <span style="width:48px;text-align:right;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">2025</span>
+        <span style="width:76px;text-align:right;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">Δ vs. 2024</span>
+      </div>
+      <!-- Solidez -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <span style="width:140px;font-size:12px;font-weight:700;color:#2f6fb0;flex-shrink:0">Solidez</span>
+        <div class="track" style="flex:1"><div class="fill" style="width:77.2%;background:#2f6fb0"></div></div>
+        <span style="width:48px;text-align:right;font-size:13px;font-weight:800;color:#2f6fb0">77,2%</span>
+        <span style="width:76px;text-align:right;font-size:11px;font-weight:700;color:#9c1a34;background:#fce8ed;padding:2px 8px;border-radius:10px">−0,3 p.p.</span>
+      </div>
+      <!-- Confiança -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <span style="width:140px;font-size:12px;font-weight:700;color:#6750b5;flex-shrink:0">Confiança</span>
+        <div class="track" style="flex:1"><div class="fill" style="width:77%;background:#6750b5"></div></div>
+        <span style="width:48px;text-align:right;font-size:13px;font-weight:800;color:#6750b5">77,0%</span>
+        <span style="width:76px;text-align:right;font-size:11px;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:10px">+0,7 p.p.</span>
+      </div>
+      <!-- Transparência -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <span style="width:140px;font-size:12px;font-weight:700;color:#0ea874;flex-shrink:0">Transparência</span>
+        <div class="track" style="flex:1"><div class="fill" style="width:71.3%;background:#0ea874"></div></div>
+        <span style="width:48px;text-align:right;font-size:13px;font-weight:800;color:#0ea874">71,3%</span>
+        <span style="width:76px;text-align:right;font-size:11px;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:10px">+2,2 p.p.</span>
+      </div>
+      <!-- Preocupação -->
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="width:140px;font-size:12px;font-weight:700;color:#e63d67;flex-shrink:0">Preocupação<br><span style="font-size:10px;font-weight:400;color:#e63d67;opacity:.8">com os associados</span></span>
+        <div class="track" style="flex:1"><div class="fill" style="width:66.8%;background:#e63d67"></div></div>
+        <span style="width:48px;text-align:right;font-size:13px;font-weight:800;color:#e63d67">66,8%</span>
+        <span style="width:76px;text-align:right;font-size:11px;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:10px">+3,8 p.p.</span>
+      </div>
+    </div>
+  </div>
+  <!-- Card tabela por perfil -->
+  <div class="card" style="align-self:start">
+    <h3>Imagem por perfil · 2025</h3>
+    <table class="table" style="font-size:11.5px;margin-top:8px">
+      <tr>
+        <th>Atributo</th>
+        <th style="text-align:right;color:#e63d67;white-space:nowrap">Ativos</th>
+        <th style="text-align:right;color:#6750b5;white-space:nowrap">Assist.</th>
+        <th style="text-align:right;color:#0ea874;white-space:nowrap">Saúde</th>
+      </tr>
+      <tr><td style="color:#2f6fb0;font-weight:700">Solidez</td><td style="text-align:right">69,6%</td><td style="text-align:right">79,9%</td><td style="text-align:right">75,3%</td></tr>
+      <tr><td style="color:#6750b5;font-weight:700">Confiança</td><td style="text-align:right">69,4%</td><td style="text-align:right">79,8%</td><td style="text-align:right">75,7%</td></tr>
+      <tr><td style="color:#0ea874;font-weight:700">Transparência</td><td style="text-align:right">62,4%</td><td style="text-align:right">74,6%</td><td style="text-align:right">68,3%</td></tr>
+      <tr><td style="color:#e63d67;font-weight:700">Preocupação<br><span style="font-size:10px;font-weight:400">com os associados</span></td><td style="text-align:right">57,4%</td><td style="text-align:right">70,6%</td><td style="text-align:right">62,9%</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<div class="card" style="flex-shrink:0">
+  <h3>Destaques</h3>
+  <div class="note-list" style="margin-top:6px">
+    <div class="note-item">
+      <div class="label" style="color:#2f6fb0">Solidez</div>
+      <div class="text">Recua levemente (−0,3 p.p. vs. 2024), mas lidera o ranking e permanece próxima de 2019 (84%). Base sólida de percepção institucional.</div>
+    </div>
+    <div class="note-item">
+      <div class="label" style="color:#6750b5">Confiança</div>
+      <div class="text">Avança +0,7 p.p. e supera Solidez pela primeira vez desde 2019 — sinal de consolidação da credibilidade após o ciclo de queda de 2021.</div>
+    </div>
+    <div class="note-item">
+      <div class="label" style="color:#0ea874">Transparência</div>
+      <div class="text">Cresce +2,2 p.p. — ganho expressivo que reflete positivamente as iniciativas de comunicação e prestação de contas do período.</div>
+    </div>
+    <div class="note-item">
+      <div class="label" style="color:#e63d67">Preocupação<br><span style="font-size:10px;font-weight:400">com os associados</span></div>
+      <div class="text">Maior ganho do ciclo (+3,8 p.p.) e menor valor da série (66,8%) — principal oportunidade de desenvolvimento para o próximo ciclo.</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="flex-shrink:0"><h3>Leitura dos dados</h3>
+<div class="callout" style="margin-top:8px">
+  Os atributos de imagem apresentam trajetória consistente de recuperação desde 2021, mas todos permanecem abaixo dos níveis pré-2020. <strong style="color:#e63d67">Ativos</strong> registram os menores valores em todos os atributos — reflexo de uma relação ainda em construção com a Vivest. O destaque do ciclo é a <strong style="color:#e63d67">Preocupação com os associados</strong>: maior ganho (+3,8 p.p.) e principal oportunidade de desenvolvimento — o único atributo ainda distante do patamar de 2019 (78,6% vs. 66,8% atuais).
+</div>
+</div>
+
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 5 — PREVIDÊNCIA E RENTABILIDADE
+══════════════════════════════════════════ -->
+<section class="slide" id="previdencia">
+<div class="kicker">Apresentação Executiva</div>
+<h2 class="title">Previdência: recuperação sustentada</h2>
+<div class="rule"></div>
+<p class="subtitle">O capítulo de previdência registra os melhores resultados da série para satisfação geral e clareza do extrato, consolidando-se como o principal sustentáculo da satisfação dos <strong style="color:#6750b5">Assistidos</strong>.</p>
+<div class="kpis" style="flex-shrink:0">
+  <div class="kpi">
+    <div class="label">Satisfação Geral</div>
+    <div class="value">71,0%</div>
+    <div class="meta"><span class="delta-pos">+4,3 p.p. vs. 2024</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Rentabilidade</div>
+    <div class="value">58,2%</div>
+    <div class="meta"><span class="delta-pos">+9,5 p.p. vs. 2024</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Clareza do Extrato</div>
+    <div class="value">81,5%</div>
+    <div class="meta"><span class="delta-pos">+5,0 p.p. vs. 2024</span> · melhor da série</div>
+  </div>
+  <div class="kpi">
+    <div class="label">Pontualidade</div>
+    <div class="value" style="color:#059669">98,6%</div>
+    <div class="meta"><span style="color:#059669;font-weight:700">Piso histórico estável</span> · referência da série</div>
+  </div>
+</div>
+<div class="grid2" style="flex:1;min-height:0">
+  <div class="card">
+    <h3>Satisfação geral por perfil · série 2019–2025</h3>
+    <table class="table" style="margin-top:6px">
+      <tr><th>Ano</th><th style="text-align:right">Total</th><th style="text-align:right;color:#e63d67">Ativos</th><th style="text-align:right;color:#6750b5">Assistidos</th></tr>
+      <tr><td>2019</td><td style="text-align:right">74,0%</td><td style="text-align:right">76,0%</td><td style="text-align:right">73,0%</td></tr>
+      <tr><td>2020</td><td style="text-align:right">74,3%</td><td style="text-align:right">72,7%</td><td style="text-align:right">75,9%</td></tr>
+      <tr><td>2021</td><td style="text-align:right">64,0%</td><td style="text-align:right">54,0%</td><td style="text-align:right">67,0%</td></tr>
+      <tr><td>2024</td><td style="text-align:right">66,7%</td><td style="text-align:right">65,1%</td><td style="text-align:right">68,2%</td></tr>
+      <tr style="font-weight:700;color:var(--violet)"><td><strong>2025</strong></td><td style="text-align:right">71,0%</td><td style="text-align:right;color:#e63d67">68,8%</td><td style="text-align:right;color:#6750b5">73,0%</td></tr>
+    </table>
+    <p style="font-size:11px;color:var(--muted);margin:7px 0 0;line-height:1.4"><strong style="color:#e63d67">Ativos</strong> registram o maior salto histórico (+3,7 p.p.), reduzindo o gap em relação aos <strong style="color:#6750b5">Assistidos</strong> para o menor nível da série.</p>
+  </div>
+  <div class="card">
+    <h3>Rentabilidade</h3>
+    <p style="font-size:12.5px;line-height:1.65;margin:0 0 10px;color:var(--ink)">Avança +9,5 p.p. para 58,2% — maior ganho do ciclo — mas permanece distante do patamar de 2019 (76,0%). A convergência entre <strong style="color:#e63d67">Ativos</strong> (57,2%) e <strong style="color:#6750b5">Assistidos</strong> (59,1%) é inédita na série, com gap de apenas 1,9 p.p.</p>
+    <div style="padding:10px 12px;background:rgba(91,75,158,.06);border-radius:10px;font-size:12px;line-height:1.6">
+      <strong>Agenda:</strong> a percepção de rentabilidade reflete o ciclo macroeconômico. Comunicar proativamente a estratégia de investimento e os resultados em relação ao mercado é a alavanca mais eficaz para consolidar os ganhos deste ciclo.
+    </div>
+  </div>
+</div>
+<div class="card" style="flex-shrink:0"><h3>Leitura dos dados</h3>
+  <div class="callout" style="margin-top:8px;font-size:11.5px">
+    Todos os perfis avançam em 2025. <strong style="color:#e63d67">Ativos</strong> +3,7 p.p. e <strong style="color:#6750b5">Assistidos</strong> +4,8 p.p. — gap estável em ~4 p.p., sugerindo que as melhorias beneficiam os dois perfis de forma equilibrada. <strong style="color:#059669">Pontualidade no pagamento em 98,6%</strong> consolida-se como a base incondicional de confiança do capítulo.
+  </div>
+</div>
+</section>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 6 — EMPRÉSTIMOS
+══════════════════════════════════════════ -->
+<section class="slide" id="emprestimos">
+<div class="kicker">Apresentação Executiva</div>
+<h2 class="title">Empréstimos: crescimento com atenção à percepção das taxas</h2>
+<div class="rule"></div>
+<p class="subtitle">O produto cresce em uso e mantém boa avaliação do processo de contratação, mas a satisfação com a taxa cobrada atinge o piso histórico — sinal de atenção à medida que a base de tomadores se amplia.</p>
+<div class="kpis" style="flex-shrink:0">
+  <div class="kpi">
+    <div class="label">Uso Total</div>
+    <div class="value">19,7%</div>
+    <div class="meta"><span class="delta-pos">+3,2 p.p. vs. 2024</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Facilidade de Contratação</div>
+    <div class="value">81,0%</div>
+    <div class="meta"><span class="delta-neg">−5,5 p.p. vs. 2024</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Taxa Cobrada</div>
+    <div class="value">61,5%</div>
+    <div class="meta"><span class="delta-neg">−10,1 p.p. vs. 2024</span> · piso histórico</div>
+  </div>
+  <div class="kpi">
+    <div class="label">Uso entre <strong style="color:#e63d67">Ativos</strong></div>
+    <div class="value" style="color:#e63d67">33,5%</div>
+    <div class="meta"><span class="delta-pos">+12,0 p.p. vs. 2024</span> · 1 em cada 3</div>
+  </div>
+</div>
+<div class="grid2" style="gap:clamp(8px,1vw,14px);flex-shrink:0">
+  <!-- ESQUERDA: uso por perfil com barras -->
+  <div class="card" style="align-self:start">
+    <h3>Uso do empréstimo por perfil</h3>
+    <div style="margin-top:10px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--line)">
+        <span style="width:110px;flex-shrink:0"></span>
+        <span style="flex:1"></span>
+        <span style="width:48px;text-align:right;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">2025</span>
+        <span style="width:76px;text-align:right;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">Δ vs. 2024</span>
+      </div>
+      <!-- Total -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <span style="width:110px;font-size:12px;font-weight:700;color:#2f6fb0;flex-shrink:0">Total</span>
+        <div class="track" style="flex:1"><div class="fill" style="width:19.7%;background:#2f6fb0"></div></div>
+        <span style="width:48px;text-align:right;font-size:13px;font-weight:800;color:#2f6fb0">19,7%</span>
+        <span style="width:76px;text-align:right;font-size:11px;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:10px">+3,2 p.p.</span>
+      </div>
+      <!-- Ativos -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <span style="width:110px;font-size:12px;font-weight:700;color:#e63d67;flex-shrink:0">Ativos</span>
+        <div class="track" style="flex:1"><div class="fill" style="width:33.5%;background:#e63d67"></div></div>
+        <span style="width:48px;text-align:right;font-size:13px;font-weight:800;color:#e63d67">33,5%</span>
+        <span style="width:76px;text-align:right;font-size:11px;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:10px">+12,0 p.p.</span>
+      </div>
+      <!-- Assistidos -->
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="width:110px;font-size:12px;font-weight:700;color:#6750b5;flex-shrink:0">Assistidos</span>
+        <div class="track" style="flex:1"><div class="fill" style="width:16.3%;background:#6750b5"></div></div>
+        <span style="width:48px;text-align:right;font-size:13px;font-weight:800;color:#6750b5">16,3%</span>
+        <span style="width:76px;text-align:right;font-size:11px;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:10px">+3,1 p.p.</span>
+      </div>
+    </div>
+  </div>
+  <!-- DIREITA: tabelas facilidade + taxa -->
+  <div class="card" style="align-self:start">
+    <h3>Satisfação com facilidade e taxa por perfil · 2025</h3>
+    <table class="table" style="font-size:11.5px;margin-top:8px">
+      <thead>
+        <tr>
+          <th></th>
+          <th style="text-align:right;color:#2f6fb0">Total</th>
+          <th style="text-align:right;color:#e63d67">Ativos</th>
+          <th style="text-align:right;color:#6750b5">Assistidos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="font-weight:700;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.06em">
+          <td colspan="4" style="padding-top:8px">Facilidade de Contratação</td>
+        </tr>
+        <tr>
+          <td style="color:var(--muted);font-size:11px">T3B 2025</td>
+          <td style="text-align:right;font-weight:700;color:#2f6fb0">81,0%</td>
+          <td style="text-align:right;font-weight:700;color:#e63d67">72,4%</td>
+          <td style="text-align:right;font-weight:700;color:#6750b5">89,2%</td>
+        </tr>
+        <tr>
+          <td style="color:var(--muted);font-size:11px">Δ vs. 2024</td>
+          <td style="text-align:right"><span class="delta-neg" style="font-size:11px">−5,5 p.p.</span></td>
+          <td style="text-align:right"><span class="delta-neg" style="font-size:11px">−16,9 p.p.</span></td>
+          <td style="text-align:right"><span class="delta-pos" style="font-size:11px">+5,6 p.p.</span></td>
+        </tr>
+        <tr style="font-weight:700;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.06em">
+          <td colspan="4" style="padding-top:12px">Taxa Cobrada</td>
+        </tr>
+        <tr>
+          <td style="color:var(--muted);font-size:11px">T3B 2025</td>
+          <td style="text-align:right;font-weight:700;color:#2f6fb0">61,5%</td>
+          <td style="text-align:right;font-weight:700;color:#e63d67">45,3%</td>
+          <td style="text-align:right;font-weight:700;color:#6750b5">79,0%</td>
+        </tr>
+        <tr>
+          <td style="color:var(--muted);font-size:11px">Δ vs. 2024</td>
+          <td style="text-align:right"><span class="delta-neg" style="font-size:11px">−10,1 p.p.</span></td>
+          <td style="text-align:right"><span class="delta-neg" style="font-size:11px">−22,2 p.p.</span></td>
+          <td style="text-align:right"><span class="delta-pos" style="font-size:11px">+3,0 p.p.</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="card" style="flex-shrink:0"><h3>Leitura dos dados</h3>
+<div class="callout" style="margin-top:8px">
+  O uso cresceu em todos os perfis, mas de forma assimétrica: <strong style="color:#e63d67">Ativos</strong> saltaram de 21,5% para 33,5% (+12,0 p.p.), enquanto <strong style="color:#6750b5">Assistidos</strong> cresceram de 13,2% para 16,3% (+3,1 p.p.). Os <strong style="color:#e63d67">Ativos</strong> registram a maior queda de satisfação com a taxa (−22,2 p.p.) e a menor avaliação do grupo (45,3%), simultaneamente ao maior crescimento de uso — o que sugere pressão crescente à medida que a base de tomadores se amplia. O gap de 33,7 p.p. entre perfis na taxa cobrada é o maior da série. A facilidade de contratação — ponto forte do produto — deve ser comunicada ativamente como evidência do valor entregue.
+</div>
+</div>
+</section>
+
+<section class="slide" id="pam">
+<div class="kicker">Apresentação Executiva</div>
+<h2 class="title">Plano de Saúde: maior amplitude de variação do relatório</h2>
+<div class="rule"></div>
+<p class="subtitle">O capítulo de saúde concentra a maior heterogeneidade de resultados: indicadores que variam de 27,7% a 75,2% dependendo do atributo e do perfil — o que sinaliza oportunidades específicas de intervenção.</p>
+<div class="kpis" style="flex-shrink:0">
+  <div class="kpi">
+    <div class="label">Sat. Geral</div>
+    <div class="value" style="color:#e63d67">59,5%</div>
+    <div class="meta"><span class="delta-neg">−6,6 p.p. vs. 2024</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">NPS do Plano</div>
+    <div class="value" style="color:#d97706"><strong>9</strong></div>
+    <div class="meta" style="color:#d97706">Zona de aperfeiçoamento</div>
+  </div>
+  <div class="kpi">
+    <div class="label">Dificuldades na rede</div>
+    <div class="value" style="color:#e63d67">36,1%</div>
+    <div class="meta"><span class="delta-neg">+3,8 p.p. vs. 2024</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">APS · satisfação total</div>
+    <div class="value" style="color:#059669">75,2%</div>
+    <div class="meta" style="color:#059669">Melhor indicador do capítulo</div>
+  </div>
+</div>
+<div class="grid2" style="flex-shrink:0;align-items:start">
+  <!-- Tabela -->
+  <div class="card">
+    <h3>Indicadores por perfil · 2025</h3>
+    <table class="table" style="font-size:11px;margin-top:8px">
+      <tr>
+        <th>Indicador</th>
+        <th style="text-align:right;color:#e63d67">Ativos</th>
+        <th style="text-align:right;color:#6750b5">Assist.</th>
+        <th style="text-align:right;color:#0ea874">Saúde</th>
+      </tr>
+      <tr><td>Sat. Geral</td><td style="text-align:right;color:#e63d67;font-weight:700">40,6%</td><td style="text-align:right">68,2%</td><td style="text-align:right">73,2%</td></tr>
+      <tr><td style="color:#d97706;font-weight:600">NPS do plano</td><td style="text-align:right;color:#e63d67;font-weight:800">−17</td><td style="text-align:right;color:#d97706;font-weight:800">+19</td><td style="text-align:right;color:#d97706;font-weight:800">+35</td></tr>
+      <tr><td>Qualidade prestadores</td><td style="text-align:right;color:#e63d67;font-weight:700">55,7%</td><td style="text-align:right">78,9%</td><td style="text-align:right">77,8%</td></tr>
+      <tr><td>Aprovação procedimentos</td><td style="text-align:right;color:#e63d67;font-weight:700">36,3%</td><td style="text-align:right">65,6%</td><td style="text-align:right">70,8%</td></tr>
+      <tr><td>Reembolso</td><td style="text-align:right;color:#e63d67;font-weight:700">31,0%</td><td style="text-align:right">47,8%</td><td style="text-align:right">56,1%</td></tr>
+      <tr><td>Mensalidade</td><td style="text-align:right;color:var(--muted)">—</td><td style="text-align:right;color:#e63d67;font-weight:700">27,7%</td><td style="text-align:right">52,8%</td></tr>
+      <tr><td style="color:#059669;font-weight:600">APS (usuários)</td><td style="text-align:right;color:var(--muted)">—</td><td style="text-align:right;color:#059669;font-weight:600">72,5%</td><td style="text-align:right;color:#059669;font-weight:600">81,1%</td></tr>
+    </table>
+  </div>
+  <!-- Agenda -->
+  <div class="card">
+    <h3 style="color:#e63d67">Agenda de desenvolvimento</h3>
+    <div class="note-list" style="margin-top:10px">
+      <div class="note-item">
+        <div class="label" style="color:#e63d67">35,4%<br><span style="font-size:10px;font-weight:400;color:var(--muted)">Mensalidade</span></div>
+        <div class="text">Os participantes consideram o plano caro para o que oferece — agenda direta de comunicação do valor entregue.</div>
+      </div>
+      <div class="note-item">
+        <div class="label" style="color:#e63d67">41,4%<br><span style="font-size:10px;font-weight:400;color:var(--muted)">Reembolso</span></div>
+        <div class="text">Burocracia e demora no reembolso geram atrito elevado — simplificação do processo é a prioridade operacional.</div>
+      </div>
+      <div class="note-item">
+        <div class="label" style="color:#e63d67">56,4%<br><span style="font-size:10px;font-weight:400;color:var(--muted)">Aprovação procedimentos</span></div>
+        <div class="text">Mais da metade dos elegíveis reprova o processo de autorização — gargalo operacional com impacto direto na experiência.</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:8px 10px;background:rgba(220,38,38,.05);border-radius:8px;font-size:11px;color:var(--muted);line-height:1.5">
+      Rede credenciada com dificuldades concentradas em São Paulo (45%), Campinas (11%) e Ribeirão Preto (7%).
+    </div>
+  </div>
+</div>
+<div class="card" style="flex-shrink:0"><h3>Leitura dos dados</h3>
+<div class="callout" style="margin-top:8px">
+  O capítulo de saúde concentra a maior amplitude de variação do relatório — de 27,7% (Mensalidade, <strong style="color:#6750b5">Assistidos</strong>) a 81,1% (APS, <strong style="color:#0ea874">Saúde</strong>). Os três indicadores mais críticos convergem para uma agenda de custo-benefício e simplificação de processos. A <strong style="color:#059669">APS, com 75,2% de satisfação total entre usuários</strong> e cobertura de apenas 41,3% dos elegíveis, é a <strong style="color:#059669">principal alavanca de curto prazo</strong> — sem depender de renegociação de rede ou mudança de cobertura.
+</div>
+</div>
+</section>
+
+<section class="slide" id="canais">
+<div class="kicker">Apresentação Executiva</div>
+<h2 class="title">Relacionamento: qualidade humana sustentada, digital em ajuste</h2>
+<div class="rule"></div>
+<p class="subtitle">Os canais de relacionamento são percebidos positivamente em qualidade do atendimento presencial e humano. A queda do autosserviço sinaliza que a infraestrutura digital não acompanhou as expectativas crescentes dos participantes.</p>
+<div class="kpis" style="flex-shrink:0;grid-template-columns:repeat(3,1fr)">
+  <div class="kpi">
+    <div class="label">Atendimento</div>
+    <div class="value">69,2%</div>
+    <div class="meta"><span class="delta-neg">−6,1 p.p. vs. 2024</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Autosserviço (Portal)</div>
+    <div class="value" style="color:#e63d67">63,0%</div>
+    <div class="meta"><span class="delta-neg">−8,2 p.p. vs. 2024</span> · maior queda</div>
+  </div>
+  <div class="kpi">
+    <div class="label" style="color:#6750b5">Comunicação Institucional</div>
+    <div class="value" style="color:#6750b5">72,5%</div>
+    <div class="meta"><span class="delta-neg">−1,0 p.p. vs. 2024</span> · mais estável</div>
+  </div>
+</div>
+<div class="grid2" style="flex-shrink:0;align-items:start;grid-template-columns:2fr 1fr">
+
+  <!-- Tabela unificada -->
+  <div class="card">
+    <h3>Satisfação por canal e perfil · 2025</h3>
+    <table class="table" style="font-size:11.5px;margin-top:8px">
+      <thead>
+        <tr>
+          <th>Canal</th>
+          <th style="text-align:right;color:#2f6fb0">Total</th>
+          <th style="text-align:right;color:#e63d67">Ativos</th>
+          <th style="text-align:right;color:#6750b5">Assist.</th>
+          <th style="text-align:right;color:#0ea874">Saúde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:600">Atendimento</td>
+          <td style="text-align:right;color:#2f6fb0;font-weight:700">69,2%</td>
+          <td style="text-align:right;color:#e63d67;font-weight:700">59,9%</td>
+          <td style="text-align:right">75,6%</td>
+          <td style="text-align:right">72,6%</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600">Autosserviço</td>
+          <td style="text-align:right;color:#e63d67;font-weight:700">63,0%</td>
+          <td style="text-align:right;color:#e63d67;font-weight:700">56,1%</td>
+          <td style="text-align:right">71,5%</td>
+          <td style="text-align:right;color:#e63d67;font-weight:700">57,4%</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;color:#6750b5">Comunicação</td>
+          <td style="text-align:right;color:#6750b5;font-weight:700">72,5%</td>
+          <td style="text-align:right">67,7%</td>
+          <td style="text-align:right;font-weight:700">79,5%</td>
+          <td style="text-align:right;color:#e63d67;font-weight:700">63,7%</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:12px;display:flex;flex-direction:column;gap:5px">
+      <p style="font-size:11px;color:var(--muted);margin:0;line-height:1.5"><strong style="color:#059669">✓ Ponto forte:</strong> Cordialidade 86,4% — atributo mais alto do capítulo</p>
+      <p style="font-size:11px;color:var(--muted);margin:0;line-height:1.5"><strong style="color:#e63d67">↓ Gargalo:</strong> Tempo de resolução 64,9% — pior atributo, queda de −14,1 p.p.</p>
+      <p style="font-size:11px;color:var(--muted);margin:0;line-height:1.5"><strong style="color:#e63d67">↓ Autosserviço:</strong> Busca de médicos no app recorrente nas justificativas qualitativas de todos os perfis</p>
+    </div>
+  </div>
+
+  <!-- Comunicação em destaque -->
+  <div class="card" style="border-color:rgba(103,80,181,.3)">
+    <h3 style="color:#6750b5">Comunicação Institucional</h3>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+      <div style="padding:8px 10px;background:rgba(103,80,181,.05);border-radius:8px">
+        <div style="font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">Gap entre perfis</div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <span style="font-size:13px;font-weight:700;color:#6750b5">Assist. 79,5%</span>
+          <span style="font-size:10px;color:var(--muted)">vs.</span>
+          <span style="font-size:13px;font-weight:700;color:#e63d67">Saúde 63,7%</span>
+        </div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px">Δ 15,8 p.p. — maior gap entre perfis do capítulo</div>
+      </div>
+      <div style="padding:8px 10px;background:rgba(5,150,105,.05);border-radius:8px;font-size:11px;color:var(--ink);line-height:1.5">
+        Personalizar a comunicação para o perfil <strong style="color:#0ea874">Saúde</strong> é a intervenção mais acessível do capítulo.
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="card" style="flex-shrink:0"><h3>Leitura dos dados</h3>
+<div class="callout" style="margin-top:8px">
+  A queda do autosserviço (−8,2 p.p.) é a mais expressiva do relatório e o único indicador com retração generalizada em todos os atributos. A análise multivariada revela que o autosserviço melhora a <strong>satisfação operacional</strong>, mas tem efeito limitado no NPS — a melhora do portal não substitui a agenda de <strong style="color:#0ea874">Saúde</strong> para converter detratores em promotores.
+</div>
+</div>
+</section>
+
+<section class="slide" id="qualitativos">
+<div class="kicker">Apresentação Executiva</div>
+<h2 class="title">O que dizem os participantes</h2>
+<div class="rule"></div>
+<p class="subtitle">As respostas abertas sobre os motivos do NPS e da satisfação revelam os temas que mais mobilizam a percepção — positiva e negativamente — de cada perfil.</p>
+
+<!-- Linha 1: KPI fortes + detratores por perfil -->
+<div class="kpis" style="flex-shrink:0;grid-template-columns:1.4fr 1fr 1fr 1fr">
+  <div class="kpi" style="border-color:rgba(5,150,105,.3)">
+    <div class="label" style="color:#059669">Citaram pontos fortes · Total</div>
+    <div class="value" style="color:#059669">90,1%</div>
+    <div class="meta" style="display:flex;gap:8px;flex-wrap:wrap">
+      <span style="color:#e63d67;font-size:10px">Ativos 84,2%</span>
+      <span style="color:#6750b5;font-size:10px">Assist. 97,4%</span>
+      <span style="color:#0ea874;font-size:10px">Saúde 84,9%</span>
+    </div>
+  </div>
+  <div class="kpi">
+    <div class="label" style="color:#e63d67">Detratores · <strong style="color:#e63d67">Ativos</strong></div>
+    <div class="value" style="color:#e63d67">28,0%</div>
+    <div class="meta">NPS 18 · maior proporção</div>
+  </div>
+  <div class="kpi">
+    <div class="label" style="color:#6750b5">Detratores · <strong style="color:#6750b5">Assistidos</strong></div>
+    <div class="value" style="color:#d97706">15,5%</div>
+    <div class="meta">NPS 46 · menor proporção</div>
+  </div>
+  <div class="kpi">
+    <div class="label" style="color:#0ea874">Detratores · <strong style="color:#0ea874">Saúde</strong></div>
+    <div class="value" style="color:#e63d67">23,0%</div>
+    <div class="meta">NPS 35</div>
+  </div>
+</div>
+
+<!-- Linha 2: dois cards de barras -->
+<div class="grid2" style="flex-shrink:0;align-items:start">
+  <!-- Pontos fortes -->
+  <div class="card">
+    <h3>Pontos fortes mais citados</h3>
+    <div style="margin-top:8px">
+      <div style="margin-bottom:10px">
+        <div class="bar-label-row"><span class="bar-name">Previdência e benefícios</span><span class="bar-val" style="color:#059669">40,2%</span></div>
+        <div class="track"><div class="fill" style="width:80%;background:linear-gradient(90deg,#047857,#0ea874)"></div></div>
+      </div>
+      <div style="margin-bottom:10px">
+        <div class="bar-label-row"><span class="bar-name">Atendimento ao participante</span><span class="bar-val" style="color:#059669">28,6%</span></div>
+        <div class="track"><div class="fill" style="width:57%;background:linear-gradient(90deg,#047857,#0ea874)"></div></div>
+      </div>
+      <div style="margin-bottom:10px">
+        <div class="bar-label-row"><span class="bar-name">Confiança e seriedade</span><span class="bar-val" style="color:#059669">19,3%</span></div>
+        <div class="track"><div class="fill" style="width:38%;background:linear-gradient(90deg,#047857,#0ea874)"></div></div>
+      </div>
+      <div>
+        <div class="bar-label-row"><span class="bar-name">Plano de saúde</span><span class="bar-val" style="color:#059669">15,8%</span></div>
+        <div class="track"><div class="fill" style="width:32%;background:linear-gradient(90deg,#047857,#0ea874)"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Motivos de insatisfação -->
+  <div class="card">
+    <h3>Motivos de insatisfação · NPS (detratores)</h3>
+    <div style="margin-top:8px">
+      <div style="margin-bottom:10px">
+        <div class="bar-label-row"><span class="bar-name">Plano de saúde — rede e qualidade</span><span class="bar-val" style="color:#e63d67">33,5%</span></div>
+        <div class="track"><div class="fill" style="width:67%;background:linear-gradient(90deg,#c0172a,#e63d67)"></div></div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px">Busca de médicos no app, qualidade dos prestadores · <strong style="color:#0ea874">Saúde</strong>: 57,5% · <strong style="color:#e63d67">Ativos</strong>: 36,4%</div>
+      </div>
+      <div style="margin-bottom:10px">
+        <div class="bar-label-row"><span class="bar-name">Atendimento e canais digitais</span><span class="bar-val" style="color:#e63d67">21,0%</span></div>
+        <div class="track"><div class="fill" style="width:42%;background:linear-gradient(90deg,#c0172a,#e63d67)"></div></div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px">Atendimento telefônico demorado (14,9% isoladamente)</div>
+      </div>
+      <div style="margin-bottom:10px">
+        <div class="bar-label-row"><span class="bar-name">Previdência e rentabilidade</span><span class="bar-val" style="color:#e63d67">13,7%</span></div>
+        <div class="track"><div class="fill" style="width:27%;background:linear-gradient(90deg,#c0172a,#e63d67)"></div></div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px">Concentrado em <strong style="color:#6750b5">Assistidos</strong></div>
+      </div>
+      <div>
+        <div class="bar-label-row"><span class="bar-name">Gestão e administração</span><span class="bar-val" style="color:#e63d67">10,9%</span></div>
+        <div class="track"><div class="fill" style="width:22%;background:linear-gradient(90deg,#c0172a,#e63d67)"></div></div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px">Inclui comparação com gestão anterior</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Leitura dos dados -->
+<div class="card" style="flex-shrink:0"><h3>Leitura dos dados</h3>
+<div class="callout" style="margin-top:8px">
+  O plano de saúde aparece nos dois extremos da percepção — mas em proporções distintas quando colocados na mesma régua. Entre os detratores, é o principal motivo de insatisfação (33,5% desse grupo). Entre os que citaram pontos fortes — 90,1% da amostra —, aparece em 15,8% das menções. Trazendo os dois para o total de participantes: cerca de <strong>14,2% elogiam o plano</strong> contra <strong>7,3% que o criticam</strong>. A dualidade existe, mas a assimetria favorece a percepção positiva. O sinal de atenção está na intensidade: quando falha — rede, procedimentos, cobertura —, o plano concentra toda a frustração e move o participante para a zona de detração.
+</div>
+</div>
+</section>
+
+<section class="slide" id="drivers">
+<div class="kicker">Apresentação Executiva</div>
+<h2 class="title">O que efetivamente move a satisfação e o NPS</h2>
+<div class="rule"></div>
+<p class="subtitle">Por meio de análise estatística multivariada, identificamos o peso relativo de cada fator na satisfação final e no NPS — isolando a contribuição de cada um independentemente dos demais. As barras mostram essa influência relativa.</p>
+<div class="grid2" style="flex:1;min-height:0">
+  <div class="card">
+    <h3 style="margin-bottom:3px">O que move a <span style="color:#5b4b9e">satisfação geral</span></h3>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:12px">Peso relativo · modelo explica 83% das variações</div>
+    <div style="display:flex;flex-direction:column;gap:9px">
+      <div class="bar-item">
+        <div class="bar-label-row">
+          <span class="bar-name">🥇 Comunicação institucional</span>
+          <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:1px 7px;border-radius:10px">0,375</span>
+        </div>
+        <div class="track"><div class="fill" style="width:88%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row">
+          <span class="bar-name" style="color:#0ea874;font-weight:700">🥈 Plano de saúde</span>
+          <span style="font-size:11px;font-weight:700;color:#0ea874;background:rgba(14,168,116,.1);padding:1px 7px;border-radius:10px">0,226</span>
+        </div>
+        <div class="track"><div class="fill" style="width:53%;background:linear-gradient(90deg,#047857,#0ea874)"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row">
+          <span class="bar-name">🥉 Autosserviço (portal)</span>
+          <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:1px 7px;border-radius:10px">0,186</span>
+        </div>
+        <div class="track"><div class="fill" style="width:44%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row">
+          <span class="bar-name">4.º Plano de previdência</span>
+          <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:1px 7px;border-radius:10px">0,158</span>
+        </div>
+        <div class="track"><div class="fill" style="width:37%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row">
+          <span class="bar-name">5.º Atendimento</span>
+          <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:1px 7px;border-radius:10px">0,133</span>
+        </div>
+        <div class="track"><div class="fill" style="width:31%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:8px 10px;background:rgba(91,75,158,.06);border-radius:8px;font-size:11.5px;line-height:1.5;color:var(--ink)">
+      Comunicar bem é o que mais impacta a satisfação. O plano de saúde ocupa o 2.º lugar. Para quem tem plano Vivest, a satisfação com o plano e a satisfação com a instituição são praticamente idênticas — o plano e a Vivest se fundiram na percepção desse participante. Isso se confirma pelo contraste: participantes sem plano avaliam a Vivest 0,46 p.p. acima em média. Para esse grupo, melhorar o plano é, diretamente, melhorar a Vivest.
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="margin-bottom:3px">O que move a <span style="color:#0ea874">disposição de recomendar (NPS)</span></h3>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:12px">Peso relativo · modelo explica 79% das variações</div>
+    <div style="display:flex;flex-direction:column;gap:9px">
+      <div class="bar-item">
+        <div class="bar-label-row">
+          <span class="bar-name" style="color:#0ea874;font-weight:700">🥇 Plano de saúde</span>
+          <span style="font-size:11px;font-weight:700;color:#0ea874;background:rgba(14,168,116,.1);padding:1px 7px;border-radius:10px">0,426</span>
+        </div>
+        <div class="track"><div class="fill" style="width:100%;background:linear-gradient(90deg,#047857,#0ea874)"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row">
+          <span class="bar-name">🥈 Comunicação institucional</span>
+          <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:1px 7px;border-radius:10px">0,220</span>
+        </div>
+        <div class="track"><div class="fill" style="width:52%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row">
+          <span class="bar-name">🥉 Plano de previdência</span>
+          <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:1px 7px;border-radius:10px">0,181</span>
+        </div>
+        <div class="track"><div class="fill" style="width:42%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row">
+          <span class="bar-name">4.º Atendimento</span>
+          <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:1px 7px;border-radius:10px">0,159</span>
+        </div>
+        <div class="track"><div class="fill" style="width:37%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row">
+          <span class="bar-name" style="color:var(--muted)">Autosserviço — influência limitada no NPS</span>
+          <span style="font-size:11px;font-weight:700;color:var(--muted);background:var(--bg-soft);padding:1px 7px;border-radius:10px">0,063</span>
+        </div>
+        <div class="track"><div class="fill" style="width:15%;background:linear-gradient(90deg,#9d97b8,#c5c2d8);opacity:.6"></div></div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:8px 10px;background:rgba(14,168,116,.07);border-radius:8px;font-size:11.5px;line-height:1.5;color:var(--ink)">
+      Para o NPS, o plano de saúde pesa mais do que comunicação e previdência juntos. Quem está insatisfeito com o plano tende a não recomendar a Vivest.
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SLIDE 12 — TRÊS PERFIS, TRÊS AGENDAS
+══════════════════════════════════════════ -->
+<section class="slide" id="tres-perfis">
+<div class="kicker">Apresentação Executiva</div>
+<h2 class="title">Três perfis, três agendas de relacionamento</h2>
+<div class="rule"></div>
+<p class="subtitle">O peso do plano de saúde varia de acordo com o grau de dependência de cada perfil em relação a esse produto. Quanto mais exclusiva é essa relação, maior o impacto na nota e na recomendação.</p>
+<div class="grid3" style="flex-shrink:0;align-items:start">
+  <!-- Ativos -->
+  <div class="card" style="border:1.5px solid rgba(230,61,103,.2)">
+    <h3 style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <span class="badge badge-a">A</span>
+      <span style="color:#e63d67">Ativos</span>
+    </h3>
+    <div style="font-size:12px;font-weight:700;color:#e63d67;margin-bottom:8px;line-height:1.3">Comunicação move a nota.<br/>Saúde move a recomendação.</div>
+    <div style="display:flex;flex-direction:column;gap:5px;font-size:12px;line-height:1.55;margin-bottom:10px">
+      <div style="display:flex;gap:7px"><span style="color:#e63d67;flex-shrink:0">→</span><span>Na satisfação geral, comunicação é o fator dominante.</span></div>
+      <div style="display:flex;gap:7px"><span style="color:#e63d67;flex-shrink:0">→</span><span>No NPS, o plano de saúde supera todos os demais fatores.</span></div>
+    </div>
+    <div style="padding:7px 9px;background:rgba(180,130,0,.07);border-left:2.5px solid #d97706;border-radius:0 6px 6px 0;font-size:11.5px;line-height:1.5;color:var(--ink)">
+      Melhorar comunicação sobe a nota — mas não gera promotores. Só o plano converte Ativos em quem recomenda a Vivest. <em style="font-size:11px">(36% dos Ativos têm plano Vivest)</em>
+    </div>
+    <div class="grid2" style="gap:5px;margin-top:10px">
+      <div style="padding:5px 7px;background:rgba(230,61,103,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600">Sat. Final</div><div style="font-size:15px;font-weight:800;color:#e63d67">64,9%</div></div>
+      <div style="padding:5px 7px;background:rgba(230,61,103,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600">NPS</div><div style="font-size:15px;font-weight:800;color:#d97706"><strong>18</strong></div></div>
+    </div>
+  </div>
+  <!-- Assistidos -->
+  <div class="card" style="border:1.5px solid rgba(103,80,181,.2)">
+    <h3 style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <span class="badge badge-as">A</span>
+      <span style="color:#6750b5"><strong style="color:#6750b5">Assistidos</strong></span>
+    </h3>
+    <div style="font-size:12px;font-weight:700;color:#6750b5;margin-bottom:8px;line-height:1.3">Saúde lidera, mas a relação<br/>é mais equilibrada.</div>
+    <div style="display:flex;flex-direction:column;gap:5px;font-size:12px;line-height:1.55;margin-bottom:10px">
+      <div style="display:flex;gap:7px"><span style="color:#6750b5;flex-shrink:0">→</span><span>Plano de saúde lidera, mas comunicação, atendimento e previdência também pesam.</span></div>
+      <div style="display:flex;gap:7px"><span style="color:#6750b5;flex-shrink:0">→</span><span>A relação previdenciária consolidada atenua o efeito isolado da saúde.</span></div>
+      <div style="display:flex;gap:7px"><span style="color:#6750b5;flex-shrink:0">→</span><span>Perfil com base mais robusta — resultados mais confiáveis.</span></div>
+    </div>
+    <div class="grid2" style="gap:5px;margin-top:10px">
+      <div style="padding:5px 7px;background:rgba(103,80,181,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600">Sat. Final</div><div style="font-size:15px;font-weight:800;color:#6750b5">76,8%</div></div>
+      <div style="padding:5px 7px;background:rgba(103,80,181,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600">NPS</div><div style="font-size:15px;font-weight:800;color:#d97706"><strong>46</strong></div></div>
+    </div>
+  </div>
+  <!-- Saúde -->
+  <div class="card" style="border:1.5px solid rgba(14,168,116,.2)">
+    <h3 style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <span class="badge badge-s">S</span>
+      <span style="color:#0ea874">Saúde</span>
+    </h3>
+    <div style="font-size:12px;font-weight:700;color:#0ea874;margin-bottom:8px;line-height:1.3">Para quem só tem plano,<br/>a Vivest <em>é</em> o plano.</div>
+    <div style="display:flex;flex-direction:column;gap:5px;font-size:12px;line-height:1.55;margin-bottom:10px">
+      <div style="display:flex;gap:7px"><span style="color:#0ea874;flex-shrink:0">→</span><span>Plano de saúde é o fator decisivo — na satisfação e na recomendação.</span></div>
+      <div style="display:flex;gap:7px"><span style="color:#0ea874;flex-shrink:0">→</span><span>A nota dada ao plano e à Vivest são praticamente idênticas.</span></div>
+      <div style="display:flex;gap:7px"><span style="color:#0ea874;flex-shrink:0">→</span><span>Qualquer melhora no plano tem retorno imediato na percepção institucional.</span></div>
+    </div>
+    <div class="grid2" style="gap:5px;margin-top:10px">
+      <div style="padding:5px 7px;background:rgba(14,168,116,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600">Sat. Final</div><div style="font-size:15px;font-weight:800;color:#0ea874">72,8%</div></div>
+      <div style="padding:5px 7px;background:rgba(14,168,116,.07);border-radius:7px"><div style="font-size:10px;color:var(--muted);font-weight:600">NPS</div><div style="font-size:15px;font-weight:800;color:#d97706"><strong>37</strong></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="flex-shrink:0"><h3>Leitura dos dados</h3>
+<div class="callout" style="margin-top:8px">
+  Os três perfis compartilham o mesmo produto, mas vivem relações distintas com ele. Para <strong style="color:#e63d67">Ativos</strong>, comunicação e plano operam em registros separados — o primeiro move a satisfação, o segundo move a recomendação. Para <strong style="color:#6750b5">Assistidos</strong>, a relação previdenciária consolidada distribui o peso entre múltiplos fatores — nenhum isolado decide. Para <strong style="color:#0ea874">Saúde</strong>, o plano e a Vivest são a mesma coisa: não há separação possível entre percepção institucional e experiência com o produto.
+</div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 13 — TOP/BOTTOM 5 CONSOLIDADO
+══════════════════════════════════════════ -->
+<section class="slide" id="topbottom">
+<div class="kicker">Apresentação Executiva</div>
+<h2 class="title">O que sustenta e o que demanda atenção em 2026</h2>
+<div class="rule"></div>
+<p class="subtitle">Síntese dos indicadores de maior e menor desempenho consolidado — mapa de priorização para a agenda de 2026.</p>
+<div class="grid2" style="flex:1;min-height:0">
+  <!-- Top 5 -->
+  <div class="card">
+    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#059669;margin-bottom:10px">▲ Os que sustentam a satisfação</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:rgba(5,150,105,.06);border-radius:8px">
+        <div>
+          <span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#6750b5;color:#fff;font-size:9px;font-weight:800;margin-right:6px">PP</span>
+          <span style="font-size:12px;font-weight:600">Pontualidade no pagamento do benefício</span>
+        </div>
+        <div style="text-align:right"><div style="font-size:14px;font-weight:800;color:#059669">98,6%</div><div style="font-size:10px;color:#059669">+0,4 p.p. vs. 2024</div></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:rgba(5,150,105,.06);border-radius:8px">
+        <div>
+          <span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#2f6fb0;color:#fff;font-size:9px;font-weight:800;margin-right:6px">ATE</span>
+          <span style="font-size:12px;font-weight:600">Cordialidade no atendimento</span>
+        </div>
+        <div style="text-align:right"><div style="font-size:14px;font-weight:800;color:#059669">86,4%</div><div style="font-size:10px;color:#e63d67">−1,8 p.p. vs. 2024</div></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:rgba(5,150,105,.06);border-radius:8px">
+        <div>
+          <span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#6750b5;color:#fff;font-size:9px;font-weight:800;margin-right:6px">PP</span>
+          <span style="font-size:12px;font-weight:600">Clareza do extrato previdenciário</span>
+        </div>
+        <div style="text-align:right"><div style="font-size:14px;font-weight:800;color:#059669">81,5%</div><div style="font-size:10px;color:#059669">+5,0 p.p. vs. 2024</div></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:rgba(5,150,105,.06);border-radius:8px">
+        <div>
+          <span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;margin-right:6px">PAM</span>
+          <span style="font-size:12px;font-weight:600">APS — entre usuários</span>
+        </div>
+        <div style="text-align:right"><div style="font-size:14px;font-weight:800;color:#059669">81,1%</div><div style="font-size:10px;color:#e63d67">−3,3 p.p. vs. 2024</div></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:rgba(5,150,105,.06);border-radius:8px">
+        <div>
+          <span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#6750b5;color:#fff;font-size:9px;font-weight:800;margin-right:6px">PP</span>
+          <span style="font-size:12px;font-weight:600">Satisfação com o plano previd.</span>
+        </div>
+        <div style="text-align:right"><div style="font-size:14px;font-weight:800;color:#059669">71,0%</div><div style="font-size:10px;color:#059669">+4,3 p.p. vs. 2024</div></div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:8px 10px;background:rgba(5,150,105,.06);border-radius:8px;font-size:11.5px;line-height:1.55;color:var(--ink)">
+      O Top 5 reflete a solidez de produtos consolidados — previdência lidera, com a Cordialidade no atendimento como único representante relacional, e a APS como sinal de que quando o serviço de saúde funciona, é bem avaliado.
+    </div>
+  </div>
+  <!-- Bottom 5 -->
+  <div class="card">
+    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#e63d67;margin-bottom:10px">▼ Os que demandam desenvolvimento</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:rgba(230,61,103,.05);border-radius:8px">
+        <div>
+          <span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;margin-right:6px">PAM</span>
+          <span style="font-size:12px;font-weight:600">Mensalidade do plano</span>
+        </div>
+        <div style="text-align:right"><div style="font-size:14px;font-weight:800;color:#e63d67">35,4%</div><div style="font-size:10px;color:#e63d67">−1,7 p.p. vs. 2024 · piso do relatório</div></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:rgba(230,61,103,.05);border-radius:8px">
+        <div>
+          <span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;margin-right:6px">PAM</span>
+          <span style="font-size:12px;font-weight:600">Aprovação de procedimentos</span>
+        </div>
+        <div style="text-align:right"><div style="font-size:14px;font-weight:800;color:#e63d67">36,3%</div><div style="font-size:10px;color:#e63d67">−13,7 p.p. vs. 2024</div></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:rgba(230,61,103,.05);border-radius:8px">
+        <div>
+          <span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;margin-right:6px">PAM</span>
+          <span style="font-size:12px;font-weight:600">Reembolso</span>
+        </div>
+        <div style="text-align:right"><div style="font-size:14px;font-weight:800;color:#e63d67">41,4%</div><div style="font-size:10px;color:#e63d67">−8,1 p.p. vs. 2024</div></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:rgba(230,61,103,.05);border-radius:8px">
+        <div>
+          <span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#e63d67;color:#fff;font-size:9px;font-weight:800;margin-right:6px">NPS</span>
+          <span style="font-size:12px;font-weight:600">NPS — <strong style="color:#e63d67">Ativos</strong></span>
+        </div>
+        <div style="text-align:right"><div style="font-size:14px;font-weight:800;color:#e63d67">18</div><div style="font-size:10px;color:#e63d67">−8 pts vs. 2024</div></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:rgba(230,61,103,.05);border-radius:8px">
+        <div>
+          <span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#2f6fb0;color:#fff;font-size:9px;font-weight:800;margin-right:6px">AUTO</span>
+          <span style="font-size:12px;font-weight:600">Autosserviço geral</span>
+        </div>
+        <div style="text-align:right"><div style="font-size:14px;font-weight:800;color:#e63d67">63,0%</div><div style="font-size:10px;color:#e63d67">−8,2 p.p. vs. 2024</div></div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:8px 10px;background:rgba(230,61,103,.05);border-radius:8px;font-size:11.5px;line-height:1.55;color:var(--ink)">
+      Três indicadores apontam para processos do plano — mensalidade, aprovação e reembolso. O NPS dos <strong style="color:#e63d67">Ativos</strong> (18) é fortemente influenciado pelo plano, mas também pela relação ainda em construção desse perfil. O Autosserviço (−8,2 p.p.) merece aprofundamento: parte é atrito com informações de rede credenciada, parte pode ser experiência geral com o portal.
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 14 — AGENDA 2026
+══════════════════════════════════════════ -->
+<section class="slide" id="recomendacoes">
+<div class="kicker">Apresentação Executiva</div>
+<h2 class="title">Seis frentes de desenvolvimento para 2026</h2>
+<div class="rule"></div>
+<p class="subtitle">Frentes derivadas dos achados da pesquisa, organizadas em dois eixos: <strong>entregas de produto</strong> — onde o resultado depende do serviço em si — e <strong>experiência e relacionamento</strong> — onde o resultado depende de como o serviço é percebido e comunicado.</p>
+<div class="grid2" style="flex:1;min-height:0;grid-template-columns:1fr 1fr">
+  <!-- Entregas de produto -->
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div style="padding:7px 14px;background:rgba(230,61,103,.1);border-radius:8px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#9c1a34;text-align:center">Entregas de produto</div>
+    <div class="card">
+      <h3 style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:3px;background:#e63d67;flex-shrink:0;display:inline-block"></span>R1 · Rede e Prestadores de Saúde</h3>
+      <p style="font-size:12px;line-height:1.6;margin:4px 0 6px;color:var(--ink)">Revisão da rede com foco em São Paulo, Campinas e Ribeirão Preto. Prioridade para Exames e Diagnósticos (31,8% das dificuldades). É a alavanca mais direta para converter detratores em promotores — o plano de saúde é o principal preditor do NPS.</p>
+      <div style="font-size:10.5px;color:var(--muted)">Impacto: NPS Vivest · Sat. Plano · Reembolso</div>
+    </div>
+    <div class="card">
+      <h3 style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:3px;background:#e63d67;flex-shrink:0;display:inline-block"></span>R2 · Processo de Reembolso</h3>
+      <p style="font-size:12px;line-height:1.6;margin:4px 0 6px;color:var(--ink)">Simplificar solicitação digital, reduzir tempo de análise, comunicar status proativamente. Foco em <strong style="color:#e63d67">Ativos</strong> — perfil para quem o plano é o principal driver do NPS.</p>
+      <div style="font-size:10.5px;color:var(--muted)">Impacto: Reembolso · NPS <strong style="color:#e63d67">Ativos</strong></div>
+    </div>
+    <div class="card">
+      <h3 style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:3px;background:#6750b5;flex-shrink:0;display:inline-block"></span>R3 · Percepção de Valor</h3>
+      <p style="font-size:12px;line-height:1.6;margin:4px 0 6px;color:var(--ink)">Mensalidade (35,4%) e avaliação da taxa de empréstimo sinalizam que a percepção do custo-benefício merece atenção. Evidenciar o que o participante recebe em troca — APS, cobertura, benefícios coletivos — é a resposta mais eficaz.</p>
+      <div style="font-size:10.5px;color:var(--muted)">Impacto: Mensalidade · Empréstimos · NPS</div>
+    </div>
+  </div>
+  <!-- Experiência e relacionamento -->
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div style="padding:7px 14px;background:rgba(103,80,181,.1);border-radius:8px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#3d2880;text-align:center">Experiência e relacionamento</div>
+    <div class="card">
+      <h3 style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:3px;background:#d97706;flex-shrink:0;display:inline-block"></span>R4 · Portal e App · Usabilidade</h3>
+      <p style="font-size:12px;line-height:1.6;margin:4px 0 6px;color:var(--ink)">Maior queda do relatório (−8,2 p.p.). Revisar UX com foco em busca de rede credenciada e solicitação de reembolso. Atenção: autosserviço melhora satisfação operacional, mas não substitui a agenda de saúde para gerar promotores.</p>
+      <div style="font-size:10.5px;color:var(--muted)">Impacto: Autosserviço · Sat. Canais</div>
+    </div>
+    <div class="card">
+      <h3 style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:3px;background:#d97706;flex-shrink:0;display:inline-block"></span>R5 · Comunicação Segmentada</h3>
+      <p style="font-size:12px;line-height:1.6;margin:4px 0 6px;color:var(--ink)">Trilhas por perfil: <strong style="color:#0ea874">Saúde</strong> precisa de conteúdo sobre rede e custo-benefício; <strong style="color:#e63d67">Ativos</strong> demandam clareza sobre rentabilidade e aposentadoria. Para converter <strong style="color:#e63d67">Ativos</strong> em promotores, comunicação precisa valorizar o plano de saúde — não apenas informar.</p>
+      <div style="font-size:10.5px;color:var(--muted)">Impacto: Comunicação · NPS <strong style="color:#e63d67">Ativos</strong></div>
+    </div>
+    <div class="card">
+      <h3 style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:3px;background:#059669;flex-shrink:0;display:inline-block"></span>R6 · Consolidar e Amplificar Forças</h3>
+      <p style="font-size:12px;line-height:1.6;margin:4px 0 6px;color:var(--ink)">Previdência (+4,3 p.p.), Pontualidade (98,6%), APS (81,1%) e Cordialidade (86,4%) são resultados que merecem amplificação. Ampliar alcance da APS (ainda abaixo de 53%) como alavanca de menor atrito disponível para melhorar a percepção do plano.</p>
+      <div style="font-size:10.5px;color:var(--muted)">Impacto: Imagem · NPS · Sat. Geral</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 15 — ENCERRAMENTO
+══════════════════════════════════════════ -->
+<section class="slide cover" id="encerramento">
+<div class="hero-num">2025</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2vw,24px);position:relative;z-index:1">
+  <div class="kicker">Apresentação Executiva</div>
+  <h2 class="title" style="font-size:clamp(24px,3.2vw,44px)">Em 2025, a pesquisa não apenas descreve<br/>— ela explica.</h2>
+  <div class="rule"></div>
+  <div style="display:flex;flex-direction:column;gap:10px;max-width:640px">
+    <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.85);line-height:1.55">
+      <span style="color:var(--magenta);font-weight:800;font-size:16px;flex-shrink:0;margin-top:1px">→</span>
+      <span><strong>Satisfação final em 71,3%</strong> — trajetória de recuperação consolidada desde 2021</span>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.85);line-height:1.55">
+      <span style="color:var(--magenta);font-weight:800;font-size:16px;flex-shrink:0;margin-top:1px">→</span>
+      <span><strong>Plano de saúde é o principal preditor do NPS</strong> — a alavanca mais direta para converter detratores em promotores</span>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.85);line-height:1.55">
+      <span style="color:var(--magenta);font-weight:800;font-size:16px;flex-shrink:0;margin-top:1px">→</span>
+      <span><strong>Três perfis com agendas distintas</strong> — a heterogeneidade é o traço mais relevante do ciclo 2025</span>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.85);line-height:1.55">
+      <span style="color:var(--magenta);font-weight:800;font-size:16px;flex-shrink:0;margin-top:1px">→</span>
+      <span><strong>Previdência e imagem institucional</strong> permanecem como base sólida de confiança e diferencial da Vivest</span>
+    </div>
+  </div>
+</div>
+
+</section>
+
+</div><!-- /deck -->
+
+<div class="bottombar">
+  <div class="logo-opiniao">
+    <img src="https://grupoopiniao.inf.br/wp-content/uploads/2025/05/OPINIAO_marca_F01-300x196.png" alt="Opinião"/>
+  </div>
+  <div class="controls">
+    <button class="btn" id="prev">←</button>
+    <div class="counter" id="counter">1 / 15</div>
+    <button class="btn" id="next">→</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var slides = Array.from(document.querySelectorAll('.slide'));
+  var counter = document.getElementById('counter');
+  var idx = 0;
+
+  function render(){
+    slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+    counter.textContent = (idx+1) + ' / ' + slides.length;
+    document.title = 'Vivest APN Executiva 2025 — ' + (idx+1) + '/' + slides.length;
+    var cur = slides[idx];
+    document.body.classList.toggle('cover-active', cur.classList.contains('cover'));
+    document.body.classList.toggle('chapter-active', cur.classList.contains('chapter'));
+    var bb = document.querySelector('.bottombar');
+    if(bb){ bb.style.display='none'; bb.offsetHeight; bb.style.display=''; }
+    var deck = document.querySelector('.deck');
+    if(deck) deck.scrollTop = 0;
+    var btnNext = document.getElementById('next');
+    var btnPrev = document.getElementById('prev');
+    if(btnNext) btnNext.style.visibility = idx===slides.length-1?'hidden':'';
+    if(btnPrev) btnPrev.style.visibility = idx===0?'hidden':'';
+  }
+
+  document.getElementById('next').addEventListener('click', function(){
+    idx = Math.min(slides.length-1, idx+1); render();
+  });
+  document.getElementById('prev').addEventListener('click', function(){
+    idx = Math.max(0, idx-1); render();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='ArrowDown') { idx=Math.min(slides.length-1,idx+1); render(); }
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp') { idx=Math.max(0,idx-1); render(); }
+  });
+
+  render();
+})();
+</script>
+<script>
+  function sha256(str){
+    function rr(n,d){return(n>>>d)|(n<<(32-d));}
+    var K=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+           0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+           0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+           0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+           0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+           0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+           0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+           0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+    var H=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+    var msg=unescape(encodeURIComponent(str));
+    var bytes=[];
+    for(var i=0;i<msg.length;i++) bytes.push(msg.charCodeAt(i));
+    bytes.push(0x80);
+    while(bytes.length%64!==56) bytes.push(0);
+    var L=msg.length*8;
+    for(var i=7;i>=0;i--) bytes.push((L/Math.pow(2,i*8))&0xff);
+    for(var chunk=0;chunk<bytes.length;chunk+=64){
+      var w=[];
+      for(var i=0;i<16;i++) w[i]=(bytes[chunk+i*4]<<24)|(bytes[chunk+i*4+1]<<16)|(bytes[chunk+i*4+2]<<8)|bytes[chunk+i*4+3];
+      for(var i=16;i<64;i++){var s0=rr(w[i-15],7)^rr(w[i-15],18)^(w[i-15]>>>3);var s1=rr(w[i-2],17)^rr(w[i-2],19)^(w[i-2]>>>10);w[i]=(w[i-16]+s0+w[i-7]+s1)>>>0;}
+      var a=H[0],b=H[1],c=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h2=H[7];
+      for(var i=0;i<64;i++){var S1=rr(e,6)^rr(e,11)^rr(e,25);var ch=(e&f)^(~e&g);var temp1=(h2+S1+ch+K[i]+w[i])>>>0;var S0=rr(a,2)^rr(a,13)^rr(a,22);var maj=(a&b)^(a&c)^(b&c);var temp2=(S0+maj)>>>0;h2=g;g=f;f=e;e=(d+temp1)>>>0;d=c;c=b;b=a;a=(temp1+temp2)>>>0;}
+      H[0]=(H[0]+a)>>>0;H[1]=(H[1]+b)>>>0;H[2]=(H[2]+c)>>>0;H[3]=(H[3]+d)>>>0;H[4]=(H[4]+e)>>>0;H[5]=(H[5]+f)>>>0;H[6]=(H[6]+g)>>>0;H[7]=(H[7]+h2)>>>0;
+    }
+    return H.map(function(x){return x.toString(16).padStart(8,'0');}).join('');
+  }
+
+  (function(){
+    var HASH='fe05fabda75f03d01b39b3995c69c7c0d952893e21746cfbaaf7854479b210e9';
+    var params=new URLSearchParams(window.location.search);
+    if(params.get('auth')==='1'||localStorage.getItem('vivest_auth')==='1'){
+      localStorage.setItem('vivest_auth','1');
+      document.getElementById('apn-gate').style.display='none';
+      return;
+    }
+    setTimeout(function(){document.getElementById('apn-pw').focus();},100);
+    window.apnCheck=function(){
+      var val=document.getElementById('apn-pw').value;
+      var err=document.getElementById('apn-err');
+      if(!val){err.textContent='Digite a senha.';return;}
+      if(sha256(val)===HASH){
+        localStorage.setItem('vivest_auth','1');
+        document.getElementById('apn-gate').style.display='none';
+      } else {
+        err.textContent='Senha incorreta. Tente novamente.';
+        document.getElementById('apn-pw').value='';
+        document.getElementById('apn-pw').focus();
+      }
+    };
+  })();
+</script>
+</body>
+</html>

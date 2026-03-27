@@ -1085,6 +1085,8 @@ table td:first-child::after, table th:first-child::after {
   (function(){
     if(localStorage.getItem('vivest_auth')==='1'){
       document.getElementById('pw-gate').style.display='none';
+      var apnLink = document.getElementById('apn-executiva-link');
+      if(apnLink) apnLink.href = 'vivest_apn_executiva.html?auth=1';
     }
   })();
 
@@ -1096,6 +1098,8 @@ table td:first-child::after, table th:first-child::after {
     if(hash==='fe05fabda75f03d01b39b3995c69c7c0d952893e21746cfbaaf7854479b210e9'){
       localStorage.setItem('vivest_auth','1');
       document.getElementById('pw-gate').style.display='none';
+      var apnLink = document.getElementById('apn-executiva-link');
+      if(apnLink) apnLink.href = 'vivest_apn_executiva.html?auth=1';
     } else {
       err.textContent='Senha incorreta. Tente novamente.';
       document.getElementById('pw-input').value='';
@@ -1111,6 +1115,14 @@ table td:first-child::after, table th:first-child::after {
 <img alt="Vivest" src="https://www.vivest.com.br/site/assets/img/icons/logo_novamarca.svg"/>
 </div>
 <nav class="nav"><a href="vivest_apn_executiva.html" id="apn-executiva-link" target="_blank" rel="noopener">APN Executiva</a></nav>
+<script>
+(function(){
+  var link = document.getElementById("apn-executiva-link");
+  if(link && localStorage.getItem("vivest_auth")==="1"){
+    link.href = "vivest_apn_executiva.html?auth=1";
+  }
+})();
+</script>
 </div><!-- /topbar -->
 <div class="deck">
 
@@ -2280,10 +2292,10 @@ nRenderMacro();
 <div></div><div></div><div>T3B</div>
 </div>
 <div class="bar-list" style="--bar-cols:minmax(140px,38%) 1fr minmax(52px,14%)">
-<div class="bar-row" style="gap:4px"><div>Solidez</div><div class="track"><div class="fill" style="width:77.2%;background:linear-gradient(90deg,#7a69cf,#4b2e90)"></div></div><div><strong>77,2%</strong></div></div>
-<div class="bar-row" style="gap:4px"><div>Confiança</div><div class="track"><div class="fill" style="width:77.0%;background:linear-gradient(90deg,#7a69cf,#4b2e90)"></div></div><div><strong>77,0%</strong></div></div>
-<div class="bar-row" style="gap:4px"><div>Transparência</div><div class="track"><div class="fill" style="width:71.3%;background:linear-gradient(90deg,#7a69cf,#4b2e90)"></div></div><div><strong>71,3%</strong></div></div>
-<div class="bar-row" style="gap:4px"><div>Preocupação<br><span style="font-size:11px;color:var(--muted)">c/ associados</span></div><div class="track"><div class="fill" style="width:66.8%;background:linear-gradient(90deg,#7a69cf,#4b2e90)"></div></div><div><strong>66,8%</strong></div></div>
+<div class="bar-row" style="gap:4px"><div style="color:#2f6fb0;font-weight:700">Solidez</div><div class="track"><div class="fill" style="width:77.2%;background:linear-gradient(90deg,#1e5a9a,#2f6fb0)"></div></div><div><strong style="color:#2f6fb0">77,2%</strong></div></div>
+<div class="bar-row" style="gap:4px"><div style="color:#6750b5;font-weight:700">Confiança</div><div class="track"><div class="fill" style="width:77.0%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div><div><strong style="color:#6750b5">77,0%</strong></div></div>
+<div class="bar-row" style="gap:4px"><div style="color:#0ea874;font-weight:700">Transparência</div><div class="track"><div class="fill" style="width:71.3%;background:linear-gradient(90deg,#047857,#0ea874)"></div></div><div><strong style="color:#0ea874">71,3%</strong></div></div>
+<div class="bar-row" style="gap:4px"><div style="color:#e63d67;font-weight:700">Preocupação<br><span style="font-size:11px;color:var(--muted)">c/ associados</span></div><div class="track"><div class="fill" style="width:66.8%;background:linear-gradient(90deg,#c0172a,#e63d67)"></div></div><div><strong style="color:#e63d67">66,8%</strong></div></div>
 </div>
 </div>
 <div class="card">
@@ -2333,14 +2345,14 @@ nRenderMacro();
 </div>
 </div>
 <div class="card history-table-card">
-<h4 class="pane-title">Δ 2019 → 2025</h4>
-<div class="table-wrap"><table class="table table--compact table--mini"><tr><th>Atributo</th><th style="text-align:right">T3B 2025</th><th style="text-align:right">Δ vs. 2024</th></tr><tr><td style="color:#2f6fb0;font-weight:700">Solidez</td><td style="font-weight:700;text-align:right">77,2%</td><td style="color:#e63d67;font-weight:700;text-align:right">−0,6 p.p.</td></tr><tr><td style="color:#0ea874;font-weight:700">Confiança</td><td style="font-weight:700;text-align:right">77,0%</td><td style="color:#10b981;font-weight:700;text-align:right">+0,7 p.p.</td></tr><tr><td style="color:#6750b5;font-weight:700">Transparência</td><td style="font-weight:700;text-align:right">71,3%</td><td style="color:#10b981;font-weight:700;text-align:right">+1,5 p.p.</td></tr><tr><td style="color:#e63d67;font-weight:700">Preocupação</td><td style="font-weight:700;text-align:right">66,8%</td><td style="color:#10b981;font-weight:700;text-align:right">+3,8 p.p.</td></tr></table></div>
+<h4 class="pane-title">Δ 2024 → 2025</h4>
+<div class="table-wrap"><table class="table table--compact table--mini"><tr><th>Atributo</th><th style="text-align:right">T3B 2025</th><th style="text-align:right">Δ vs. 2024</th></tr><tr><td style="color:#2f6fb0;font-weight:700">Solidez</td><td style="font-weight:700;text-align:right">77,2%</td><td style="color:#e63d67;font-weight:700;text-align:right">−0,3 p.p.</td></tr><tr><td style="color:#6750b5;font-weight:700">Confiança</td><td style="font-weight:700;text-align:right">77,0%</td><td style="color:#10b981;font-weight:700;text-align:right">+0,7 p.p.</td></tr><tr><td style="color:#0ea874;font-weight:700">Transparência</td><td style="font-weight:700;text-align:right">71,3%</td><td style="color:#10b981;font-weight:700;text-align:right">+2,2 p.p.</td></tr><tr><td style="color:#e63d67;font-weight:700">Preocupação</td><td style="font-weight:700;text-align:right">66,8%</td><td style="color:#10b981;font-weight:700;text-align:right">+3,8 p.p.</td></tr></table></div>
 </div>
 </div>
 </div>
 <div class="card">
 <h3>Leitura dos dados</h3>
-<div class="callout" style="margin-top:0">A série de 2019 a 2025 revela uma trajetória em V: queda acentuada até 2021 (todos os atributos recuaram entre 13 e 19 p.p.), seguida de recuperação progressiva. Em 2025, <strong>Confiança</strong> (77,0%) supera Solidez (77,2%) pela primeira vez. A <strong>Preocupação com os associados</strong> registra o maior avanço recente (+3,8 p.p. vs. 2024), mas ainda não retornou ao patamar de 2019 (78,6%). Todos os atributos permanecem abaixo dos níveis pré-2020.</div>
+<div class="callout" style="margin-top:0">A série de 2019 a 2025 revela uma trajetória em V: queda acentuada até 2021 (todos os atributos recuaram entre 13 e 19 p.p.), seguida de recuperação progressiva. Em 2025, <strong style="color:#6750b5">Confiança</strong> (77,0%) alcança <strong style="color:#2f6fb0">Solidez</strong> (77,2%) com gap de apenas 0,2 p.p. — o menor da série desde 2019. A <strong style="color:#e63d67">Preocupação com os associados</strong> registra o maior avanço recente (+3,8 p.p. vs. 2024), mas ainda não retornou ao patamar de 2019 (78,6%). Todos os atributos permanecem abaixo dos níveis pré-2020.</div>
 </div>
 </section>
 <section class="slide" id="img-fortes" style="--ind:#e63d67">
@@ -6490,7 +6502,7 @@ dcRenderMacro();
 <h2 class="title">Top 5 e Bottom 5 por Perfil · 2025</h2>
 <div class="rule" style="background:linear-gradient(90deg,var(--ind),var(--violet))"></div>
 <p class="subtitle">Os cinco indicadores com maior e menor T3B em cada perfil. Clique no nome para ir ao slide correspondente. Δ vs. 2024 onde disponível.</p>
-<div class="grid2" style="grid-template-columns:1fr 1fr 1fr;align-items:start">
+<div class="grid2" style="grid-template-columns:1fr 1fr 1fr;align-items:start;flex-shrink:0">
 <div class="card" style="border:1.5px solid rgba(230,61,103,.2);background:#fff">
 <h3 style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
 <span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:#e63d67;color:#fff;font-size:12px;font-weight:800;flex-shrink:0">A</span>
@@ -6512,7 +6524,7 @@ dcRenderMacro();
 </h3>
 <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#10b981;margin-bottom:4px">▲ Top 5</div>
 <div class="table-wrap" style="margin-bottom:14px">
-<table style="width:100%;border-collapse:collapse"><thead><tr style="border-bottom:1px solid var(--line)"><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left"></th><th></th><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right">T3B</th><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right">Δ</th></tr></thead><tbody><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('atend-atributos')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#2f6fb0;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">ATE</span>Cordialidade</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:88.0%;height:100%;background:linear-gradient(90deg,#34d399,#10b981);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">88,0%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#e63d67;white-space:nowrap">-2,0</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('prev-extrato')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#6750b5;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PP</span>Extrato previd.</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:87.3%;height:100%;background:linear-gradient(90deg,#34d399,#10b981);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">87,3%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#10b981;white-space:nowrap">+2,8</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('comunic')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#d97706;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">COM</span>Comunicação</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:79.5%;height:100%;background:linear-gradient(90deg,#34d399,#10b981);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">79,5%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#10b981;white-space:nowrap">+2,2</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('exec-cap02')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#e63d67;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">SAT</span>Sat. final</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:76.8%;height:100%;background:linear-gradient(90deg,#34d399,#10b981);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">76,8%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#10b981;white-space:nowrap">+3,3</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('prev-geral')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#6750b5;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PP</span>Previdência</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:73.0%;height:100%;background:linear-gradient(90deg,#34d399,#10b981);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">73,0%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#10b981;white-space:nowrap">+4,8</td></tr></tbody></table>
+<table style="width:100%;border-collapse:collapse"><thead><tr style="border-bottom:1px solid var(--line)"><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left"></th><th></th><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right">T3B</th><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right">Δ</th></tr></thead><tbody><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('prev-pont')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#6750b5;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PP</span>Pontualidade</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:98.6%;height:100%;background:linear-gradient(90deg,#34d399,#10b981);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">98,6%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#10b981;white-space:nowrap">+0,4</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('atend-atributos')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#2f6fb0;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">ATE</span>Cordialidade</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:88.0%;height:100%;background:linear-gradient(90deg,#34d399,#10b981);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">88,0%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#e63d67;white-space:nowrap">-2,0</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('prev-extrato')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#6750b5;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PP</span>Extrato previd.</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:87.3%;height:100%;background:linear-gradient(90deg,#34d399,#10b981);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">87,3%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#10b981;white-space:nowrap">+2,8</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('comunic')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#d97706;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">COM</span>Comunicação</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:79.5%;height:100%;background:linear-gradient(90deg,#34d399,#10b981);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">79,5%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#10b981;white-space:nowrap">+2,2</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('exec-cap02')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#e63d67;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">SAT</span>Sat. final</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:76.8%;height:100%;background:linear-gradient(90deg,#34d399,#10b981);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">76,8%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#10b981;white-space:nowrap">+3,3</td></tr></tbody></table>
 </div>
 <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#e63d67;margin-bottom:4px">▼ Bottom 5</div>
 <div class="table-wrap">
@@ -6533,7 +6545,8 @@ dcRenderMacro();
 <table style="width:100%;border-collapse:collapse"><thead><tr style="border-bottom:1px solid var(--line)"><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left"></th><th></th><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right">T3B</th><th style="padding:4px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right">Δ</th></tr></thead><tbody><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('img-visao')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#e63d67;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">SAT</span>Sat. inicial</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:66.0%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">66,0%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#e63d67;white-space:nowrap">-6,6</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('comunic')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#d97706;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">COM</span>Comunicação</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:63.7%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">63,7%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#e63d67;white-space:nowrap">-7,7</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('auto-geral')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#2f6fb0;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">AUTO</span>Autosserviço</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:57.4%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">57,4%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#e63d67;white-space:nowrap">-11,6</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('saude-reembolso')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PAM</span>Reembolso</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:56.1%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">56,1%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#10b981;white-space:nowrap">+3,3</td></tr><tr style="border-bottom:1px solid var(--line)"><td style="padding:5px 6px;font-size:12px"><a onclick="window.goToSlide&&window.goToSlide('saude-mensalidade')" style="cursor:pointer;color:inherit;text-decoration:none;display:flex;align-items:center"><span style="display:inline-block;padding:1px 5px;border-radius:4px;background:#0ea874;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;margin-right:5px;flex-shrink:0">PAM</span>Mensalidade</a></td><td style="padding:5px 6px;width:80px"><div style="background:rgba(0,0,0,.06);border-radius:4px;height:12px;overflow:hidden"><div style="width:52.8%;height:100%;background:linear-gradient(90deg,#f36a84,#e63d67);border-radius:0"></div></div></td><td style="padding:5px 6px;font-size:12px;font-weight:700;text-align:right;white-space:nowrap">52,8%</td><td style="padding:5px 6px;font-size:11px;font-weight:700;text-align:right;color:#10b981;white-space:nowrap">+6,2</td></tr></tbody></table>
 </div>
 </div>
-<div class="card" style="margin-top:0;width:100%;box-sizing:border-box">
+</div>
+<div class="card" style="flex-shrink:0">
 <h4 class="pane-title" style="margin-bottom:10px">Legenda das siglas</h4>
 <div style="display:flex;flex-wrap:wrap;gap:8px 16px">
 <span style="display:flex;align-items:center;gap:6px;font-size:11px">
@@ -6557,7 +6570,6 @@ dcRenderMacro();
 <span style="display:flex;align-items:center;gap:6px;font-size:11px">
   <span style="padding:2px 6px;border-radius:4px;background:#d97706;color:#fff;font-size:9px;font-weight:800">COM</span>Comunicação Institucional
 </span>
-</div>
 </div>
 </div>
 </section>
@@ -6641,9 +6653,7 @@ dcRenderMacro();
       <span style="font-size:12px;font-weight:600;color:var(--ink)">🥇 Comunicação institucional</span>
       <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:2px 7px;border-radius:10px">Maior influência</span>
     </div>
-    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
-      <div style="width:88%;height:100%;border-radius:5px;background:linear-gradient(90deg,#5b4b9e,#857ca3)"></div>
-    </div>
+    <div class="track"><div class="fill" style="width:88%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
   </div>
   <!-- Plano de Saúde -->
   <div style="margin-bottom:10px">
@@ -6651,9 +6661,7 @@ dcRenderMacro();
       <span style="font-size:12px;font-weight:700;color:#0ea874">🥈 Plano de saúde</span>
       <span style="font-size:11px;font-weight:700;color:#0ea874;background:rgba(14,168,116,.1);padding:2px 7px;border-radius:10px">2.ª maior</span>
     </div>
-    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
-      <div style="width:53%;height:100%;border-radius:5px;background:linear-gradient(90deg,#0ea874,#6ecfb0)"></div>
-    </div>
+    <div class="track"><div class="fill" style="width:53%;background:linear-gradient(90deg,#047857,#0ea874)"></div></div>
   </div>
   <!-- Autosserviço -->
   <div style="margin-bottom:10px">
@@ -6661,9 +6669,7 @@ dcRenderMacro();
       <span style="font-size:12px;font-weight:600;color:var(--ink)">🥉 Autosserviço (portal)</span>
       <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:2px 7px;border-radius:10px">0,186</span>
     </div>
-    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
-      <div style="width:44%;height:100%;border-radius:5px;background:linear-gradient(90deg,#5b4b9e,#857ca3)"></div>
-    </div>
+    <div class="track"><div class="fill" style="width:44%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
   </div>
   <!-- Previdência -->
   <div style="margin-bottom:10px">
@@ -6671,9 +6677,7 @@ dcRenderMacro();
       <span style="font-size:12px;font-weight:600;color:var(--ink)">4.º Plano de previdência</span>
       <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:2px 7px;border-radius:10px">0,158</span>
     </div>
-    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
-      <div style="width:37%;height:100%;border-radius:5px;background:linear-gradient(90deg,#5b4b9e,#857ca3)"></div>
-    </div>
+    <div class="track"><div class="fill" style="width:37%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
   </div>
   <!-- Atendimento -->
   <div style="margin-bottom:4px">
@@ -6681,11 +6685,9 @@ dcRenderMacro();
       <span style="font-size:12px;font-weight:600;color:var(--ink)">5.º Atendimento</span>
       <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:2px 7px;border-radius:10px">0,133</span>
     </div>
-    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
-      <div style="width:31%;height:100%;border-radius:5px;background:linear-gradient(90deg,#5b4b9e,#857ca3)"></div>
-    </div>
+    <div class="track"><div class="fill" style="width:31%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
   </div>
-  <div style="margin-top:14px;padding:8px 12px;background:rgba(91,75,158,.06);border-left:3px solid #5b4b9e;border-radius:0 8px 8px 0;font-size:11.5px;line-height:1.55;color:var(--ink)">
+  <div style="margin-top:14px;padding:8px 12px;background:rgba(91,75,158,.06);border-radius:8px;font-size:11.5px;line-height:1.55;color:var(--ink)">
     Comunicar bem é o que mais impacta a satisfação geral. O plano de saúde ocupa o 2.º lugar — um resultado relevante, porque ele existe em apenas 5 das 12 patrocinadoras.
   </div>
 </div>
@@ -6700,9 +6702,7 @@ dcRenderMacro();
       <span style="font-size:12px;font-weight:700;color:#0ea874">🥇 Plano de saúde</span>
       <span style="font-size:11px;font-weight:700;color:#0ea874;background:rgba(14,168,116,.1);padding:2px 7px;border-radius:10px">Maior influência</span>
     </div>
-    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
-      <div style="width:100%;height:100%;border-radius:5px;background:linear-gradient(90deg,#0ea874,#6ecfb0)"></div>
-    </div>
+    <div class="track"><div class="fill" style="width:100%;background:linear-gradient(90deg,#047857,#0ea874)"></div></div>
   </div>
   <!-- Comunicação -->
   <div style="margin-bottom:10px">
@@ -6710,9 +6710,7 @@ dcRenderMacro();
       <span style="font-size:12px;font-weight:600;color:var(--ink)">🥈 Comunicação institucional</span>
       <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:2px 7px;border-radius:10px">0,220</span>
     </div>
-    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
-      <div style="width:52%;height:100%;border-radius:5px;background:linear-gradient(90deg,#5b4b9e,#857ca3)"></div>
-    </div>
+    <div class="track"><div class="fill" style="width:52%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
   </div>
   <!-- Previdência -->
   <div style="margin-bottom:10px">
@@ -6720,9 +6718,7 @@ dcRenderMacro();
       <span style="font-size:12px;font-weight:600;color:var(--ink)">🥉 Plano de previdência</span>
       <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:2px 7px;border-radius:10px">0,181</span>
     </div>
-    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
-      <div style="width:42%;height:100%;border-radius:5px;background:linear-gradient(90deg,#5b4b9e,#857ca3)"></div>
-    </div>
+    <div class="track"><div class="fill" style="width:42%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
   </div>
   <!-- Atendimento -->
   <div style="margin-bottom:10px">
@@ -6730,20 +6726,16 @@ dcRenderMacro();
       <span style="font-size:12px;font-weight:600;color:var(--ink)">4.º Atendimento</span>
       <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:2px 7px;border-radius:10px">0,159</span>
     </div>
-    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
-      <div style="width:37%;height:100%;border-radius:5px;background:linear-gradient(90deg,#5b4b9e,#857ca3)"></div>
-    </div>
+    <div class="track"><div class="fill" style="width:37%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
   </div>
   <!-- Autosserviço (não significativo) -->
   <div style="margin-bottom:4px">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
       <span style="font-size:12px;font-weight:600;color:var(--muted)">Autosserviço (portal) — pouca influência</span>
     </div>
-    <div style="height:10px;border-radius:5px;background:var(--bg-soft);overflow:hidden">
-      <div style="width:15%;height:100%;border-radius:5px;background:#d0cde8;opacity:.5"></div>
-    </div>
+    <div class="track"><div class="fill" style="width:15%;background:linear-gradient(90deg,#9d97b8,#c5c2d8);opacity:.6"></div></div>
   </div>
-  <div style="margin-top:14px;padding:8px 12px;background:rgba(14,168,116,.07);border-left:3px solid #0ea874;border-radius:0 8px 8px 0;font-size:11.5px;line-height:1.55;color:var(--ink)">
+  <div style="margin-top:14px;padding:8px 12px;background:rgba(14,168,116,.07);border-radius:8px;font-size:11.5px;line-height:1.55;color:var(--ink)">
     Quando o assunto é recomendar a Vivest, o plano de saúde pesa mais do que qualquer outro fator — mais do que comunicação e previdência juntos. Quem está insatisfeito com o plano vira detrator. Quem está satisfeito vira promotor.
   </div>
 </div>
