@@ -216,13 +216,12 @@ body{font-family:"Montserrat",system-ui,sans-serif;color:var(--ink);background:#
   /* note-list: empilha label acima do texto */
   .note-item{grid-template-columns:1fr!important;}
   .note-item .label{padding-bottom:2px;}
-  /* rank-rows: remove larguras fixas, empilha verticalmente */
-  .rank-row-mobile{flex-direction:column;align-items:flex-start;}
-  /* bar charts: remove widths fixas nos spans do rank-row */
+  /* rank-rows: remove widths fixas nos spans do rank-row */
   .slide span[style*="width:140px"],
-  .slide span[style*="width:110px"]{width:auto!important;flex-shrink:1!important;}
-  .slide span[style*="width:48px"],
-  .slide span[style*="width:76px"]{width:auto!important;min-width:0!important;}
+  .slide span[style*="width:110px"]{width:30%!important;flex-shrink:1!important;min-width:0!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .slide span[style*="width:48px"]{width:auto!important;min-width:0!important;flex-shrink:0;}
+  .slide span[style*="width:76px"]{display:none!important;}
+  .slide div[style*="display:flex"][style*="align-items:center"][style*="gap:10px"] > .track{flex:1!important;min-width:0!important;}
   /* focos tiles slide 2: colapsa para 1 coluna */
   .slide div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
   /* tabelas: scroll horizontal */
@@ -563,28 +562,28 @@ body{font-family:"Montserrat",system-ui,sans-serif;color:var(--ink);background:#
       <!-- Solidez -->
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
         <span style="width:140px;font-size:12px;font-weight:700;color:#2f6fb0;flex-shrink:0">Solidez</span>
-        <div class="track" style="flex:1"><div class="fill" style="width:77.2%;background:#2f6fb0"></div></div>
+        <div class="track" style="flex:1"><div class="fill" style="width:77.2%;background:linear-gradient(90deg,#5f93c8,#2f6fb0)"></div></div>
         <span style="width:48px;text-align:right;font-size:13px;font-weight:800;color:#2f6fb0">77,2%</span>
         <span style="width:76px;text-align:right;font-size:11px;font-weight:700;color:#9c1a34;background:#fce8ed;padding:2px 8px;border-radius:10px">−0,3 p.p.</span>
       </div>
       <!-- Confiança -->
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
         <span style="width:140px;font-size:12px;font-weight:700;color:#6750b5;flex-shrink:0">Confiança</span>
-        <div class="track" style="flex:1"><div class="fill" style="width:77%;background:#6750b5"></div></div>
+        <div class="track" style="flex:1"><div class="fill" style="width:77%;background:linear-gradient(90deg,#9b8ad4,#6750b5)"></div></div>
         <span style="width:48px;text-align:right;font-size:13px;font-weight:800;color:#6750b5">77,0%</span>
         <span style="width:76px;text-align:right;font-size:11px;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:10px">+0,7 p.p.</span>
       </div>
       <!-- Transparência -->
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
         <span style="width:140px;font-size:12px;font-weight:700;color:#0ea874;flex-shrink:0">Transparência</span>
-        <div class="track" style="flex:1"><div class="fill" style="width:71.3%;background:#0ea874"></div></div>
+        <div class="track" style="flex:1"><div class="fill" style="width:71.3%;background:linear-gradient(90deg,#34d399,#0ea874)"></div></div>
         <span style="width:48px;text-align:right;font-size:13px;font-weight:800;color:#0ea874">71,3%</span>
         <span style="width:76px;text-align:right;font-size:11px;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:10px">+2,2 p.p.</span>
       </div>
       <!-- Preocupação -->
       <div style="display:flex;align-items:center;gap:10px">
         <span style="width:140px;font-size:12px;font-weight:700;color:#e63d67;flex-shrink:0">Preocupação<br><span style="font-size:10px;font-weight:400;color:#e63d67;opacity:.8">com os associados</span></span>
-        <div class="track" style="flex:1"><div class="fill" style="width:66.8%;background:#e63d67"></div></div>
+        <div class="track" style="flex:1"><div class="fill" style="width:66.8%;background:linear-gradient(90deg,#f36a84,#e63d67)"></div></div>
         <span style="width:48px;text-align:right;font-size:13px;font-weight:800;color:#e63d67">66,8%</span>
         <span style="width:76px;text-align:right;font-size:11px;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:10px">+3,8 p.p.</span>
       </div>
@@ -742,21 +741,21 @@ body{font-family:"Montserrat",system-ui,sans-serif;color:var(--ink);background:#
       <!-- Total -->
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
         <span style="width:110px;font-size:12px;font-weight:700;color:#2f6fb0;flex-shrink:0">Total</span>
-        <div class="track" style="flex:1"><div class="fill" style="width:19.7%;background:#2f6fb0"></div></div>
+        <div class="track" style="flex:1"><div class="fill" style="width:19.7%;background:linear-gradient(90deg,#5f93c8,#2f6fb0)"></div></div>
         <span style="width:48px;text-align:right;font-size:13px;font-weight:800;color:#2f6fb0">19,7%</span>
         <span style="width:76px;text-align:right;font-size:11px;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:10px">+3,2 p.p.</span>
       </div>
       <!-- Ativos -->
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
         <span style="width:110px;font-size:12px;font-weight:700;color:#e63d67;flex-shrink:0">Ativos</span>
-        <div class="track" style="flex:1"><div class="fill" style="width:33.5%;background:#e63d67"></div></div>
+        <div class="track" style="flex:1"><div class="fill" style="width:33.5%;background:linear-gradient(90deg,#f36a84,#e63d67)"></div></div>
         <span style="width:48px;text-align:right;font-size:13px;font-weight:800;color:#e63d67">33,5%</span>
         <span style="width:76px;text-align:right;font-size:11px;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:10px">+12,0 p.p.</span>
       </div>
       <!-- Assistidos -->
       <div style="display:flex;align-items:center;gap:10px">
         <span style="width:110px;font-size:12px;font-weight:700;color:#6750b5;flex-shrink:0">Assistidos</span>
-        <div class="track" style="flex:1"><div class="fill" style="width:16.3%;background:#6750b5"></div></div>
+        <div class="track" style="flex:1"><div class="fill" style="width:16.3%;background:linear-gradient(90deg,#9b8ad4,#6750b5)"></div></div>
         <span style="width:48px;text-align:right;font-size:13px;font-weight:800;color:#6750b5">16,3%</span>
         <span style="width:76px;text-align:right;font-size:11px;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:10px">+3,1 p.p.</span>
       </div>
@@ -1029,19 +1028,19 @@ body{font-family:"Montserrat",system-ui,sans-serif;color:var(--ink);background:#
     <div style="margin-top:8px">
       <div style="margin-bottom:10px">
         <div class="bar-label-row"><span class="bar-name">Previdência e benefícios</span><span class="bar-val" style="color:#059669">40,2%</span></div>
-        <div class="track"><div class="fill" style="width:80%;background:linear-gradient(90deg,#047857,#0ea874)"></div></div>
+        <div class="track"><div class="fill" style="width:80%;background:linear-gradient(90deg,#34d399,#0ea874)"></div></div>
       </div>
       <div style="margin-bottom:10px">
         <div class="bar-label-row"><span class="bar-name">Atendimento ao participante</span><span class="bar-val" style="color:#059669">28,6%</span></div>
-        <div class="track"><div class="fill" style="width:57%;background:linear-gradient(90deg,#047857,#0ea874)"></div></div>
+        <div class="track"><div class="fill" style="width:57%;background:linear-gradient(90deg,#34d399,#0ea874)"></div></div>
       </div>
       <div style="margin-bottom:10px">
         <div class="bar-label-row"><span class="bar-name">Confiança e seriedade</span><span class="bar-val" style="color:#059669">19,3%</span></div>
-        <div class="track"><div class="fill" style="width:38%;background:linear-gradient(90deg,#047857,#0ea874)"></div></div>
+        <div class="track"><div class="fill" style="width:38%;background:linear-gradient(90deg,#34d399,#0ea874)"></div></div>
       </div>
       <div>
         <div class="bar-label-row"><span class="bar-name">Plano de saúde</span><span class="bar-val" style="color:#059669">15,8%</span></div>
-        <div class="track"><div class="fill" style="width:32%;background:linear-gradient(90deg,#047857,#0ea874)"></div></div>
+        <div class="track"><div class="fill" style="width:32%;background:linear-gradient(90deg,#34d399,#0ea874)"></div></div>
       </div>
     </div>
   </div>
@@ -1052,22 +1051,22 @@ body{font-family:"Montserrat",system-ui,sans-serif;color:var(--ink);background:#
     <div style="margin-top:8px">
       <div style="margin-bottom:10px">
         <div class="bar-label-row"><span class="bar-name">Plano de saúde — rede e qualidade</span><span class="bar-val" style="color:#e63d67">33,5%</span></div>
-        <div class="track"><div class="fill" style="width:67%;background:linear-gradient(90deg,#c0172a,#e63d67)"></div></div>
+        <div class="track"><div class="fill" style="width:67%;background:linear-gradient(90deg,#f36a84,#e63d67)"></div></div>
         <div style="font-size:10px;color:var(--muted);margin-top:2px">Busca de médicos no app, qualidade dos prestadores · <strong style="color:#0ea874">Saúde</strong>: 57,5% · <strong style="color:#e63d67">Ativos</strong>: 36,4%</div>
       </div>
       <div style="margin-bottom:10px">
         <div class="bar-label-row"><span class="bar-name">Atendimento e canais digitais</span><span class="bar-val" style="color:#e63d67">21,0%</span></div>
-        <div class="track"><div class="fill" style="width:42%;background:linear-gradient(90deg,#c0172a,#e63d67)"></div></div>
+        <div class="track"><div class="fill" style="width:42%;background:linear-gradient(90deg,#f36a84,#e63d67)"></div></div>
         <div style="font-size:10px;color:var(--muted);margin-top:2px">Atendimento telefônico demorado (14,9% isoladamente)</div>
       </div>
       <div style="margin-bottom:10px">
         <div class="bar-label-row"><span class="bar-name">Previdência e rentabilidade</span><span class="bar-val" style="color:#e63d67">13,7%</span></div>
-        <div class="track"><div class="fill" style="width:27%;background:linear-gradient(90deg,#c0172a,#e63d67)"></div></div>
+        <div class="track"><div class="fill" style="width:27%;background:linear-gradient(90deg,#f36a84,#e63d67)"></div></div>
         <div style="font-size:10px;color:var(--muted);margin-top:2px">Concentrado em <strong style="color:#6750b5">Assistidos</strong></div>
       </div>
       <div>
         <div class="bar-label-row"><span class="bar-name">Gestão e administração</span><span class="bar-val" style="color:#e63d67">10,9%</span></div>
-        <div class="track"><div class="fill" style="width:22%;background:linear-gradient(90deg,#c0172a,#e63d67)"></div></div>
+        <div class="track"><div class="fill" style="width:22%;background:linear-gradient(90deg,#f36a84,#e63d67)"></div></div>
         <div style="font-size:10px;color:var(--muted);margin-top:2px">Inclui comparação com gestão anterior</div>
       </div>
     </div>
@@ -1097,35 +1096,35 @@ body{font-family:"Montserrat",system-ui,sans-serif;color:var(--ink);background:#
           <span class="bar-name">🥇 Comunicação institucional</span>
           <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:1px 7px;border-radius:10px">0,375</span>
         </div>
-        <div class="track"><div class="fill" style="width:88%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
+        <div class="track"><div class="fill" style="width:88%;background:linear-gradient(90deg,#9b8ad4,#6750b5)"></div></div>
       </div>
       <div class="bar-item">
         <div class="bar-label-row">
           <span class="bar-name" style="color:#0ea874;font-weight:700">🥈 Plano de saúde</span>
           <span style="font-size:11px;font-weight:700;color:#0ea874;background:rgba(14,168,116,.1);padding:1px 7px;border-radius:10px">0,226</span>
         </div>
-        <div class="track"><div class="fill" style="width:53%;background:linear-gradient(90deg,#047857,#0ea874)"></div></div>
+        <div class="track"><div class="fill" style="width:53%;background:linear-gradient(90deg,#34d399,#0ea874)"></div></div>
       </div>
       <div class="bar-item">
         <div class="bar-label-row">
           <span class="bar-name">🥉 Autosserviço (portal)</span>
           <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:1px 7px;border-radius:10px">0,186</span>
         </div>
-        <div class="track"><div class="fill" style="width:44%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
+        <div class="track"><div class="fill" style="width:44%;background:linear-gradient(90deg,#9b8ad4,#6750b5)"></div></div>
       </div>
       <div class="bar-item">
         <div class="bar-label-row">
           <span class="bar-name">4.º Plano de previdência</span>
           <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:1px 7px;border-radius:10px">0,158</span>
         </div>
-        <div class="track"><div class="fill" style="width:37%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
+        <div class="track"><div class="fill" style="width:37%;background:linear-gradient(90deg,#9b8ad4,#6750b5)"></div></div>
       </div>
       <div class="bar-item">
         <div class="bar-label-row">
           <span class="bar-name">5.º Atendimento</span>
           <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:1px 7px;border-radius:10px">0,133</span>
         </div>
-        <div class="track"><div class="fill" style="width:31%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
+        <div class="track"><div class="fill" style="width:31%;background:linear-gradient(90deg,#9b8ad4,#6750b5)"></div></div>
       </div>
     </div>
     <div style="margin-top:12px;padding:8px 10px;background:rgba(91,75,158,.06);border-radius:8px;font-size:11.5px;line-height:1.5;color:var(--ink)">
@@ -1141,28 +1140,28 @@ body{font-family:"Montserrat",system-ui,sans-serif;color:var(--ink);background:#
           <span class="bar-name" style="color:#0ea874;font-weight:700">🥇 Plano de saúde</span>
           <span style="font-size:11px;font-weight:700;color:#0ea874;background:rgba(14,168,116,.1);padding:1px 7px;border-radius:10px">0,426</span>
         </div>
-        <div class="track"><div class="fill" style="width:100%;background:linear-gradient(90deg,#047857,#0ea874)"></div></div>
+        <div class="track"><div class="fill" style="width:100%;background:linear-gradient(90deg,#34d399,#0ea874)"></div></div>
       </div>
       <div class="bar-item">
         <div class="bar-label-row">
           <span class="bar-name">🥈 Comunicação institucional</span>
           <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:1px 7px;border-radius:10px">0,220</span>
         </div>
-        <div class="track"><div class="fill" style="width:52%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
+        <div class="track"><div class="fill" style="width:52%;background:linear-gradient(90deg,#9b8ad4,#6750b5)"></div></div>
       </div>
       <div class="bar-item">
         <div class="bar-label-row">
           <span class="bar-name">🥉 Plano de previdência</span>
           <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:1px 7px;border-radius:10px">0,181</span>
         </div>
-        <div class="track"><div class="fill" style="width:42%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
+        <div class="track"><div class="fill" style="width:42%;background:linear-gradient(90deg,#9b8ad4,#6750b5)"></div></div>
       </div>
       <div class="bar-item">
         <div class="bar-label-row">
           <span class="bar-name">4.º Atendimento</span>
           <span style="font-size:11px;font-weight:700;color:#5b4b9e;background:rgba(91,75,158,.1);padding:1px 7px;border-radius:10px">0,159</span>
         </div>
-        <div class="track"><div class="fill" style="width:37%;background:linear-gradient(90deg,#3d2880,#6750b5)"></div></div>
+        <div class="track"><div class="fill" style="width:37%;background:linear-gradient(90deg,#9b8ad4,#6750b5)"></div></div>
       </div>
       <div class="bar-item">
         <div class="bar-label-row">
